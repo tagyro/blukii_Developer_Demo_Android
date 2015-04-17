@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/headline"
+                android:text="@string/hl_Menu"
+                style="@style/BlukiiHeading"/>
+
+            <Button
+                android:id="@+id/btn_gotoSelectBlukii"
+                android:text="@string/btn_gotoSelectBlukii"
+                android:onClick="selectBlukiiPage"
+                style="@style/BlukiiMenuButton"/>
+
+            <include layout="@layout/thinline" />
+
+            <Button
+                android:id="@+id/btn_gotoDirectometerProfile"
+                android:text="@string/btn_gotoDirectometerProfile"
+                android:onClick="selectDirectometerPage"
+                style="@style/BlukiiMenuButton"/>
+
+            <include layout="@layout/thinline" />
+
+            <Button
+                android:id="@+id/btn_gotoEnvironmentSensors"
+                android:text="@string/btn_gotoEnvironmentSensors"
+                android:onClick="selectBasicSensorsPage"
+                style="@style/BlukiiMenuButton"/>
+
+            <include layout="@layout/thinline" />
+
+            <Button
+                android:id="@+id/btn_gotoAccelerometerProfile"
+                android:text="@string/btn_gotoAccelerometerProfile"
+                android:onClick="selectAccelerometerPage"
+                style="@style/BlukiiMenuButton"/>
+
+            <include layout="@layout/thinline" />
+
+            <Button
+                android:id="@+id/btn_gotoAltimeterProfile"
+                android:text="@string/btn_gotoAltimeterProfile"
+                android:onClick="selectAltimeterPage"
+                style="@style/BlukiiMenuButton"/>
+
+            <include layout="@layout/thinline" />
+
+            <Button
+                android:id="@+id/btn_gotoLightProfile"
+                android:text="@string/btn_gotoLightProfile"
+                android:onClick="selectLightPage"
+                style="@style/BlukiiMenuButton"/>
+
+            <include layout="@layout/thinline" />
+
+            <Button
+                android:id="@+id/btn_gotoDeviceInfoProfile"
+                android:text="@string/btn_gotoDeviceInfoProfile"
+                android:onClick="selectDeviceInfoPage"
+                style="@style/BlukiiMenuButton"/>
+
+            <include layout="@layout/thinline" />
+
+            <Button
+                android:id="@+id/btn_gotoTemperatureProfile"
+                android:text="@string/btn_gotoTemperatureProfile"
+                android:onClick="selectTemperaturePage"
+                style="@style/BlukiiMenuButton"/>
+
+            <include layout="@layout/thinline" />
+
+            <Button
+                android:id="@+id/btn_gotoServiceProfile"
+                android:text="@string/btn_gotoServiceProfile"
+                android:onClick="selectServicePage"
+                style="@style/BlukiiMenuButton"/>
+
+            <include layout="@layout/thinline" />
+
+            <Button
+                android:id="@+id/btn_gotoRecordingConfig"
+                android:text="@string/btn_gotoRecordingConfig"
+                android:onClick="selectRecordingPage"
+                style="@style/BlukiiMenuButton"/>
+
+            <include layout="@layout/thinline" />
+
+            <Button
+                android:id="@+id/btn_gotoRecordingParams"
+                android:text="@string/btn_gotoRecordingParams"
+                android:onClick="selectRecordingPageParams"
+                style="@style/BlukiiMenuButton"/>
+
+            <include layout="@layout/thinline" />
+
+            <Button
+                android:id="@+id/btn_gotoRecordingValues"
+                android:text="@string/btn_gotoRecordingValues"
+                android:onClick="selectRecordingPageValues"
+                style="@style/BlukiiMenuButton"/>
+
+            <include layout="@layout/thinline" />
+
+            <Button
+                android:id="@+id/btn_gotoInformation"
+                android:text="@string/btn_gotoInformation"
+                android:onClick="selectInfoPage"
+                style="@style/BlukiiMenuButton"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

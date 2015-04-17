@@ -1,0 +1,460 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/headline"
+                android:text="@string/hl_RecordingConfig"
+                style="@style/BlukiiHeading"/>
+
+            <include layout="@layout/separator" />
+
+            <include layout="@layout/blukii_status" />
+
+            <include layout="@layout/separator" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_recording_password"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+                    android:text="Set to 42" />
+
+                <Button
+                    android:id="@+id/btn_recording_password_reset"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+                    android:text="Reset" />
+            </LinearLayout>
+
+            <include layout="@layout/separator" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <ToggleButton
+                    android:id="@+id/btn_recording_enabled_set"
+                    android:layout_width="wrap_content"
+                    android:textOff="@string/btn_activateProfile"
+                    android:textOn="@string/btn_deactivateProfile"
+                    android:layout_height="wrap_content" />
+
+                <ImageButton
+                    android:id="@+id/btn_recording_enabled_read"
+                    android:src="@android:drawable/ic_popup_sync"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <include layout="@layout/separator" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sensor Config"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Accelerometer"
+                    android:id="@+id/cb_recording_sensor_accelerometer" />
+
+                <CheckBox
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cb_recording_sensor_altimeter"
+                    android:text="Altimeter" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cb_recording_sensor_battery"
+                    android:text="Battery" />
+
+                <CheckBox
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cb_recording_sensor_humidity"
+                    android:text="Humidity" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cb_recording_sensor_light"
+                    android:text="Light" />
+
+                <CheckBox
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cb_recording_sensor_magnetometer"
+                    android:text="Magnetic Field" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="StepCounter"
+                    android:id="@+id/cb_recording_sensor_step_counter" />
+
+                <CheckBox
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:id="@+id/cb_recording_sensor_temperature"
+                    android:layout_height="wrap_content"
+                    android:text="Temperature" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btn_recording_sensors_read"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:src="@android:drawable/ic_popup_sync"
+                    android:layout_height="wrap_content" />
+
+                <ImageButton
+                    android:id="@+id/btn_recording_sensors_set"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:src="@android:drawable/ic_menu_save"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <include layout="@layout/separator" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mode"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Interval"
+                    android:id="@+id/cb_recording_mode_interval" />
+
+                <CheckBox
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:id="@+id/cb_recording_mode_event"
+                    android:layout_height="wrap_content"
+                    android:text="Event" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btn_recording_mode_read"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:src="@android:drawable/ic_popup_sync"
+                    android:layout_height="wrap_content" />
+
+                <ImageButton
+                    android:id="@+id/btn_recording_mode_set"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:src="@android:drawable/ic_menu_save"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <include layout="@layout/separator" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Interval"
+                android:textSize="15sp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:text="@string/undefined"
+                android:gravity="center"
+                android:ems="10"
+                android:id="@+id/et_recording_interval_value" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btn_recording_interval_read"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:src="@android:drawable/ic_popup_sync"
+                    android:layout_height="wrap_content" />
+
+                <ImageButton
+                    android:id="@+id/btn_recording_interval_set"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:src="@android:drawable/ic_menu_save"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+            <include layout="@layout/separator" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dataset Limit"
+                android:textSize="15sp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:gravity="center"
+                android:ems="10"
+                android:text="@string/undefined"
+                android:id="@+id/et_recording_limit_value" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btn_recording_limit_read"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:src="@android:drawable/ic_popup_sync"
+                    android:layout_height="wrap_content" />
+
+                <ImageButton
+                    android:id="@+id/btn_recording_limit_set"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:src="@android:drawable/ic_menu_save"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <include layout="@layout/separator" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Accelerometer Range"
+                android:textSize="15sp" />
+
+            <include layout="@layout/accelerometer_range" />
+
+            <include layout="@layout/separator" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Accelerometer Event Config"
+                android:textSize="15sp" />
+
+            <include layout="@layout/accelerometer_event_config" />
+
+            <include layout="@layout/separator" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Accelerometer Event Mode"
+                android:textSize="15sp" />
+
+            <include layout="@layout/accelerometer_event_mode" />
+
+            <include layout="@layout/separator" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Magnetometer Range"
+                android:textSize="15sp" />
+
+            <include layout="@layout/magnetometer_range" />
+
+            <include layout="@layout/separator" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Magnetometer Event Config"
+                android:textSize="15sp" />
+
+            <include layout="@layout/magnetometer_event_config" />
+
+            <include layout="@layout/separator" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Magnetometer Mode"
+                android:textSize="15sp" />
+
+            <include layout="@layout/magnetometer_mode" />
+
+            <include layout="@layout/separator" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Light Mode"
+                android:textSize="15sp" />
+
+            <include layout="@layout/light_mode" />
+
+            <include layout="@layout/separator" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Light Event Config"
+                android:textSize="15sp" />
+
+            <include layout="@layout/light_event_config" />
+
+            <include layout="@layout/separator" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Temperature Event Config"
+                android:textSize="15sp" />
+
+            <include layout="@layout/temperature_event_config" />
+
+            <include layout="@layout/separator" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Altimeter Mode"
+                android:textSize="15sp" />
+
+            <include layout="@layout/altimeter_mode" />
+
+            <include layout="@layout/separator" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Altimeter Event Config"
+                android:textSize="15sp" />
+
+            <include layout="@layout/altimeter_event_config" />
+
+            <include layout="@layout/separator" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Step Detection"
+                android:textSize="15sp" />
+
+            <include layout="@layout/step_detection" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

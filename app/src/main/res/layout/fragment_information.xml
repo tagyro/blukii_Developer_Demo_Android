@@ -1,0 +1,78 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/headline"
+        android:text="@string/hl_Information"
+        style="@style/BlukiiHeading"/>
+
+
+
+    <TextView
+        android:id="@+id/tv_battery"
+        android:layout_below="@id/headline"
+        android:text="@string/lbl_stateOfCharge"
+        style="@style/BlukiiTextView"
+        android:layout_marginStart="0dp"/>
+
+
+<!--
+    <TextView
+        android:id="@+id/tv_connected_device"
+        android:layout_below="@id/tv_battery"
+        android:text="@string/lbl_connected_device"
+        style="@style/BlukiiTextView"/>-->
+
+
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+        <TextView
+            android:id="@+id/lbl_app"
+            android:text="@string/app_name"
+            android:gravity="center"
+            style="@style/BlukiiTextView"/>
+
+        <TextView
+            android:id="@+id/lbl_version"
+            android:layout_below="@id/lbl_app"
+            android:text="@string/lbl_version"
+            android:gravity="center"
+            style="@style/BlukiiTextView"/>
+
+        <TextView
+            android:id="@+id/lbl_author"
+            android:layout_below="@id/lbl_version"
+            android:text="@string/lbl_author"
+            android:gravity="center"
+            style="@style/BlukiiTextView"/>
+
+        <TextView
+            android:id="@+id/lbl_design"
+            android:layout_below="@id/lbl_author"
+            android:text="@string/lbl_design"
+            android:gravity="center"
+            style="@style/BlukiiTextView"/>
+
+        <TextView
+            android:id="@+id/lbl_copyright"
+            android:layout_below="@id/lbl_design"
+            android:text="@string/lbl_copyright"
+            android:gravity="center"
+            style="@style/BlukiiTextView"/>
+
+        <Space
+            android:id="@+id/spacer_1"
+            android:layout_width="fill_parent"
+            android:layout_height="30px"
+            android:layout_below="@id/lbl_copyright"/>
+
+        </RelativeLayout>
+
+
+
+</RelativeLayout>

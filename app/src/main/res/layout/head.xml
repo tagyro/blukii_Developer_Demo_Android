@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/header">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_alignParentTop="true"
+            style="@style/BlukiiHead"
+            android:contentDescription="logo" />
+
+        <TextView
+            android:id="@+id/statusbar"
+            android:text="@string/blukii_status"
+            android:layout_below="@id/imageView"
+            style="@style/BlukiiStatusBar"/>
+    </RelativeLayout>
+
+
+</merge>

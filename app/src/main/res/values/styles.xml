@@ -1,0 +1,152 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="Blukii" parent="android:Theme.Material.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+
+        <item name="android:colorPrimaryDark">@color/blukii_blue</item>
+
+        <item name="android:windowBackground">@color/blukii_white</item>
+        <item name="android:colorBackground">@color/blukii_white</item>
+    </style>
+
+    <!--
+    -
+    - Header
+    -
+    -->
+    <style name="BlukiiHead">
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:background">@color/blukii_blue</item>
+        <item name="android:src">@drawable/blukii_rectangle_horizontal_wbst_white_orange</item>
+        <item name="android:scaleType">fitStart</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">@dimen/blukii_height_head</item>
+    </style>
+
+
+    <!--
+    -
+    - Statusbar
+    -
+    -->
+    <style name="BlukiiStatusBar">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/blukii_text_micro</item>
+        <item name="android:textColor">@color/blukii_white</item>
+        <item name="android:background">@color/blukii_orange</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
+    <!--
+    -
+    - Tab-Navigation
+    -
+    -->
+    <style name="BlukiiTabNav">
+        <item name="android:background">@color/blukii_blue</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_alignParentBottom">true</item>
+    </style>
+
+
+    <!--
+    -
+    - Tab-Navigation
+    - Button
+    -->
+    <style name="BlukiiTabButton" parent="android:Widget.DeviceDefault.Light.Button.Borderless.Small">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/blukii_tab_button</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/blukii_white</item>
+    </style>
+
+
+    <!--
+    -
+    - List-View
+    -
+    -->
+    <style name="BlukiiListView" parent="android:Widget.DeviceDefault.Light.ListView">
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingEnd">10dp</item>
+      <!--  <item name="android:paddingTop">3dp</item>
+        <item name="android:paddingBottom">3dp</item>-->
+    </style>
+
+
+    <!--
+    -
+    - Überschrift
+    -
+    -->
+    <style name="BlukiiHeading" parent="android:Widget.DeviceDefault.Light.TextView">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">@dimen/blukii_margin_lr</item>
+        <item name="android:paddingTop">@dimen/blukii_padding_tb</item>
+        <item name="android:paddingBottom">@dimen/blukii_padding_tb</item>
+        <item name="android:textColor">@color/blukii_blue</item>
+        <item name="android:textSize">@dimen/blukii_text_xlarge</item>
+        <item name="android:layout_gravity">left</item>
+    </style>
+
+
+    <!--
+    -
+    - TextView One Line
+    -
+    -->
+    <style name="BlukiiTextView" parent="android:Widget.DeviceDefault.Light.TextView">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:layout_marginStart">@dimen/blukii_margin_lr</item>
+        <item name="android:layout_marginEnd">@dimen/blukii_margin_lr</item>
+        <item name="android:layout_marginTop">@dimen/blukii_margin_tb</item>
+        <item name="android:layout_marginBottom">@dimen/blukii_margin_tb</item>
+        <item name="android:textColor">@color/blukii_darkgrey</item>
+        <item name="android:textSize">@dimen/blukii_text_small</item>
+    </style>
+
+
+    <!--
+    -
+    - Button Bigs
+    -
+    -->
+    <style name="BlukiiButtonBig" parent="android:Widget.DeviceDefault.Light.Button">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/blukii_margin_lr</item>
+        <item name="android:layout_marginEnd">@dimen/blukii_margin_lr</item>
+        <item name="android:layout_marginTop">@dimen/blukii_margin_tb</item>
+        <item name="android:layout_marginBottom">@dimen/blukii_margin_tb</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+
+    <!--
+    -
+    - Menu Button
+    -
+    -->
+
+    <style name="BlukiiMenuButton" parent="android:Widget.DeviceDefault.Light.Button.Borderless.Small">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">@dimen/blukii_menu_button</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:layout_margin">0dp</item>
+    </style>
+</resources>

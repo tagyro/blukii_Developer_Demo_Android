@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--GENERALS-->
+    <string name="app_name">Smart Sensor Demo</string>
+
+    <string name="description_header">"blukii - Wearables, Beacons, Sensors and Tags"</string>
+    <!--END GENERALS-->
+
+    <string name="btn_settings">Settings</string>
+    <string name="btn_info">Info</string>
+
+    <!--HEADLINES-->
+    <string name="hl_Menu">Menu</string>
+    <string name="hl_SelectBlukii">Select Blukii</string>
+    <string name="hl_DirectometerProfile">Directometer Profile</string>
+    <string name="hl_EnvironmentSensors">Environment Sensors</string>
+    <string name="hl_AccelerometerProfile">Accelerometer Profile</string>
+    <string name="hl_AltimeterProfile">Altimeter Profile</string>
+    <string name="hl_LightProfile">Light Profile</string>
+    <string name="hl_DeviceInfoProfile">Device Info Profile</string>
+    <string name="hl_TemperatureProfile">Temperature Profile</string>
+    <string name="hl_ServiceProfile">Service Profile</string>
+    <string name="hl_RecordingConfig">Recording Config</string>
+    <string name="hl_RecordingParams">Recording Params</string>
+    <string name="hl_RecordingValues">Recording Values</string>
+    <string name="hl_Information">Information</string>
+
+    <string name="hl_magneticFieldValues">Magnetic Field Values</string>
+    <string name="hl_magneticFieldRawValues">Magnetic Field Raw Values</string>
+    <string name="hl_positionMonitoring">Position Monitoring:</string>
+    <string name="hl_heading">Heading</string>
+
+    <string name="hl_battery">Battery</string>
+    <string name="hl_humidity">Humidity</string>
+
+    <string name="hl_range">Range</string>
+    <string name="hl_rawValues">Raw Values</string>
+    <string name="hl_filter">Filter</string>
+    <string name="hl_eventConfig">Event Config</string>
+    <string name="hl_eventMode">Event Mode</string>
+    <string name="hl_eventState">Event State</string>
+    <string name="hl_switchSense">Switch Sense</string>
+    <string name="hl_switch">Switch</string>
+
+    <string name="hl_mode">Mode</string>
+    <string name="hl_value">Value</string>
+
+    <string name="hl_firmwareRevision">Firmware Revision</string>
+    <string name="hl_hardwareRevision">Hardware Revision</string>
+    <string name="hl_manufactureName">Manufacture Name</string>
+
+    <string name="hl_magnetometerCalibration">Magnetometer Calibration</string>
+
+    <string name="hl_password">Password</string>
+    <string name="hl_sensorConfig">Sensor Config</string>
+    <string name="hl_interval">Interval</string>
+    <string name="hl_datasetLimit">Dataset Limit</string>
+    <string name="hl_accelerometerRange">Accelerometer Range</string>
+    <string name="hl_accelerometerEventConfig">Accelerometer Event Config</string>
+    <string name="hl_accelerometerEventMode">Accelerometer Event Mode</string>
+    <string name="hl_magnetometerRange">Magnetometer Range</string>
+    <string name="hl_magnetometerEventConfig">Megnetometer Event Config</string>
+    <string name="hl_magnetometerMode">Magnetometer Mode</string>
+    <string name="hl_lightMode">Light Mode</string>
+    <string name="hl_lightEventConfig">Light Event Config</string>
+    <string name="hl_temperatureEventConfig">Temperature Event Config</string>
+    <string name="hl_altimeterMode">Altimeter Mode</string>
+    <string name="hl_altimeterEventConfig">Altimeter Event Config</string>
+    <string name="hl_stepDetection">Step Detection</string>
+    <string name="hl_read">Read</string>
+    <string name="hl_dataState">Data State</string>
+    <string name="hl_params">Params</string>
+    <string name="hl_values">Values</string>
+    <!--END HEADLINES-->
+
+    <!--LABELS-->
+
+    <string name="lbl_accelerometer">Accelerometer</string>
+    <string name="lbl_altimeter">Altimeter</string>
+    <string name="lbl_battery">Battery</string>
+    <string name="lbl_humidity">Humidity</string>
+    <string name="lbl_light">Light</string>
+    <string name="lbl_magneticField">Magnetic Field</string>
+    <string name="lbl_stepCounter">Step Counter</string>
+    <string name="lbl_temperature">Temperature</string>
+
+    <string name="lbl_interval">Interval</string>
+    <string name="lbl_event">Event</string>
+    <string name="lbl_high">High</string>
+    <string name="lbl_low">Low</string>
+    <string name="lbl_highTime">High Time</string>
+    <string name="lbl_lowTime">Low Time</string>
+    <string name="lbl_referencedMode">Referenced Mode</string>
+    <string name="lbl_lowEvent">Low Event</string>
+    <string name="lbl_highEvent">High Event</string>
+    <string name="lbl_threshold">Threshold</string>
+    <string name="lbl_value">Value</string>
+    <string name="lbl_recorded">Recorded</string>
+    <string name="lbl_maximum">Maximum</string>
+    <string name="lbl_offset">Offset</string>
+    <string name="lbl_state">State</string>
+    <string name="lbl_x">X</string>
+    <string name="lbl_y">Y</string>
+    <string name="lbl_z">Z</string>
+
+    <string name="lbl_release">Release</string>
+    <string name="lbl_blukii">Blukii</string>
+    <string name="lbl_feature">Feature</string>
+    <string name="lbl_bug">Bug</string>
+    <string name="lbl_sensors">Sensors</string>
+    <string name="lbl_manufacture">Manufacture</string>
+    <string name="lbl_stateOfCharge">"State of charge: "</string>
+
+
+    <string name="lbl_humiditySensor">"Humidity: "</string>
+    <string name="lbl_humiditySensorStart">"Humidity: sensor deactivated"</string>
+    <string name="lbl_humiditySensorDeactivated">sensor deactivated</string>
+    <string name="lbl_humiditySensorActivated">sensor activated</string>
+
+    <string name="lbl_profileStatus">"Profile Status: "</string>
+    <!--END LABELS-->
+
+
+    <!--BUTTONS-->
+    <string name="btn_gotoMenu">@string/hl_Menu</string>
+    <string name="btn_gotoSelectBlukii">@string/hl_SelectBlukii</string>
+    <string name="btn_gotoDirectometerProfile">@string/hl_DirectometerProfile</string>
+    <string name="btn_gotoEnvironmentSensors">@string/hl_EnvironmentSensors</string>
+    <string name="btn_gotoAccelerometerProfile">@string/hl_AccelerometerProfile</string>
+    <string name="btn_gotoAltimeterProfile">@string/hl_AltimeterProfile</string>
+    <string name="btn_gotoLightProfile">@string/hl_LightProfile</string>
+    <string name="btn_gotoDeviceInfoProfile">@string/hl_DeviceInfoProfile</string>
+    <string name="btn_gotoTemperatureProfile">@string/hl_TemperatureProfile</string>
+    <string name="btn_gotoServiceProfile">@string/hl_ServiceProfile</string>
+    <string name="btn_gotoRecordingConfig">@string/hl_RecordingConfig</string>
+    <string name="btn_gotoRecordingParams">@string/hl_RecordingParams</string>
+    <string name="btn_gotoRecordingValues">@string/hl_RecordingValues</string>
+    <string name="btn_gotoInformation">@string/hl_Information</string>
+
+    <string name="btn_startDiscover">start discover</string>
+    <string name="btn_stopDiscover">stop discover</string>
+    <string name="btn_connect">connect</string>
+    <string name="btn_disconnect">disconnect</string>
+
+    <string name="btn_activateProfile">activate profile</string>
+    <string name="btn_deactivateProfile">deactivate profile</string>
+
+    <string name="btn_read">read</string>
+    <string name="btn_enableNotify">enable notify</string>
+    <string name="btn_disableNotify">disable notify</string>
+
+    <string name="btn_disable">disable</string>
+    <string name="btn_setPos1">set pos 1</string>
+    <string name="btn_setPos2">set pos 2</string>
+
+    <string name="btn_setTo42">set to 42</string>
+    <string name="btn_reset">reset</string>
+
+    <string name="btn_state">state</string>
+    <string name="btn_params">params</string>
+
+    <string name="btn_all">all</string>
+    <string name="btn_offset">offset</string>
+    <string name="btn_one">one</string>
+
+    <string name="btn_toggleOn">on</string>
+    <string name="btn_toggleOff">off</string>
+    <!--END BUTTONS-->
+
+
+    <string-array name="page_titles">
+        <item>@string/hl_Menu</item>
+        <item>@string/hl_SelectBlukii</item>
+        <item>@string/hl_DirectometerProfile</item>
+        <item>@string/hl_EnvironmentSensors</item>
+        <item>@string/hl_AccelerometerProfile</item>
+        <item>@string/hl_AltimeterProfile</item>
+        <item>@string/hl_LightProfile</item>
+        <item>@string/hl_DeviceInfoProfile</item>
+        <item>@string/hl_TemperatureProfile</item>
+        <item>@string/hl_ServiceProfile</item>
+        <item>@string/hl_RecordingConfig</item>
+        <item>@string/hl_RecordingParams</item>
+        <item>@string/hl_RecordingValues</item>
+        <item>@string/hl_Information</item>
+    </string-array>
+
+
+    <string name="txt_calibrate_information">Please calibrate your blukii before using this profile.You can do this in the Service Profile.</string>
+    <string name="txt_calibration_onoff">Please leave the togglebutton active, so the magnetometer works better</string>
+
+
+    <!--BLUKII STATUS-->
+    <string name="blukii_status">blukii status</string>
+    <string name="blukii_connected">connected</string>
+    <string name="blukii_disconnected">disconnected</string>
+    <string name="blukii_connecting">connect &#8230;</string>
+    <string name="blukii_disconnecting">disconnect &#8230;</string>
+    <string name="blukii_discover">discover &#8230;</string>
+    <string name="blukii_discoveryStopped">discovery stopped</string>
+    <!--END BLUKII STATUS-->
+
+    <!--PROFILE STATUS-->
+    <string name="profile_active">active</string>
+    <string name="profile_inactive">inactive</string>
+    <string name="profile_activating">activating...</string>
+    <string name="profile_deactivating">deactivating...</string>
+    <!--END PROFILE STATUS-->
+
+    <string name="undefined">undefined</string>
+
+
+    <!--DROPDOWNS RANGES MODES-->
+    <string-array name="accelerometer_ranges">
+        <item>@string/undefined</item>
+        <item>±2</item>
+        <item>±4</item>
+        <item>±8</item>
+    </string-array>
+
+    <string-array name="magnetometer_ranges">
+        <item>@string/undefined</item>
+        <item>±4</item>
+        <item>±8</item>
+        <item>±12</item>
+        <item>±16</item>
+    </string-array>
+
+    <string-array name="magnetometer_modes">
+        <item>@string/undefined</item>
+        <item>Deactivated</item>
+        <item>X Axis</item>
+        <item>Y Axis</item>
+        <item>Z Axis</item>
+    </string-array>
+
+    <string-array name="light_modes">
+        <item>@string/undefined</item>
+        <item>Als1000Lux</item>
+        <item>Als4000Lux</item>
+        <item>Als16000Lux</item>
+        <item>Als64000Lux</item>
+        <item>Ir1000Lux</item>
+        <item>Ir4000Lux</item>
+        <item>Ir16000Lux</item>
+        <item>Ir64000Lux</item>
+    </string-array>
+
+    <string-array name="altimeter_modes">
+        <item>@string/undefined</item>
+        <item>Barometer</item>
+        <item>Altitude</item>
+    </string-array>
+    <!--END DROPDOWNS RANGES MODES-->
+
+
+    <!--ERRORS-->
+    <string name="lbl_error_noBLEsupport">Bluetooth LE is not supported</string>
+    <string name="lbl_error_LoadServices">Error while loading services</string>
+    <string name="lbl_error_activateProfile">Error while activating profile</string>
+    <string name="lbl_error_readHumidityProfile">Error while reading humidity profile</string>
+
+
+    <string name="error_filter2">Filter between 0 and 65</string>
+    <string name="error_filter4">Filter between 0 and 131</string>
+    <string name="error_filter8">Filter between 0 and 262</string>
+    <string name="error_filterDefault">Value must be greater or equal than 0</string>
+
+    <string name="error_accelRangeNotSet">Please select and save an accelerometer range</string>
+    <string name="error_accelEventConfig">High must be greater than Low</string>
+    <string name="error_switchSense">Switch Sense Value between 0 and 10</string>
+
+    <string name="error_altiModeNotSet">Please select and save an altimeter mode</string>
+    <!--END ERRORS-->
+
+
+    <!--STATUS LABELS-->
+
+    <string name="lbl_status_activating">activating sensors &#8230;</string>
+    <string name="lbl_status_deactivating">deactivating sensors &#8230;</string>
+    <string name="lbl_status_active">active</string>
+    <string name="lbl_status_inactive">inactive</string>
+
+    <string name="lbl_status_read">read &#8230;</string>
+    <string name="lbl_status_readError">Reading error</string>
+
+    <!--END STATUS LABELS-->
+
+
+    <!--CREDENTIALS-->
+
+    <string name="lbl_version">"Version: "</string>
+    <string name="lbl_author">Author: Severin Fleig</string>
+    <string name="lbl_design">Developed and designed in Black Forest</string>
+    <string name="lbl_copyright">copyright © 2015 blukii. All rights reserved.</string>
+
+    <!--END CREDENTIALS-->
+</resources>

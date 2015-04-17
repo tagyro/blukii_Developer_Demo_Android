@@ -1,0 +1,131 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/headline"
+                android:text="@string/hl_TemperatureProfile"
+                style="@style/BlukiiHeading"/>
+
+            <include layout="@layout/separator" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="Blukii-Status:"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_temp_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Getrennt"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btn_temp_enabler"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:enabled="false"
+                android:tag="activate"
+                android:text="Activate profile" />
+
+            <include layout="@layout/separator" />
+
+            <!--Value-->
+            <TextView
+                android:id="@+id/tv_temp_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="Value: 0"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_temp_value_read"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:enabled="false"
+                    android:text="Read" />
+
+            </LinearLayout>
+
+            <include layout="@layout/separator" />
+
+            <!--Event Config-->
+            <TextView
+                android:id="@+id/tv_temp_event_config"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="Event Config"
+                android:textSize="20sp" />
+
+            <include layout="@layout/temperature_event_config" />
+
+            <include layout="@layout/separator" />
+
+            <!--Event State-->
+            <TextView
+                android:id="@+id/tv_temp_event_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="Event State: "
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_temp_event_state_read"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:enabled="false"
+                    android:text="Read" />
+
+                <Button
+                    android:id="@+id/btn_temp_event_state_notify"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:enabled="false"
+                    android:tag="activate"
+                    android:text="Enable Notify" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

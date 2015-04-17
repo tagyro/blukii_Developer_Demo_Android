@@ -1,0 +1,32 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="btn_margin_top">4dp</dimen>
+    <dimen name="btn_margin_bottom">8dp</dimen>
+
+
+    <dimen name="blukii_height_head">100dp</dimen>
+    <dimen name="blukii_height_normal">48dp</dimen>
+    <dimen name="blukii_height_small">32dp</dimen>
+    <dimen name="blukii_height_big">64dp</dimen>
+
+    <dimen name="blukii_padding_lr">4dp</dimen>
+    <dimen name="blukii_padding_tb">4dp</dimen>
+    <dimen name="blukii_padding_tb_font">8dp</dimen>
+    <dimen name="blukii_margin_lr">16dp</dimen>
+    <dimen name="blukii_margin_tb">4dp</dimen>
+
+
+
+    <dimen name="blukii_text_micro">12sp</dimen>
+    <dimen name="blukii_text_small">14sp</dimen>
+    <dimen name="blukii_text_medium">18sp</dimen>
+    <dimen name="blukii_text_large">22sp</dimen>
+    <dimen name="blukii_text_xlarge">28sp</dimen>
+    <dimen name="blukii_text_xxlarge">32sp</dimen>
+    <dimen name="blukii_text_xxxlarge">64sp</dimen>
+
+    <dimen name="blukii_tab_button">60dp</dimen>
+    <dimen name="blukii_menu_button">60dp</dimen>
+</resources>

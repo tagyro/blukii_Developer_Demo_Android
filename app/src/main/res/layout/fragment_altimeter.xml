@@ -1,0 +1,170 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/headline"
+                android:text="@string/hl_AltimeterProfile"
+                style="@style/BlukiiHeading"/>
+
+            <include layout="@layout/separator" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/lbl_profileStatus"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_blukii_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/profile_inactive"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_altimeter_activate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:enabled="false"
+                android:tag="activate"
+                android:text="@string/btn_activateProfile" />
+
+            <include layout="@layout/separator" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="@string/hl_mode"
+                android:textSize="15sp" />
+
+            <include layout="@layout/altimeter_mode" />
+
+            <include layout="@layout/separator" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="@string/hl_value"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hl_value"
+                    android:layout_gravity="center"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_altimeter_value"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:text=""
+                    android:textSize="20sp" />
+
+                <ImageButton
+                    android:id="@+id/btn_altimeter_read_value"
+                    android:layout_width="wrap_content"
+                    android:src="@android:drawable/ic_popup_sync"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <include layout="@layout/separator" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="@string/hl_eventConfig"
+                android:textSize="15sp" />
+
+            <include layout="@layout/altimeter_event_config" />
+
+            <include layout="@layout/separator" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/hl_eventState"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:orientation="horizontal"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl_state"
+                    android:layout_gravity="center"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_gravity="center"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:id="@+id/et_altimeter_event_state" />
+
+                <ImageButton
+                    android:id="@+id/btn_altimeter_event_state_read"
+                    android:layout_width="wrap_content"
+                    android:src="@android:drawable/ic_popup_sync"
+                    android:layout_height="wrap_content" />
+
+                <ToggleButton android:id="@+id/btn_altimeter_event_state"
+                    android:layout_width="wrap_content" android:textOn="@string/btn_toggleOn" android:textOff="@string/btn_toggleOff"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

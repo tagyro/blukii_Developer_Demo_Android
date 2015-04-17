@@ -1,0 +1,78 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/headline"
+                android:text="@string/hl_ServiceProfile"
+                style="@style/BlukiiHeading"/>
+
+            <include layout="@layout/separator" />
+
+            <!--Magnetometer Calibration-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Magnetometer Calibration"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/tv_service_magnetometer_calibration"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:layout_gravity="center"
+                    android:ems="10"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp" />
+
+                <ImageButton
+                    android:id="@+id/btn_service_read_magnetometer_calibration"
+                    android:layout_width="wrap_content"
+                    android:src="@android:drawable/ic_popup_sync"
+                    android:layout_height="wrap_content" />
+
+                <ToggleButton android:id="@+id/btn_service_notify_magnetometer_calibration"
+                    android:layout_width="wrap_content"
+                    android:textOn="On"
+                    android:textOff="Off"
+                    android:layout_height="wrap_content" />
+
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/calibrate_information"
+                android:text="@string/txt_calibration_onoff"
+                style="@style/BlukiiTextView"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/blukii_orange"
+                android:singleLine="false"
+                android:elegantTextHeight="false"
+                android:gravity="center" />
+
+            <!--End Magnetometer Calibration-->
+
+
+            <include layout="@layout/thinline"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,39 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "21.1.2"
+
+    defaultConfig {
+        applicationId "com.blukii.smartsensordemo"
+        minSdkVersion 21
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+//    buildTypes {
+//        release {
+//            minifyEnabled true // new version
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//        }
+//    }
+
+    packagingOptions {
+        exclude 'AndroidManifest.xml'
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.aar'])
+
+    // Comment when using jar files
+    //compile project(':blukiilibrary')
+
+    // Uncomment when using jar files
+    compile 'com.android.support:support-v13:21.0.0'
+    compile(name: 'blukiilibrary-release', ext: 'aar')
+}

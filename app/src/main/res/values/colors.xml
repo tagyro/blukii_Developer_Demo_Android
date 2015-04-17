@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="blukii_blue">#002741</color>
+    <color name="blukii_orange">#ea5b0c</color>
+
+    <color name="blukii_black">#000000</color>
+    <color name="blukii_darkgrey">#3f3f3f</color>
+    <color name="blukii_lightgrey">#e0e0e0</color>
+    <color name="blukii_white">#ffffff</color>
+
+</resources>

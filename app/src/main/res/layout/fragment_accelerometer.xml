@@ -1,0 +1,499 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/headline"
+                android:text="@string/hl_AccelerometerProfile"
+                style="@style/BlukiiHeading"/>
+
+            <include layout="@layout/separator" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/lbl_profileStatus"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_accelerometer_blukii_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/profile_inactive"
+                    android:textSize="15sp" />
+
+                </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_accelerometer_activate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:enabled="false"
+                android:tag="activate"
+                android:text="@string/btn_activateProfile" />
+
+            <include layout="@layout/separator" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Range"
+                android:textSize="15sp" />
+
+            <include layout="@layout/accelerometer_range" />
+
+            <include layout="@layout/separator" />
+
+            <!--Raw Values-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Raw Values"
+                android:textSize="15sp" />
+            <!--End Raw Value-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:orientation="vertical"
+                android:layout_gravity="center_horizontal">
+
+                <!--Raw X-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="X"
+                        android:layout_gravity="center"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_acc_raw_x"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:layout_gravity="center"
+                        android:ems="10"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp" />
+
+                    <ImageButton
+                        android:id="@+id/btn_acc_read_raw_x"
+                        android:layout_width="wrap_content"
+                        android:src="@android:drawable/ic_popup_sync"
+                        android:layout_height="wrap_content" />
+
+                    <ToggleButton android:id="@+id/btn_acc_notify_raw_x"
+                        android:layout_width="wrap_content"
+                        android:textOn="On"
+                        android:textOff="Off"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <!--Raw Y-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Y"
+                        android:layout_gravity="center"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_acc_raw_y"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:layout_gravity="center"
+                        android:ems="10"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp" />
+
+                    <ImageButton
+                        android:id="@+id/btn_acc_read_raw_y"
+                        android:layout_width="wrap_content"
+                        android:src="@android:drawable/ic_popup_sync"
+                        android:layout_height="wrap_content" />
+
+                    <ToggleButton android:id="@+id/btn_acc_notify_raw_y"
+                        android:layout_width="wrap_content"
+                        android:textOn="On"
+                        android:textOff="Off"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <!--Raw Z-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Z"
+                        android:layout_gravity="center"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_acc_raw_z"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:layout_gravity="center"
+                        android:ems="10"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp" />
+
+                    <ImageButton
+                        android:id="@+id/btn_acc_read_raw_z"
+                        android:layout_width="wrap_content"
+                        android:src="@android:drawable/ic_popup_sync"
+                        android:layout_height="wrap_content" />
+
+                    <ToggleButton android:id="@+id/btn_acc_notify_raw_z"
+                        android:layout_width="wrap_content"
+                        android:textOn="On"
+                        android:textOff="Off"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <include layout="@layout/separator" />
+
+            <!--Filter-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Filter"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:paddingRight="16dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:layout_gravity="center"
+                    android:ems="10"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:id="@+id/et_accelerometer_filter" />
+
+                <ImageButton
+                    android:id="@+id/btn_accelerometer_read_filter"
+                    android:layout_width="wrap_content"
+                    android:src="@android:drawable/ic_popup_sync"
+                    android:layout_height="wrap_content" />
+
+                <ImageButton
+                    android:id="@+id/btn_accelerometer_set_filter"
+                    android:layout_width="wrap_content"
+                    android:src="@android:drawable/ic_menu_save"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <include layout="@layout/separator" />
+
+            <!--Event Config-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Event Config"
+                android:textSize="15sp" />
+
+            <include layout="@layout/accelerometer_event_config" />
+
+            <!--End Event Config-->
+
+            <include layout="@layout/separator" />
+
+            <!--Event Mode-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Event Mode"
+                android:textSize="15sp" />
+
+            <include layout="@layout/accelerometer_event_mode" />
+
+            <!--End Event Mode-->
+            <include layout="@layout/separator" />
+
+            <!--Event State-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Event State"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingRight="16dp"
+                android:layout_gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/tv_acc_event_state"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:layout_gravity="center"
+                    android:ems="10"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp" />
+
+                <ImageButton
+                    android:id="@+id/btn_acc_read_event_state"
+                    android:layout_width="wrap_content"
+                    android:src="@android:drawable/ic_popup_sync"
+                    android:layout_height="wrap_content" />
+
+                <ToggleButton android:id="@+id/btn_acc_notify_event_state"
+                    android:layout_width="wrap_content"
+                    android:textOn="On"
+                    android:textOff="Off"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <!--End Event State-->
+
+            <include layout="@layout/separator" />
+
+            <!--Switch Sense-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Switch Sense"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingRight="16dp"
+                android:layout_gravity="center_horizontal">
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:layout_gravity="center"
+                    android:ems="10"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:id="@+id/et_accelerometer_switch_sense" />
+
+                <ImageButton
+                    android:id="@+id/btn_accelerometer_read_switch_sense"
+                    android:layout_width="wrap_content"
+                    android:src="@android:drawable/ic_popup_sync"
+                    android:layout_height="wrap_content" />
+
+                <ImageButton
+                    android:id="@+id/btn_accelerometer_set_switch_sense"
+                    android:layout_width="wrap_content"
+                    android:src="@android:drawable/ic_menu_save"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <!--End Switch Sense-->
+
+            <include layout="@layout/separator" />
+
+            <!--Switch-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Switch"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingRight="16dp"
+                android:layout_gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/tv_acc_switch"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:layout_gravity="center"
+                    android:ems="10"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp" />
+
+                <ImageButton
+                    android:id="@+id/btn_acc_read_switch"
+                    android:layout_width="wrap_content"
+                    android:src="@android:drawable/ic_popup_sync"
+                    android:layout_height="wrap_content" />
+
+                <ToggleButton android:id="@+id/btn_acc_notify_switch"
+                    android:layout_width="wrap_content"
+                    android:textOn="On"
+                    android:textOff="Off"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <!--End Switch-->
+
+            <!--
+                        <Button
+                            android:id="@+id/btn_accelerometer_read_raw_values"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:enabled="false"
+                            android:tag="activate"
+                            android:text="Updates aktivieren" />
+
+                        <TextView
+                            android:id="@+id/tv_acc_status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:text="Status: Unbekannt"
+                            android:textSize="20sp"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:id="@+id/tv_acc_x_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:text="X value: ?"
+                            android:textSize="20sp"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:id="@+id/tv_acc_y_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:text="Y value: ?"
+                            android:textSize="20sp"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:id="@+id/tv_acc_z_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:text="Z value: ?"
+                            android:textSize="20sp"
+                            android:visibility="visible" />
+
+                        <View
+                            android:layout_width="fill_parent"
+                            android:layout_height="2dip"
+                            android:background="@android:color/darker_gray"
+                            android:visibility="visible" />
+
+                        <Button
+                            android:id="@+id/btn_acc_activate_event"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:enabled="false"
+                            android:tag="activate"
+                            android:text="Aktiviere Events" />
+
+
+                        <TextView
+                            android:id="@+id/tv_acc_event_status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="10dp"
+                            android:text="Event-Status: Unbekannt"
+                            android:textSize="20sp" />
+
+                        <View
+                            android:layout_width="fill_parent"
+                            android:layout_height="2dip"
+                            android:background="@android:color/darker_gray"
+                            android:visibility="visible" />
+
+                        <Button
+                            android:id="@+id/btn_activate_switch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:enabled="false"
+                            android:tag="activate"
+                            android:text="Switch aktivieren" />
+
+
+                        <TextView
+                            android:id="@+id/tv_switch_status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="10dp"
+                            android:text="Switch-Status: Unbekannt"
+                            android:textSize="20sp" />
+
+                        <View
+                            android:layout_width="fill_parent"
+                            android:layout_height="2dip"
+                            android:background="@android:color/darker_gray"
+                            android:visibility="gone" />
+            -->
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

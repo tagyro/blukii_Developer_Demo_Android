@@ -1,0 +1,295 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/headline"
+                android:text="@string/hl_DeviceInfoProfile"
+                style="@style/BlukiiHeading"/>
+
+            <include layout="@layout/separator" />
+
+            <!--<TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="Blukii-Status"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/tv_blukii_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:text="Getrennt"
+                android:textSize="20sp" />
+
+            <include layout="@layout/separator" />-->
+
+            <!--Firmware Revision-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="Firmware Revision"
+                android:textSize="20sp" />
+
+            <!--Firmware - Release-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Release"
+                    android:layout_gravity="center"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_device_info_firmware_release"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:text="---"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <!--Firmware - Blukii-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Blukii"
+                    android:layout_gravity="center"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_device_info_firmware_blukii"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:text="---"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <!--Firmware - Feature-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Feature"
+                    android:layout_gravity="center"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_device_info_firmware_feature"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:text="---"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <!--Firmware - Bug-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bug"
+                    android:layout_gravity="center"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_device_info_firmware_bug"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:text="---"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/btn_device_info_read_firmware"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:src="@android:drawable/ic_popup_sync"
+                android:layout_height="wrap_content" />
+
+
+            <include layout="@layout/separator" />
+            <!--End Firmware Revision-->
+
+            <!--Hardware Revision-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="Hardware Revision"
+                android:textSize="20sp" />
+
+            <!--Hardware - Blukii-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Blukii"
+                    android:layout_gravity="center"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_device_info_hardware_blukii"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:text="---"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <!--Hardware - Sensors-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sensors"
+                    android:layout_gravity="center"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_device_info_hardware_sensors"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:text="---"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/btn_device_info_read_hardware"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:src="@android:drawable/ic_popup_sync"
+                android:layout_height="wrap_content" />
+
+            <include layout="@layout/separator" />
+
+            <!--End Hardware Revision-->
+
+            <!--Manufacture Name-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="Manufacture Name"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Manufacture"
+                    android:layout_gravity="center"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_device_info_manufacture"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:text="---"
+                    android:textSize="20sp" />
+            </LinearLayout>
+            <!--End Manufacture Name-->
+
+            <ImageButton
+                android:id="@+id/btn_device_info_read_manufacture"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:src="@android:drawable/ic_popup_sync"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

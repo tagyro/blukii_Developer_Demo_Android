@@ -1,0 +1,178 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main">
+
+
+    <include
+        layout="@layout/head"
+        android:id="@+id/header"/>
+<!--
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/imageView"
+
+            style="@style/BlukiiHead"
+            android:contentDescription="@string/description_header" />-->
+            <!--android:layout_alignParentTop="true"-->
+
+       <!-- <TextView
+            android:id="@+id/statusbar"
+            android:text="@string/blukii_status"
+            style="@style/BlukiiStatusBar"/>-->
+            <!--android:layout_below="@id/imageView"-->
+   <!-- </RelativeLayout>
+-->
+    <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <!-- <android.support.v4.view.PagerTitleStrip
+            android:id="@+id/pager_title_strip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top" /> -->
+
+    </android.support.v4.view.ViewPager>
+
+    <include layout="@layout/foot"
+        android:id="@+id/foot"/>
+    <!--
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/button_bar_background"
+        android:layout_marginTop="10dp"
+        android:padding="2dp">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="S"
+            android:enabled="true"
+            android:layout_weight="1"
+            android:onClick="selectBlukiiPage"
+            android:background="@drawable/button_background"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:padding="2dp"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="D"
+            android:enabled="true"
+            android:layout_weight="1"
+            android:onClick="selectDirectometerPage"
+            android:background="@drawable/button_background"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:padding="2dp"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="B"
+            android:enabled="true"
+            android:layout_weight="1"
+            android:onClick="selectBasicSensorsPage"
+            android:background="@drawable/button_background"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:padding="2dp"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="A"
+            android:enabled="true"
+            android:layout_weight="1"
+            android:onClick="selectAccelerometerPage"
+            android:background="@drawable/button_background"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:padding="2dp"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="L"
+            android:enabled="true"
+            android:layout_weight="1"
+            android:onClick="selectLightPage"
+            android:background="@drawable/button_background"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:padding="2dp"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="T"
+            android:enabled="true"
+            android:layout_weight="1"
+            android:onClick="selectTemperaturePage"
+            android:background="@drawable/button_background"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:padding="2dp"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Altimeter"
+                    android:enabled="true"
+                    android:layout_weight="1"
+                    android:onClick="selectAltimeterPage"
+                    android:background="@drawable/button_background"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:padding="2dp"
+                    android:maxLines="1"
+                    android:ellipsize="end" />
+
+
+
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="R"
+            android:enabled="true"
+            android:layout_weight="1"
+            android:onClick="selectRecordingPage"
+            android:background="@drawable/button_background"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:padding="2dp"
+            android:maxLines="1"
+            android:ellipsize="end" />
+    </LinearLayout>
+ -->
+
+</LinearLayout>

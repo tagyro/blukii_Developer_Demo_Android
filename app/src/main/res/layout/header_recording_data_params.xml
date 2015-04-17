@@ -1,0 +1,115 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/list_header"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:id="@+id/headline"
+        android:text="@string/hl_RecordingParams"
+        style="@style/BlukiiHeading"/>
+
+    <include layout="@layout/separator" />
+
+    <include layout="@layout/blukii_status" />
+
+    <include layout="@layout/separator" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Read"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_recording_data_state_read"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="State" />
+
+        <Button
+            android:id="@+id/btn_recording_data_read_params"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Params" />
+
+    </LinearLayout>
+
+    <include layout="@layout/separator" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Data State"
+        android:textSize="15sp" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1">
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recorded"
+                android:layout_gravity="center"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ems="10"
+                android:textSize="20sp"
+                android:text="@string/undefined"
+                android:layout_marginLeft="16dp"
+                android:id="@+id/tv_recording_data_state_recorded" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Maximum"
+                android:layout_gravity="center"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ems="10"
+                android:textSize="20sp"
+                android:text="@string/undefined"
+                android:layout_marginLeft="16dp"
+                android:id="@+id/tv_recording_data_state_maximum" />
+        </TableRow>
+
+    </TableLayout>
+
+    <include layout="@layout/separator" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Params"
+        android:textSize="15sp" />
+
+</LinearLayout>

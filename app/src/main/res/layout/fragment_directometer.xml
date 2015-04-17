@@ -1,0 +1,427 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/headline"
+                android:text="@string/hl_DirectometerProfile"
+                style="@style/BlukiiHeading"/>
+
+            <include layout="@layout/separator" />
+
+            <TextView
+                android:id="@+id/calibrate_information"
+                android:text="@string/txt_calibrate_information"
+                style="@style/BlukiiTextView"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/blukii_orange"
+                android:singleLine="false"
+                android:elegantTextHeight="false"
+                android:gravity="center" />
+
+            <!--<LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:textAlignment="center"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Blukii-Status:"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/tv_dir_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Getrennt"
+                    android:textSize="10sp" />
+
+            </LinearLayout>-->
+
+
+
+            <Button
+                android:id="@+id/btn_dir_enabler"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:enabled="false"
+                android:tag="activate"
+                android:text="@string/btn_activateProfile" />
+
+            <include layout="@layout/separator" />
+
+            <!--MF values-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="@string/hl_magneticFieldValues"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!--X value-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_dir_x"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:text="X: 0.0"
+                        android:textSize="20sp"
+                        android:layout_marginLeft="5dp"/>
+
+                    <Button
+                        android:id="@+id/btn_dir_x_value_read"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:enabled="false"
+                        android:text="Read" />
+
+                    <Button
+                        android:id="@+id/btn_dir_x_value_notify"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:enabled="false"
+                        android:tag="activate"
+                        android:text="Enable Notify" />
+                </LinearLayout>
+
+                <!--Y raw value-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_dir_y"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:text="Y: 0.0"
+                        android:textSize="20sp"
+                        android:layout_marginLeft="5dp"/>
+
+                    <Button
+                        android:id="@+id/btn_dir_y_value_read"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:enabled="false"
+                        android:text="Read" />
+
+                    <Button
+                        android:id="@+id/btn_dir_y_value_notify"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:enabled="false"
+                        android:tag="activate"
+                        android:text="Enable Notify" />
+                </LinearLayout>
+
+                <!--Z value-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_dir_z"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:text="Z: 0.0"
+                        android:textSize="20sp"
+                        android:layout_marginLeft="5dp"/>
+
+                    <Button
+                        android:id="@+id/btn_dir_z_value_read"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:enabled="false"
+                        android:text="Read" />
+
+                    <Button
+                        android:id="@+id/btn_dir_z_value_notify"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:enabled="false"
+                        android:tag="activate"
+                        android:text="Enable Notify" />
+                </LinearLayout>
+
+            </LinearLayout>
+            <!--End MF value-->
+
+            <include layout="@layout/separator" />
+
+            <!--MF raw values-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="Magnetic Field Raw Values"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!--X raw value-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_dir_x_raw"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:text="X: -1"
+                        android:textSize="20sp"
+                        android:layout_marginLeft="5dp"/>
+
+                    <Button
+                        android:id="@+id/btn_dir_x_raw_value_read"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:enabled="false"
+                        android:text="Read" />
+
+                    <Button
+                        android:id="@+id/btn_dir_x_raw_value_notify"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:enabled="false"
+                        android:tag="activate"
+                        android:text="Enable Notify" />
+                </LinearLayout>
+
+                <!--Y raw value-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_dir_y_raw"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:text="Y: -1"
+                        android:textSize="20sp"
+                        android:layout_marginLeft="5dp"/>
+
+                    <Button
+                        android:id="@+id/btn_dir_y_raw_value_read"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:enabled="false"
+                        android:text="Read" />
+
+                    <Button
+                        android:id="@+id/btn_dir_y_raw_value_notify"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:enabled="false"
+                        android:tag="activate"
+                        android:text="Enable Notify" />
+                </LinearLayout>
+
+                <!--Z raw value-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_dir_z_raw"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:text="Z: -1"
+                        android:textSize="20sp"
+                        android:layout_marginLeft="5dp"/>
+
+                    <Button
+                        android:id="@+id/btn_dir_z_raw_value_read"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:enabled="false"
+                        android:text="Read" />
+
+                    <Button
+                        android:id="@+id/btn_dir_z_raw_value_notify"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:enabled="false"
+                        android:tag="activate"
+                        android:text="Enable Notify" />
+                </LinearLayout>
+
+            </LinearLayout>
+            <!--End MF raw value-->
+
+            <include layout="@layout/separator" />
+
+            <!--Position Monitoring-->
+            <TextView
+                android:id="@+id/tv_dir_position_monitoring"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="Position Monitoring: "
+                android:textSize="20sp"
+                android:layout_weight="1"
+                android:gravity="center" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_weight="3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/btn_dir_pos_mon_disable"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:enabled="false"
+                        android:text="Disable" />
+
+                    <Button
+                        android:id="@+id/btn_dir_pos_mon_pos1"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:enabled="false"
+                        android:text="Set Pos1" />
+
+                    <Button
+                        android:id="@+id/btn_dir_pos_mon_pos2"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:enabled="false"
+                        android:text="Set Pos2" />
+
+                    <Button
+                        android:id="@+id/btn_dir_pos_mon_notify"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:enabled="false"
+                        android:tag="activate"
+                        android:text="Enable Notify" />
+                </LinearLayout>
+
+            </LinearLayout>
+            <!--End Position Monitoring-->
+
+            <include layout="@layout/separator" />
+
+            <!--Heading-->
+            <TextView
+                android:id="@+id/tv_dir_heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="Heading:"
+                android:textSize="20sp"
+                android:gravity="center" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_dir_heading_read"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:enabled="false"
+                    android:text="Read" />
+
+                <Button
+                    android:id="@+id/btn_dir_heading_notify"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:enabled="false"
+                    android:tag="activate"
+                    android:text="Enable Notify" />
+            </LinearLayout>
+            <!--End Heading-->
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

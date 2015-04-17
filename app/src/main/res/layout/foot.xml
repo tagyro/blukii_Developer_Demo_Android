@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:id="@+id/mainNav"
+    android:layout_width="fill_parent"
+    android:layout_gravity="bottom"
+    style="@style/BlukiiTabNav">
+
+    <!--
+    <Button
+        android:id="@+id/btn_intro"
+        android:text="@string/btn_intro"
+        android:onClick="selectIntroPage"
+        style="@style/BlukiiTabButton"
+        android:layout_weight="1" />-->
+
+    <!--
+    <Button
+        android:id="@+id/btn_settings"
+        android:text=""
+        android:onClick=""
+        style="@style/BlukiiTabButton"
+        android:layout_weight="1" />-->
+
+    <Button
+        android:id="@+id/btn_app"
+        android:text="@string/btn_gotoMenu"
+        android:onClick="selectMenuPage"
+        style="@style/BlukiiTabButton"
+        android:layout_weight="1" />
+
+
+    <Button
+        android:id="@+id/btn_info"
+        android:text="@string/btn_info"
+        android:onClick="selectInfoPage"
+        style="@style/BlukiiTabButton"
+        android:layout_weight="1" />
+
+
+</LinearLayout>

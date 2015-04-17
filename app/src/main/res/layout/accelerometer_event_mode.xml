@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:layout_height="wrap_content">
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Referenced Mode"
+                android:layout_gravity="center"
+                android:textSize="15sp" />
+
+            <ToggleButton
+                android:id="@+id/btn_accelerometer_event_mode_ref"
+                android:layout_width="wrap_content"
+                android:textOn="On"
+                android:textOff="Off"
+                android:layout_marginLeft="16dp"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Low Event"
+                android:layout_gravity="center"
+                android:textSize="15sp" />
+
+            <ToggleButton
+                android:id="@+id/btn_accelerometer_event_mode_low"
+                android:layout_width="wrap_content"
+                android:textOn="On"
+                android:textOff="Off"
+                android:layout_marginLeft="16dp"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="High Event"
+                android:layout_gravity="center"
+                android:textSize="15sp" />
+
+            <ToggleButton
+                android:id="@+id/btn_accelerometer_event_mode_high"
+                android:layout_width="wrap_content"
+                android:textOn="On"
+                android:layout_marginLeft="16dp"
+                android:textOff="Off"
+                android:layout_height="wrap_content" />
+        </TableRow>
+    </TableLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/btn_margin_top"
+        android:layout_marginBottom="@dimen/btn_margin_bottom"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/btn_accelerometer_event_mode_read"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:src="@android:drawable/ic_popup_sync"
+            android:layout_height="wrap_content" />
+
+        <ImageButton
+            android:id="@+id/btn_accelerometer_event_mode_set"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:src="@android:drawable/ic_menu_save"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</LinearLayout>

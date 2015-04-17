@@ -1,0 +1,59 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/headline"
+        android:text="@string/hl_SelectBlukii"
+        style="@style/BlukiiHeading"/>
+
+
+
+    <ListView android:id="@id/android:list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawSelectorOnTop="false"/>
+
+
+
+    <!--<TextView android:id="@+id/tv_blukii_connection_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Status: Getrennt"
+        android:layout_gravity="center|bottom"
+        android:textSize="17sp"/>-->
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_startDiscover"
+        android:id="@+id/btn_blukii_discover"
+        android:layout_gravity="center|bottom"
+        android:tag="start"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_connect"
+            android:id="@+id/btn_blukii_connect"
+            android:layout_weight="1"
+            android:enabled="false"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_disconnect"
+            android:id="@+id/btn_blukii_disconnect"
+            android:layout_weight="1"
+            android:enabled="false"/>
+    </LinearLayout>
+
+</LinearLayout>

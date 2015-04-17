@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1">
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Threshold"
+                android:layout_gravity="left"
+                android:textSize="15sp" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:layout_gravity="center"
+                android:ems="10"
+                android:layout_marginLeft="16dp"
+                android:id="@+id/et_step_detection_threshold" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Value"
+                android:layout_gravity="left"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ems="10"
+                android:textSize="20sp"
+                android:text="@string/undefined"
+
+                android:id="@+id/tv_step_detection_value" />
+        </TableRow>
+
+    </TableLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/btn_margin_top"
+        android:layout_marginBottom="@dimen/btn_margin_bottom"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/btn_step_detection_read"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:src="@android:drawable/ic_popup_sync"
+            android:layout_height="wrap_content" />
+
+        <ImageButton
+            android:id="@+id/btn_step_detection_set"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:src="@android:drawable/ic_menu_save"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</LinearLayout>
