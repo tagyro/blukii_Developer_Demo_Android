@@ -12,7 +12,7 @@
 
     <!--HEADLINES-->
     <string name="hl_Menu">Menu</string>
-    <string name="hl_SelectBlukii">Select bukii</string>
+    <string name="hl_SelectBlukii">Select blukii</string>
     <string name="hl_DirectometerProfile">Directometer Profile</string>
     <string name="hl_EnvironmentSensors">Environment Sensors</string>
     <string name="hl_AccelerometerProfile">Accelerometer Profile</string>
@@ -105,7 +105,7 @@
     <string name="lbl_z">Z</string>
 
     <string name="lbl_release">Release</string>
-    <string name="lbl_blukii">Blukii</string>
+    <string name="lbl_blukii">blukii</string>
     <string name="lbl_feature">Feature</string>
     <string name="lbl_bug">Bug</string>
     <string name="lbl_sensors">Sensors</string>
