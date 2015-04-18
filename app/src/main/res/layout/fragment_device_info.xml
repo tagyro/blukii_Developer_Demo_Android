@@ -52,27 +52,26 @@
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:layout_gravity="center_horizontal"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="Release"
-                    android:layout_gravity="center"
-                    android:textSize="15sp" />
+                    android:layout_gravity="left|center"
+                    android:textSize="15sp"
+                    android:gravity="top|left" />
 
                 <TextView
                     android:id="@+id/tv_device_info_firmware_release"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_gravity="left|center"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:text="---"
-                    android:textSize="20sp" />
+                    android:text=""
+                    android:textSize="15sp"
+                    android:gravity="top|left" />
             </LinearLayout>
 
             <!--Firmware - Blukii-->
@@ -80,27 +79,26 @@
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:layout_gravity="center_horizontal"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="Blukii"
-                    android:layout_gravity="center"
-                    android:textSize="15sp" />
+                    android:layout_gravity="left"
+                    android:textSize="15sp"
+                    android:gravity="top|left" />
 
                 <TextView
                     android:id="@+id/tv_device_info_firmware_blukii"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="0.95"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:text="---"
-                    android:textSize="20sp" />
+                    android:text=""
+                    android:textSize="15sp"
+                    android:layout_gravity="left"
+                    android:gravity="top|left" />
             </LinearLayout>
 
             <!--Firmware - Feature-->
@@ -108,27 +106,26 @@
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:layout_gravity="center_horizontal"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="Feature"
-                    android:layout_gravity="center"
-                    android:textSize="15sp" />
+                    android:layout_gravity="left|center"
+                    android:textSize="15sp"
+                    android:gravity="top|left" />
 
                 <TextView
                     android:id="@+id/tv_device_info_firmware_feature"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="0.95"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_gravity="left|center"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:text="---"
-                    android:textSize="20sp" />
+                    android:text=""
+                    android:textSize="15sp"
+                    android:gravity="top|left" />
             </LinearLayout>
 
             <!--Firmware - Bug-->
@@ -136,27 +133,26 @@
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:layout_gravity="center_horizontal"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="Bug"
-                    android:layout_gravity="center"
-                    android:textSize="15sp" />
+                    android:layout_gravity="left|center"
+                    android:textSize="15sp"
+                    android:gravity="top|left" />
 
                 <TextView
                     android:id="@+id/tv_device_info_firmware_bug"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="0.95"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_gravity="left|center"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:text="---"
-                    android:textSize="20sp" />
+                    android:text=""
+                    android:textSize="15sp"
+                    android:gravity="top|left" />
             </LinearLayout>
 
             <ImageButton
@@ -184,27 +180,26 @@
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:layout_gravity="center_horizontal"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="Blukii"
-                    android:layout_gravity="center"
-                    android:textSize="15sp" />
+                    android:layout_gravity="left|center"
+                    android:textSize="15sp"
+                    android:gravity="top|left" />
 
                 <TextView
                     android:id="@+id/tv_device_info_hardware_blukii"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="0.95"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_gravity="left|center"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:text="---"
-                    android:textSize="20sp" />
+                    android:text=""
+                    android:textSize="15sp"
+                    android:gravity="top|left" />
             </LinearLayout>
 
             <!--Hardware - Sensors-->
@@ -212,27 +207,26 @@
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:layout_gravity="center_horizontal"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="Sensors"
-                    android:layout_gravity="center"
-                    android:textSize="15sp" />
+                    android:layout_gravity="left|center"
+                    android:textSize="15sp"
+                    android:gravity="top|left" />
 
                 <TextView
                     android:id="@+id/tv_device_info_hardware_sensors"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="0.95"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_gravity="left|center"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:text="---"
-                    android:textSize="20sp" />
+                    android:text=""
+                    android:textSize="15sp"
+                    android:gravity="top|left" />
             </LinearLayout>
 
             <ImageButton
@@ -259,27 +253,26 @@
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:layout_gravity="center_horizontal"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="Manufacture"
-                    android:layout_gravity="center"
-                    android:textSize="15sp" />
+                    android:layout_gravity="left|center"
+                    android:textSize="15sp"
+                    android:gravity="top|left" />
 
                 <TextView
                     android:id="@+id/tv_device_info_manufacture"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="0.95"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_gravity="left|center"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:text="---"
-                    android:textSize="20sp" />
+                    android:text=""
+                    android:textSize="15sp"
+                    android:gravity="top|left" />
             </LinearLayout>
             <!--End Manufacture Name-->
 

@@ -121,7 +121,7 @@ public class AltimeterFragment extends AbstractFragment implements View.OnClickL
                         double value = intent.getDoubleExtra(AltimeterProfile.EXTRA_ALTIMETER_VALUE, -1);
                         String measure = "";
                         String newStatus = String.format("%.2f %s", value, measure);
-                        getTextView(R.id.tv_altimeter_value).setText(newStatus);
+                        getTextView(R.id.tv_altimeter_value).setText(newStatus + " " + getUnit(altimeterMode));
                     }
                     break;
             }
@@ -229,14 +229,31 @@ public class AltimeterFragment extends AbstractFragment implements View.OnClickL
                 String thresholdStr = ((EditText) getView().findViewById(R.id.et_altimeter_eventcfg_threshold)).getText().toString();
                 int threshold;
 
-                if ( thresholdStr.matches("") ) {
+                if ( thresholdStr.matches("") || thresholdStr == null || thresholdStr.isEmpty() ) {
                     threshold = 0;
                 } else {
                     threshold = Integer.parseInt(thresholdStr);
                 }
 
                 if (altimeterMode != null) {
-                    altimeterProfile.setEventConfig(threshold, altimeterMode);
+
+                    if ( altimeterMode == AltimeterMode.Altitude ) {
+                        if ( threshold >= -32768 && threshold <= 32767) {
+                            altimeterProfile.setEventConfig(threshold, altimeterMode);
+                        } else {
+                            toast(getText(R.string.error_altitudeRange).toString());
+                        }
+                    }
+
+                    if ( altimeterMode == AltimeterMode.Barometer ) {
+                        if ( threshold >= 0 && threshold <= 131070 ) {
+                            altimeterProfile.setEventConfig(threshold, altimeterMode);
+                        } else {
+                            toast(getText(R.string.error_barometerRange).toString());
+                        }
+                    }
+
+
                 } else {
                     toast(getText(R.string.error_altiModeNotSet).toString());
                 }
@@ -262,8 +279,6 @@ public class AltimeterFragment extends AbstractFragment implements View.OnClickL
     public void onNothingSelected(AdapterView<?> parent) {
         // do nothing
     }
-
-
 
     private String getUnit(AltimeterMode mode) {
         switch (mode) {

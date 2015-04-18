@@ -96,7 +96,7 @@ public class BasicSensorsFragment extends Fragment implements View.OnClickListen
                         Log.d(TAG, "Humidity profile enabled");
                         Button b = (Button) getView().findViewById(R.id.btn_humidity_activate);
                         b.setText(getText(R.string.btn_deactivateProfile).toString());
-                        b.setText(R.string.btn_deactivateProfile);
+                        b.setTag("deactivate");
                         b.setEnabled(true);
                         getView().findViewById(R.id.btn_humidity_update).setEnabled(true);
                         updateHumidityProfileStatus(getText(R.string.lbl_humiditySensorActivated).toString());

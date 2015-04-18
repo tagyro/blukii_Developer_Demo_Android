@@ -12,7 +12,7 @@
 
     <!--HEADLINES-->
     <string name="hl_Menu">Menu</string>
-    <string name="hl_SelectBlukii">Select Blukii</string>
+    <string name="hl_SelectBlukii">Select bukii</string>
     <string name="hl_DirectometerProfile">Directometer Profile</string>
     <string name="hl_EnvironmentSensors">Environment Sensors</string>
     <string name="hl_AccelerometerProfile">Accelerometer Profile</string>
@@ -118,7 +118,7 @@
     <string name="lbl_humiditySensorDeactivated">sensor deactivated</string>
     <string name="lbl_humiditySensorActivated">sensor activated</string>
 
-    <string name="lbl_profileStatus">"Profile Status: "</string>
+    <string name="lbl_profileStatus">"Profile status: "</string>
     <!--END LABELS-->
 
 
@@ -188,7 +188,7 @@
 
 
     <string name="txt_calibrate_information">Please calibrate your blukii before using this profile.You can do this in the Service Profile.</string>
-    <string name="txt_calibration_onoff">Please leave the togglebutton active, so the magnetometer works better</string>
+    <string name="txt_calibration_onoff">Please leave the togglebutton active, so the directometer works better</string>
 
 
     <!--BLUKII STATUS-->
@@ -214,9 +214,9 @@
     <!--DROPDOWNS RANGES MODES-->
     <string-array name="accelerometer_ranges">
         <item>@string/undefined</item>
-        <item>±2</item>
-        <item>±4</item>
-        <item>±8</item>
+        <item>± 2 g</item>
+        <item>± 4 g</item>
+        <item>± 8 g</item>
     </string-array>
 
     <string-array name="magnetometer_ranges">
@@ -237,14 +237,14 @@
 
     <string-array name="light_modes">
         <item>@string/undefined</item>
-        <item>Als1000Lux</item>
-        <item>Als4000Lux</item>
-        <item>Als16000Lux</item>
-        <item>Als64000Lux</item>
-        <item>Ir1000Lux</item>
-        <item>Ir4000Lux</item>
-        <item>Ir16000Lux</item>
-        <item>Ir64000Lux</item>
+        <item>Als 1000 lux</item>
+        <item>Als 4000 lux</item>
+        <item>Als 16000 lux</item>
+        <item>Als 64000 lux</item>
+        <item>Ir 1000 lux</item>
+        <item>Ir 4000 lux</item>
+        <item>Ir 16000 lux</item>
+        <item>Ir 64000 lux</item>
     </string-array>
 
     <string-array name="altimeter_modes">
@@ -272,6 +272,8 @@
     <string name="error_switchSense">Switch Sense Value between 0 and 10</string>
 
     <string name="error_altiModeNotSet">Please select and save an altimeter mode</string>
+    <string name="error_altitudeRange">Threshold between -32768 and 32767</string>
+    <string name="error_barometerRange">Threshold between 0 and 131070</string>
     <!--END ERRORS-->
 
 

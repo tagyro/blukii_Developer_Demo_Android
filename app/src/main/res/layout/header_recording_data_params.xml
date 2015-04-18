@@ -13,10 +13,6 @@
 
     <include layout="@layout/separator" />
 
-    <include layout="@layout/blukii_status" />
-
-    <include layout="@layout/separator" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

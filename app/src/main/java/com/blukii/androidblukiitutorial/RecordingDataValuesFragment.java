@@ -38,16 +38,16 @@ public class RecordingDataValuesFragment extends AbstractFragment implements Vie
 
             switch (action) {
                 case Blukii.ACTION_DID_DISCONNECT_DEVICE:
-                    updateBlukiiStatus(R.string.blukii_disconnected);
+                    updateConnectionStatus(getText(R.string.blukii_disconnected).toString());
                     ViewHelper.setEnabledOfAllControls(false, getView());
                     break;
 
                 case Blukii.ACTION_BLUKII_DEVICE_IS_READY:
-                    updateBlukiiStatus(R.string.blukii_connected);
+                    updateConnectionStatus(getText(R.string.blukii_connected).toString());
                     ViewHelper.setEnabledOfAllControls(true, getView());
                     break;
                 case Blukii.ACTION_ERROR_LOADING_SERVICES:
-                    updateBlukiiStatus(R.string.blukii_disconnected);
+                    updateConnectionStatus(getText(R.string.blukii_disconnected).toString());
                     ViewHelper.setEnabledOfAllControls(false, getView());
                     break;
                 case RecordingProfile.ACTION_READ_RECORDING_DATA:

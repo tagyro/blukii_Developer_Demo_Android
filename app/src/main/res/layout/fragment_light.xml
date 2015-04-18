@@ -20,23 +20,27 @@
             <include layout="@layout/separator" />
 
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:text="Blukii-Status:"
-                android:textSize="20sp" />
+                android:gravity="center">
 
-            <TextView
-                android:id="@+id/tv_light_status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="5dp"
-                android:text="Getrennt"
-                android:textSize="20sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/lbl_profileStatus"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_light_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/profile_inactive"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
 
             <Button
                 android:id="@+id/btn_light_enabler"

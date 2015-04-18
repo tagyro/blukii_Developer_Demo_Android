@@ -51,8 +51,7 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
             // Check profile
             if (directometerProfile == null) {
                 Log.d(TAG, "onReceive(). DirectometerProfile is NULL");
-                updateStatus("Getrennt");
-                updateConnectionStatus("Getrennt");
+                updateStatus(getText(R.string.profile_inactive).toString());
 
                 enableAll(false);
                 return;
@@ -60,23 +59,24 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
 
             switch (action) {
                 case Blukii.ACTION_DID_DISCONNECT_DEVICE:
-                    updateStatus("Getrennt");
-                    updateConnectionStatus("Getrennt");
+                    //updateStatus("Getrennt");
+                    updateConnectionStatus(getText(R.string.blukii_disconnected).toString());
                     enableAll(false);
                     break;
 
                 case Blukii.ACTION_ERROR_LOADING_SERVICES:
-                    updateStatus("Getrennt");
-                    updateConnectionStatus("Getrennt");
+                    //updateStatus("Getrennt");
+                    updateConnectionStatus(getText(R.string.blukii_disconnected).toString());
                     enableAll(false);
                     break;
 
                 case Blukii.ACTION_BLUKII_DEVICE_IS_READY:
-                    updateStatus("Verbunden");
-                    updateConnectionStatus("Verbunden");
+                    //updateStatus("Verbunden");
+                    updateConnectionStatus(getText(R.string.blukii_connected).toString());
                     ((Button) getView().findViewById(R.id.btn_dir_enabler)).setEnabled(true);
                     ((Button) getView().findViewById(R.id.btn_dir_enabler)).setTag("activate");
-                    ((Button) getView().findViewById(R.id.btn_dir_enabler)).setText("Activate profile");
+                    ((Button) getView().findViewById(R.id.btn_dir_enabler)).setText(getText(R.string.btn_activateProfile).toString());
+
                     break;
 
                 // ENABLER
@@ -85,15 +85,15 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
                     if (enablerStatus == EnablerStatus.Activated) {
                         enableAll(true);
                         ((Button) getView().findViewById(R.id.btn_dir_enabler)).setTag("deactivate");
-                        ((Button) getView().findViewById(R.id.btn_dir_enabler)).setText("Deactivate profile");
-                        updateStatus("Activated");
+                        ((Button) getView().findViewById(R.id.btn_dir_enabler)).setText(getText(R.string.btn_deactivateProfile).toString());
+                        updateStatus(getText(R.string.profile_active).toString());
 
                     } else if (enablerStatus == EnablerStatus.Deactivated || enablerStatus == null) {
                         enableAll(false);
                         ((Button) getView().findViewById(R.id.btn_dir_enabler)).setTag("activate");
-                        ((Button) getView().findViewById(R.id.btn_dir_enabler)).setText("Activate profile");
+                        ((Button) getView().findViewById(R.id.btn_dir_enabler)).setText(getText(R.string.btn_activateProfile).toString());
                         ((Button) getView().findViewById(R.id.btn_dir_enabler)).setEnabled(true);
-                        updateStatus("Deactivated");
+                        updateStatus(getText(R.string.profile_inactive).toString());
                     }
                     break;
 
@@ -598,7 +598,7 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
     }
 
     private void updateStatus(String newStatus) {
-        //((TextView) getView().findViewById(R.id.tv_dir_status)).setText(newStatus);
+        ((TextView) getView().findViewById(R.id.tv_dir_status)).setText(newStatus);
     }
 
     private void updateConnectionStatus(String status) {
