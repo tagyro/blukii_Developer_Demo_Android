@@ -423,12 +423,9 @@ public class AccelerometerFragment extends AbstractFragment implements View.OnCl
                 if ( !ecltStr.matches("") && !ecltStr.isEmpty() && ecltStr != null ) {
                    lowTime  = Double.parseDouble(ecltStr);
                 }
-
                 if ( accelerometerRange != null ) {
-
                     if ( high > low ) {
                         boolean flag = true;
-
                         switch (accelerometerRange) {
                             case Minus2To2G:
                                 if ( !(high >= 0.2 && high <= 65.534) ) {
@@ -461,7 +458,6 @@ public class AccelerometerFragment extends AbstractFragment implements View.OnCl
                                 }
                                 break;
                         }
-
                         if ( !(highTime >= 0.0 && highTime <= 10.08) ) {
                             flag = false;
                             toast(getText(R.string.error_accelEventConfigHighTime).toString());
@@ -470,7 +466,6 @@ public class AccelerometerFragment extends AbstractFragment implements View.OnCl
                             flag = false;
                             toast(getText(R.string.error_accelEventConfigLowTime).toString());
                         }
-
                         if ( flag ) {
                             profile.setEventConfig(low, lowTime, high, highTime, accelerometerRange);
                         }
@@ -480,7 +475,6 @@ public class AccelerometerFragment extends AbstractFragment implements View.OnCl
                 } else {
                     toast(getText(R.string.error_accelRangeNotSet).toString());
                 }
-
                 break;
 
             // EVENT MODE

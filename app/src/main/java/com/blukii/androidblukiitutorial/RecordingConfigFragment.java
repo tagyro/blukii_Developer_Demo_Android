@@ -576,15 +576,85 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
                 recProfile.readAccelerometerEventConfig();
                 break;
             case R.id.btn_accelerometer_eventcfg_set:
-                EditText ech = getEditText(R.id.et_accelerometer_eventcfg_high);
-                EditText echt = getEditText(R.id.et_accelerometer_eventcfg_high_time);
-                EditText ecl = getEditText(R.id.et_accelerometer_eventcfg_low);
-                EditText eclt = getEditText(R.id.et_accelerometer_eventcfg_low_time);
-                double high = Double.parseDouble(ech.getText().toString());
-                double highTime = Double.parseDouble(echt.getText().toString());
-                double low = Double.parseDouble(ecl.getText().toString());
-                double lowTime = Double.parseDouble(eclt.getText().toString());
-                recProfile.setAccelerometerEventConfig(low, lowTime, high, highTime, accelerometerRange);
+                double high     = 0.2;
+                double highTime = 0.0;
+                double low      = 0.1;
+                double lowTime  = 0.0;
+
+                EditText ech    = (EditText) getView().findViewById(R.id.et_accelerometer_eventcfg_high);
+                EditText echt   = (EditText) getView().findViewById(R.id.et_accelerometer_eventcfg_high_time);
+                EditText ecl    = (EditText) getView().findViewById(R.id.et_accelerometer_eventcfg_low);
+                EditText eclt   = (EditText) getView().findViewById(R.id.et_accelerometer_eventcfg_low_time);
+
+                String echStr = ech.getText().toString();
+                String echtStr = echt.getText().toString();
+                String eclStr = ecl.getText().toString();
+                String ecltStr = eclt.getText().toString();
+
+                if ( !echStr.matches("") && !echStr.isEmpty() && echStr != null ) {
+                    high = Double.parseDouble(echStr);
+                }
+                if ( !echtStr.matches("") && !echtStr.isEmpty() && echtStr != null ) {
+                    highTime = Double.parseDouble(echtStr);
+                }
+                if ( !eclStr.matches("") && !eclStr.isEmpty() && eclStr != null ) {
+                    low = Double.parseDouble(eclStr);
+                }
+                if ( !ecltStr.matches("") && !ecltStr.isEmpty() && ecltStr != null ) {
+                    lowTime  = Double.parseDouble(ecltStr);
+                }
+                if ( accelerometerRange != null ) {
+                    if ( high > low ) {
+                        boolean flag = true;
+                        switch (accelerometerRange) {
+                            case Minus2To2G:
+                                if ( !(high >= 0.2 && high <= 65.534) ) {
+                                    flag = false;
+                                    toast(getText(R.string.error_accelEventConfigHigh2G).toString());
+                                }
+                                if ( !(low >= 0.1 && low <= 65.533) ) {
+                                    flag = false;
+                                    toast(getText(R.string.error_accelEventConfigLow2G).toString());
+                                }
+                                break;
+                            case Minus4To4G:
+                                if ( !(high >= 0.2 && high <= 131.068) ) {
+                                    flag = false;
+                                    toast(getText(R.string.error_accelEventConfigHigh4G).toString());
+                                }
+                                if ( !(low >= 0.1 && low <= 131.066) ) {
+                                    flag = false;
+                                    toast(getText(R.string.error_accelEventConfigLow4G).toString());
+                                }
+                                break;
+                            case Minus8To8G:
+                                if ( !(high >= 0.2 && high <= 262.136) ) {
+                                    flag = false;
+                                    toast(getText(R.string.error_accelEventConfigHigh8G).toString());
+                                }
+                                if ( !(low >= 0.1 && low <= 262.132) ) {
+                                    flag = false;
+                                    toast(getText(R.string.error_accelEventConfigLow8G).toString());
+                                }
+                                break;
+                        }
+                        if ( !(highTime >= 0.0 && highTime <= 10.08) ) {
+                            flag = false;
+                            toast(getText(R.string.error_accelEventConfigHighTime).toString());
+                        }
+                        if ( !(lowTime >= 0.0 && lowTime <= 10.08) ) {
+                            flag = false;
+                            toast(getText(R.string.error_accelEventConfigLowTime).toString());
+                        }
+                        if ( flag ) {
+                            recProfile.setAccelerometerEventConfig(low, lowTime, high, highTime, accelerometerRange);
+                        }
+                    } else {
+                        toast(getText(R.string.error_accelEventConfig).toString());
+                    }
+                } else {
+                    toast(getText(R.string.error_accelRangeNotSet).toString());
+                }
                 break;
             // EVENT MODE
             case R.id.btn_accelerometer_event_mode_read:
