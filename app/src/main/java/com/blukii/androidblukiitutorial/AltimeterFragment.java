@@ -228,36 +228,38 @@ public class AltimeterFragment extends AbstractFragment implements View.OnClickL
             case R.id.btn_altimeter_eventcfg_set:
                 String thresholdStr = ((EditText) getView().findViewById(R.id.et_altimeter_eventcfg_threshold)).getText().toString();
                 int threshold;
-
-                if ( thresholdStr.matches("") || thresholdStr == null || thresholdStr.isEmpty() ) {
-                    threshold = 0;
-                } else {
-                    threshold = Integer.parseInt(thresholdStr);
-                }
-
                 if (altimeterMode != null) {
-
-                    if ( altimeterMode == AltimeterMode.Altitude ) {
-                        if ( threshold >= -32768 && threshold <= 32767) {
-                            altimeterProfile.setEventConfig(threshold, altimeterMode);
-                        } else {
-                            toast(getText(R.string.error_altitudeRange).toString());
+                    if ( thresholdStr.matches("") || thresholdStr == null || thresholdStr.isEmpty() ) {
+                        switch (altimeterMode) {
+                            case Altitude: default:
+                                threshold = 0;
+                                break;
+                            case Barometer:
+                                threshold = 2;
+                                break;
                         }
+                    } else {
+                        threshold = Integer.parseInt(thresholdStr);
                     }
-
-                    if ( altimeterMode == AltimeterMode.Barometer ) {
-                        if ( threshold >= 0 && threshold <= 131070 ) {
-                            altimeterProfile.setEventConfig(threshold, altimeterMode);
-                        } else {
-                            toast(getText(R.string.error_barometerRange).toString());
-                        }
+                    switch (altimeterMode) {
+                        case Altitude:
+                            if ( threshold >= -32768 && threshold <= 32767) {
+                                altimeterProfile.setEventConfig(threshold, altimeterMode);
+                            } else {
+                                toast(getText(R.string.error_altitudeRange).toString());
+                            }
+                            break;
+                        case Barometer:
+                            if ( threshold >= 2 && threshold <= 131070 ) {
+                                altimeterProfile.setEventConfig(threshold, altimeterMode);
+                            } else {
+                                toast(getText(R.string.error_barometerRange).toString());
+                            }
+                            break;
                     }
-
-
                 } else {
                     toast(getText(R.string.error_altiModeNotSet).toString());
                 }
-
                 break;
         }
     }

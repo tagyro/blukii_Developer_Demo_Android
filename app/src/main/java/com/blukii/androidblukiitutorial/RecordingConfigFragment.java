@@ -497,7 +497,14 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
                     sensors.add(RecordingSensor.Temperature);
                 }
 
-                recProfile.setSensors(sensors.toArray(new RecordingSensor[sensors.size()]));
+                if ( !sensors.isEmpty() ) {
+                    recProfile.setSensors(sensors.toArray(new RecordingSensor[sensors.size()]));
+                } else {
+                    toast(getText(R.string.error_recSensorConfig).toString());
+                    setEnabledOfSensors(true);
+                }
+
+
                 break;
             // MODE
             case R.id.btn_recording_mode_read:
@@ -513,7 +520,7 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
                 } else if (event.isChecked()) {
                     recProfile.setMode(RecordingMode.Event);
                 } else {
-                    toast("Please select one mode at least");
+                    toast(getText(R.string.error_recMode).toString());
                 }
                 break;
             // INTERVAL
@@ -522,8 +529,17 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
                 break;
             case R.id.btn_recording_interval_set:
                 EditText etIntervalValue = getEditText(R.id.et_recording_interval_value);
-                int i = Integer.parseInt(etIntervalValue.getText().toString());
-                recProfile.setInterval(i);
+                String etIntervalValueStr = etIntervalValue.getText().toString();
+                if ( !etIntervalValueStr.matches("") && !etIntervalValueStr.isEmpty() && etIntervalValueStr != null ) {
+                    int i = Integer.parseInt(etIntervalValueStr);
+                    if ( i >= 100 && i <= 3600000) {
+                        recProfile.setInterval(i);
+                    } else {
+                        toast(getText(R.string.error_recInterval).toString());
+                    }
+                } else {
+                    toast(getText(R.string.error_enterNumber).toString());
+                }
                 break;
             // LIMIT
             case R.id.btn_recording_limit_read:
@@ -531,8 +547,18 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
                 break;
             case R.id.btn_recording_limit_set:
                 EditText etLimitValue = getEditText(R.id.et_recording_limit_value);
-                int l = Integer.parseInt(etLimitValue.getText().toString());
-                recProfile.setDatasetLimit(l);
+                String etLimitValueStr = etLimitValue.getText().toString();
+
+                if ( !etLimitValueStr.matches("") && !etLimitValueStr.isEmpty() && etLimitValueStr != null ) {
+                    int l = Integer.parseInt(etLimitValueStr);
+                    if ( l >= 0 && l <= 32767 ) {
+                        recProfile.setDatasetLimit(l);
+                    } else {
+                        toast(getText(R.string.error_recDatasetLimit).toString());
+                    }
+                } else {
+                    toast(getText(R.string.error_enterNumber).toString());
+                }
                 break;
             // ACCELEROMETER RANGE
             case R.id.btn_accelerometer_range_read:
@@ -542,7 +568,7 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
                 if (accelerometerRange != null) {
                     recProfile.setAccelerometerRange(accelerometerRange);
                 } else {
-                    toast("Please select an accelerometer range");
+                    toast(getText(R.string.error_accelRangeNotSet).toString());
                 }
                 break;
             // ACCELEROMETER EVENT CONFIG
@@ -578,7 +604,7 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
                 if (magnetometerRange != null) {
                     recProfile.setMagnetometerRange(magnetometerRange);
                 } else {
-                    toast("Please select a magnetometer range");
+                    toast(getText(R.string.error_magRange).toString());
                 }
                 break;
             // MAGNETOMETER EVENT CONFIG
@@ -586,8 +612,53 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
                 recProfile.readMagnetometerEventConfig();
                 break;
             case R.id.btn_magnetometer_eventcfg_set:
-                int threshold = Integer.parseInt(getEditText(R.id.et_magnetometer_eventcfg_threshold).getText().toString());
-                recProfile.setMagnetometerEventConfig(threshold, magnetometerRange);
+                EditText etThresholdValue = getEditText(R.id.et_magnetometer_eventcfg_threshold);
+                String etThresholdValueStr = etThresholdValue.getText().toString();
+
+                if ( !etThresholdValueStr.matches("") && !etThresholdValueStr.isEmpty() && etThresholdValueStr != null ) {
+                    int threshold = Integer.parseInt(etThresholdValueStr);
+                    if ( magnetometerRange != null ) {
+                        switch (magnetometerRange) {
+                            case Minus4To4Gauss:
+                                if ( threshold >= 0 && threshold <= 4 ) {
+                                    recProfile.setMagnetometerEventConfig(threshold, magnetometerRange);
+                                } else {
+                                    toast(getText(R.string.error_magEventConfig).toString() + getText(R.string.error_magEventConfig4G));
+                                }
+                                break;
+                            case Minus8To8Gauss:
+                                if ( threshold >= 0 && threshold <= 9 ) {
+                                    recProfile.setMagnetometerEventConfig(threshold, magnetometerRange);
+                                } else {
+                                    toast(getText(R.string.error_magEventConfig).toString() + getText(R.string.error_magEventConfig8G));
+                                }
+                                break;
+                            case Minus12To12Gauss:
+                                if ( threshold >= 0 && threshold <= 14 ) {
+                                    recProfile.setMagnetometerEventConfig(threshold, magnetometerRange);
+                                } else {
+                                    toast(getText(R.string.error_magEventConfig).toString() + getText(R.string.error_magEventConfig12G));
+                                }
+                                break;
+                            case Minus16To16Gauss:
+                                if ( threshold >= 0 && threshold <= 19 ) {
+                                    recProfile.setMagnetometerEventConfig(threshold, magnetometerRange);
+                                } else {
+                                    toast(getText(R.string.error_magEventConfig).toString() + getText(R.string.error_magEventConfig16G));
+                                }
+                                break;
+                        }
+                    } else {
+                        toast(getText(R.string.error_magRange).toString());
+                    }
+                } else {
+                    toast(getText(R.string.error_enterNumber).toString());
+                }
+
+
+
+
+
                 break;
             // MAGNETOMETER MODE
             case R.id.btn_magnetometer_mode_read:
@@ -616,18 +687,81 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
                 recProfile.readLightEventConfig();
                 break;
             case R.id.btn_light_eventcfg_set:
-                int lightLow = Integer.parseInt(getEditText(R.id.et_light_eventcfg_low).getText().toString());
-                int lightHigh = Integer.parseInt(getEditText(R.id.et_light_eventcfg_high).getText().toString());
-                recProfile.setLightEventConfig(lightLow, lightHigh, lightMode);
+                String minText = ((EditText) getView().findViewById(R.id.et_light_eventcfg_low)).getText().toString();
+                String maxText = ((EditText) getView().findViewById(R.id.et_light_eventcfg_high)).getText().toString();
+                int minValue = 1;
+                int maxValue = 2;
+                if ( lightMode != null ) {
+                    if ( !minText.matches("") && !minText.isEmpty() && minText != null ) {
+                        minValue = Integer.parseInt(minText);
+                    }
+                    if ( !maxText.matches("") && !maxText.isEmpty() && maxText != null ) {
+                        maxValue = Integer.parseInt(maxText);
+                    }
+                    if ( minValue < maxValue ) {
+                        switch (lightMode) {
+                            case Als1000Lux: case Ir1000Lux:
+                                if ( minValue > 0 && maxValue < 1000 ) {
+                                    recProfile.setLightEventConfig(minValue, maxValue, lightMode);
+                                } else {
+                                    toast(getText(R.string.error_lightRange).toString() + getText(R.string.error_lightRange1000).toString());
+                                }
+                                break;
+                            case Als4000Lux: case Ir4000Lux:
+                                if ( minValue > 0 && maxValue < 4000 ) {
+                                    recProfile.setLightEventConfig(minValue, maxValue, lightMode);
+                                } else {
+                                    toast(getText(R.string.error_lightRange).toString() + getText(R.string.error_lightRange4000).toString());
+                                }
+                                break;
+                            case Als16000Lux: case Ir16000Lux:
+                                if ( minValue > 0 && maxValue < 16000 ) {
+                                    recProfile.setLightEventConfig(minValue, maxValue, lightMode);
+                                } else {
+                                    toast(getText(R.string.error_lightRange).toString() + getText(R.string.error_lightRange16000).toString());
+                                }
+                                break;
+                            case Als64000Lux: case Ir64000Lux:
+                                if ( minValue > 0 && maxValue < 64000 ) {
+                                    recProfile.setLightEventConfig(minValue, maxValue, lightMode);
+                                } else {
+                                    toast(getText(R.string.error_lightRange).toString() + getText(R.string.error_lightRange64000).toString());
+                                }
+                                break;
+                        }
+                    } else {
+                        toast(getText(R.string.error_lightHighLow).toString());
+                    }
+                } else {
+                    toast(getText(R.string.error_lightMode).toString());
+                }
                 break;
             // TEMPERATURE EVENT CONFIG
             case R.id.btn_temperature_eventcfg_read:
                 recProfile.readTemperatureEventConfig();
                 break;
             case R.id.btn_temperature_eventcfg_set:
-                double tempLow = Double.parseDouble(getEditText(R.id.et_temperature_eventcfg_low).getText().toString());
-                double tempHigh = Double.parseDouble(getEditText(R.id.et_temperature_eventcfg_high).getText().toString());
-                recProfile.setTemperatureEventConfig(tempLow, tempHigh);
+
+                String minTemp = ((EditText) getView().findViewById(R.id.et_temperature_eventcfg_low)).getText().toString();
+                String maxTemp = ((EditText) getView().findViewById(R.id.et_temperature_eventcfg_high)).getText().toString();
+                double tempLow = 0.0;
+                double tempHigh = 1.0;
+                if ( !minTemp.matches("") && !minTemp.isEmpty() && minTemp != null ) {
+                    tempLow = Double.parseDouble(minTemp);
+                }
+                if ( !maxTemp.matches("") && !maxTemp.isEmpty() && maxTemp != null) {
+                    tempHigh = Double.parseDouble(maxTemp);
+                }
+                if (tempLow < tempHigh) {
+                    if (tempLow >= -2048 && tempHigh < 2048) {
+                        recProfile.setTemperatureEventConfig(tempLow, tempHigh);
+                    } else {
+                        toast(getText(R.string.error_tempRange).toString());
+                    }
+                } else {
+                    toast(getText(R.string.error_tempHighLow).toString());
+                }
+
                 break;
             // ALTIMETER MODE
             case R.id.btn_altimeter_mode_read:
@@ -645,16 +779,59 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
                 recProfile.readAltimeterEventConfig();
                 break;
             case R.id.btn_altimeter_eventcfg_set:
-                int altimeterThreshold = Integer.parseInt(getEditText(R.id.et_altimeter_eventcfg_threshold).getText().toString());
-                recProfile.setAltimeterEventConfig(altimeterThreshold, altimeterMode);
+                String thresholdStr = ((EditText) getView().findViewById(R.id.et_altimeter_eventcfg_threshold)).getText().toString();
+                int threshold;
+                if (altimeterMode != null) {
+                    if ( thresholdStr.matches("") || thresholdStr == null || thresholdStr.isEmpty() ) {
+                        switch (altimeterMode) {
+                            case Altitude: default:
+                                threshold = 0;
+                                break;
+                            case Barometer:
+                                threshold = 2;
+                                break;
+                        }
+                    } else {
+                        threshold = Integer.parseInt(thresholdStr);
+                    }
+                    switch (altimeterMode) {
+                        case Altitude:
+                            if ( threshold >= -32768 && threshold <= 32767) {
+                                recProfile.setAltimeterEventConfig(threshold, altimeterMode);
+                            } else {
+                                toast(getText(R.string.error_altitudeRange).toString());
+                            }
+                            break;
+                        case Barometer:
+                            if ( threshold >= 2 && threshold <= 131070 ) {
+                                recProfile.setAltimeterEventConfig(threshold, altimeterMode);
+                            } else {
+                                toast(getText(R.string.error_barometerRange).toString());
+                            }
+                            break;
+                    }
+                } else {
+                    toast(getText(R.string.error_altiModeNotSet).toString());
+                }
+
+
                 break;
             // STEP DETECTION
             case R.id.btn_step_detection_read:
                 recProfile.readStepDetection();
                 break;
             case R.id.btn_step_detection_set:
-                int stepDetThreshold = Integer.parseInt(getEditText(R.id.et_step_detection_threshold).getText().toString());
-                recProfile.setStepDetectionThreshold(stepDetThreshold);
+                String stepDetThresholdStr = getEditText(R.id.et_step_detection_threshold).getText().toString();
+                if ( !stepDetThresholdStr.matches("") && !stepDetThresholdStr.isEmpty() && stepDetThresholdStr != null ) {
+                    int stepDetThreshold = Integer.parseInt(stepDetThresholdStr);
+                    if ( stepDetThreshold >= 1 && stepDetThreshold <= 50) {
+                        recProfile.setStepDetectionThreshold(stepDetThreshold);
+                    } else {
+                        toast(getText(R.string.error_stepDetThreshold).toString());
+                    }
+                } else {
+                    toast(getText(R.string.error_enterNumber).toString());
+                }
                 break;
         }
     }

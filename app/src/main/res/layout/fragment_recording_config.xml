@@ -264,7 +264,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:text="@string/undefined"
+                android:text=""
                 android:gravity="center"
                 android:ems="10"
                 android:id="@+id/et_recording_interval_value" />
@@ -307,7 +307,7 @@
                 android:inputType="number"
                 android:gravity="center"
                 android:ems="10"
-                android:text="@string/undefined"
+                android:text=""
                 android:id="@+id/et_recording_limit_value" />
 
             <LinearLayout

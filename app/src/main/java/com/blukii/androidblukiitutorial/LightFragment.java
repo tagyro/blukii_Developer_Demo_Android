@@ -97,6 +97,8 @@ public class LightFragment extends AbstractFragment implements View.OnClickListe
                     break;
 
                 // LIGHT MODE
+                case LightProfile.ACTION_SET_LIGHT_MODE:
+                    toast("Light mode set", status);
                 case LightProfile.ACTION_READ_LIGHT_MODE:
                     lightMode = (LightMode) intent.getSerializableExtra(LightProfile.EXTRA_LIGHT_MODE);
                     if (lightMode != null) {
@@ -110,6 +112,11 @@ public class LightFragment extends AbstractFragment implements View.OnClickListe
                     int lightValue = intent.getIntExtra(LightProfile.EXTRA_LIGHT_VALUE, -1);
 //                    if (lightValue == -1) lightProfile.notifyValue(false);
                     updateValue("" + lightValue);
+                    break;
+
+                case LightProfile.ACTION_SET_LIGHT_EVENT_CONFIG:
+                    toast("Event config set");
+                    lightProfile.readEventConfig();
                     break;
 
                 case LightProfile.ACTION_SET_NOTIFY_LIGHT_VALUE:
@@ -274,15 +281,52 @@ public class LightFragment extends AbstractFragment implements View.OnClickListe
             case R.id.btn_light_eventcfg_set:
                 String minText = ((EditText) getView().findViewById(R.id.et_light_eventcfg_low)).getText().toString();
                 String maxText = ((EditText) getView().findViewById(R.id.et_light_eventcfg_high)).getText().toString();
-                int minValue, maxValue;
-                try {
-                    minValue = Integer.parseInt(minText);
-                    maxValue = Integer.parseInt(maxText);
-                } catch (Exception e) {
-                    Log.e(TAG, String.format("Error parsing minText=%s or maxText=%s", String.valueOf(minText), String.valueOf(maxText)), e);
-                    return;
+                int minValue = 1;
+                int maxValue = 2;
+                if ( lightMode != null ) {
+                    if ( !minText.matches("") && !minText.isEmpty() && minText != null ) {
+                        minValue = Integer.parseInt(minText);
+                    }
+                    if ( !maxText.matches("") && !maxText.isEmpty() && maxText != null ) {
+                        maxValue = Integer.parseInt(maxText);
+                    }
+                    if ( minValue < maxValue ) {
+                        switch (lightMode) {
+                            case Als1000Lux: case Ir1000Lux:
+                                if ( minValue > 0 && maxValue < 1000 ) {
+                                    lightProfile.setEventConfig(minValue, maxValue, lightMode);
+                                } else {
+                                    toast(getText(R.string.error_lightRange).toString() + getText(R.string.error_lightRange1000).toString());
+                                }
+                                break;
+                            case Als4000Lux: case Ir4000Lux:
+                                if ( minValue > 0 && maxValue < 4000 ) {
+                                    lightProfile.setEventConfig(minValue, maxValue, lightMode);
+                                } else {
+                                    toast(getText(R.string.error_lightRange).toString() + getText(R.string.error_lightRange4000).toString());
+                                }
+                                break;
+                            case Als16000Lux: case Ir16000Lux:
+                                if ( minValue > 0 && maxValue < 16000 ) {
+                                    lightProfile.setEventConfig(minValue, maxValue, lightMode);
+                                } else {
+                                    toast(getText(R.string.error_lightRange).toString() + getText(R.string.error_lightRange16000).toString());
+                                }
+                                break;
+                            case Als64000Lux: case Ir64000Lux:
+                                if ( minValue > 0 && maxValue < 64000 ) {
+                                    lightProfile.setEventConfig(minValue, maxValue, lightMode);
+                                } else {
+                                    toast(getText(R.string.error_lightRange).toString() + getText(R.string.error_lightRange64000).toString());
+                                }
+                                break;
+                        }
+                    } else {
+                        toast(getText(R.string.error_lightHighLow).toString());
+                    }
+                } else {
+                    toast(getText(R.string.error_lightMode).toString());
                 }
-                lightProfile.setEventConfig(minValue, maxValue, lightMode);
                 break;
 
             // LIGHT EVENT STATE

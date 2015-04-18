@@ -44,8 +44,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:ems="10"
-                android:textSize="20sp"
-                android:text="@string/undefined"
+                android:textSize="15sp"
+                android:text=""
 
                 android:id="@+id/tv_step_detection_value" />
         </TableRow>

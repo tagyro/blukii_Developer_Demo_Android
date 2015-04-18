@@ -261,7 +261,6 @@
     <string name="lbl_error_activateProfile">Error while activating profile</string>
     <string name="lbl_error_readHumidityProfile">Error while reading humidity profile</string>
 
-
     <string name="error_filter2">Filter between 0 and 65</string>
     <string name="error_filter4">Filter between 0 and 131</string>
     <string name="error_filter8">Filter between 0 and 262</string>
@@ -269,11 +268,49 @@
 
     <string name="error_accelRangeNotSet">Please select and save an accelerometer range</string>
     <string name="error_accelEventConfig">High must be greater than Low</string>
+    <string name="error_accelEventConfigHighTime">High Time value between 0.0 and 10.08</string>
+    <string name="error_accelEventConfigLowTime">Low Time value between 0.0 and 10.08</string>
+    <string name="error_accelEventConfigHigh2G">High value between 0.2 and 65.534</string>
+    <string name="error_accelEventConfigLow2G">Low value between 0.1 and 65.533</string>
+    <string name="error_accelEventConfigHigh4G">High value between 0.2 and 131.068</string>
+    <string name="error_accelEventConfigLow4G">Low value between 0.1 and 131.066</string>
+    <string name="error_accelEventConfigHigh8G">High value between 0.2 and 262.136</string>
+    <string name="error_accelEventConfigLow8G">Low value between 0.1 and 262.132</string>
+
     <string name="error_switchSense">Switch Sense Value between 0 and 10</string>
 
     <string name="error_altiModeNotSet">Please select and save an altimeter mode</string>
     <string name="error_altitudeRange">Threshold between -32768 and 32767</string>
     <string name="error_barometerRange">Threshold between 0 and 131070</string>
+
+    <string name="error_tempHighLow">High value must be greater than low value</string>
+    <string name="error_tempRange">Values between -2048 and 2048</string>
+
+    <string name="error_lightMode">Please select light mode</string>
+    <string name="error_lightHighLow">High value must be greater than low value</string>
+    <string name="error_lightRange">"Event config values between "</string>
+    <string name="error_lightRange1000">1 and 999</string>
+    <string name="error_lightRange4000">1 and 3999</string>
+    <string name="error_lightRange16000">1 and 15999</string>
+    <string name="error_lightRange64000">1 and 63999</string>
+
+
+    <string name="error_recSensorConfig">Please select one sensor at least</string>
+    <string name="error_recMode">Please select one mode at least</string>
+    <string name="error_recInterval">Interval between 100 and 3 600 000</string>
+    <string name="error_recDatasetLimit">Dataset Limit between 0 and 32767</string>
+
+    <string name="error_magRange">Please select a magnetometer range</string>
+    <string name="error_magMode">Please select a magnetometer mode</string>
+    <string name="error_magEventConfig">"Event config values between "</string>
+    <string name="error_magEventConfig4G">0 and 4</string>
+    <string name="error_magEventConfig8G">0 and 9</string>
+    <string name="error_magEventConfig12G">0 and 14</string>
+    <string name="error_magEventConfig16G">0 and 19</string>
+
+    <string name="error_enterNumber">Please enter a number</string>
+
+    <string name="error_stepDetThreshold">Threshold between 1 and 49</string>
     <!--END ERRORS-->
 
 

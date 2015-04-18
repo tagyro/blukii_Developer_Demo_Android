@@ -10,7 +10,7 @@
         android:inputType="numberSigned"
         android:gravity="center"
         android:ems="10"
-        android:text="@string/undefined"
+        android:text=""
         android:id="@+id/et_magnetometer_eventcfg_threshold" />
 
     <LinearLayout

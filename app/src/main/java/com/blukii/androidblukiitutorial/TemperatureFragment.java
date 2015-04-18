@@ -92,6 +92,10 @@ public class TemperatureFragment extends AbstractFragment implements View.OnClic
                     updateValue(String.format("%.1f %sC", temperatureValue, "\u00b0"));
                     break;
 
+                case TemperatureProfile.ACTION_SET_TEMPERATURE_EVENT_CONFIG:
+                        toast("Event config set");
+                        temperatureProfile.readEventConfig();
+                    break;
 
                 // TEMPERATURE EVENT CONFIG
                 case TemperatureProfile.ACTION_READ_TEMPERATURE_EVENT_CONFIG:
@@ -200,16 +204,23 @@ public class TemperatureFragment extends AbstractFragment implements View.OnClic
             case R.id.btn_temperature_eventcfg_set:
                 String minText = ((EditText) getView().findViewById(R.id.et_temperature_eventcfg_low)).getText().toString();
                 String maxText = ((EditText) getView().findViewById(R.id.et_temperature_eventcfg_high)).getText().toString();
-                double minValue, maxValue;
-                try {
+                double minValue = 0.0;
+                double maxValue = 1.0;
+                if ( !minText.matches("") && !minText.isEmpty() && minText != null ) {
                     minValue = Double.parseDouble(minText);
-                    maxValue = Double.parseDouble(maxText);
-                    temperatureProfile.setEventConfig(minValue, maxValue);
-                } catch (Exception e) {
-                    Log.e(TAG, String.format("Error parsing minText=%s or maxText=%s", String.valueOf(minText), String.valueOf(maxText)), e);
-                    return;
                 }
-
+                if ( !maxText.matches("") && !maxText.isEmpty() && maxText != null) {
+                    maxValue = Double.parseDouble(maxText);
+                }
+                if (minValue < maxValue) {
+                    if (minValue >= -2048 && maxValue < 2048) {
+                        temperatureProfile.setEventConfig(minValue, maxValue);
+                    } else {
+                        toast(getText(R.string.error_tempRange).toString());
+                    }
+                } else {
+                    toast(getText(R.string.error_tempHighLow).toString());
+                }
                 break;
 
             // TEMPERATURE EVENT STATE
