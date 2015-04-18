@@ -281,7 +281,7 @@
 
     <string name="error_altiModeNotSet">Please select and save an altimeter mode</string>
     <string name="error_altitudeRange">Threshold between -32768 and 32767</string>
-    <string name="error_barometerRange">Threshold between 0 and 131070</string>
+    <string name="error_barometerRange">Threshold between 2 and 131070</string>
 
     <string name="error_tempHighLow">High value must be greater than low value</string>
     <string name="error_tempRange">Values between -2048 and 2048</string>
