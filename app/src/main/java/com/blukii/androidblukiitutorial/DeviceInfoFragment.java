@@ -54,7 +54,13 @@ public class DeviceInfoFragment extends Fragment implements View.OnClickListener
                         DeviceInfoFirmwareBlukiiRevision blukiiRevision = (DeviceInfoFirmwareBlukiiRevision) intent.getSerializableExtra(DeviceInfoProfile.EXTRA_DEVICE_INFO_FIRMWARE_BLUKII_REVISION);
                         String feature = intent.getStringExtra(DeviceInfoProfile.EXTRA_DEVICE_INFO_FIRMWARE_FEATURE_REVISION);
                         String bug = intent.getStringExtra(DeviceInfoProfile.EXTRA_DEVICE_INFO_FIRMWARE_BUG_REVISION);
-                        updateFirmware(releaseRevision.getDescription(), blukiiRevision.getDescription(), feature, bug);
+
+
+                        //updateFirmware(releaseRevision.getDescription(), blukiiRevision.getDescription(), feature, bug);
+
+                        String sreleaseRevision = releaseRevision.name().replace("REV_", "").toString();
+                        String sblukiiRevision = blukiiRevision.name().replace("REV_", "");
+                        updateFirmware(sreleaseRevision,sblukiiRevision, feature, bug);
                     }
                     break;
 
