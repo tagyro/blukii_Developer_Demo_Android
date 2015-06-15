@@ -112,6 +112,7 @@
     <string name="lbl_manufacture">Manufacture</string>
     <string name="lbl_stateOfCharge">"State of charge: "</string>
 
+    <string name="lbl_magnetometer_calibration">"Magnetometer Calibration"</string>
 
     <string name="lbl_humiditySensor">"Humidity: "</string>
     <string name="lbl_humiditySensorStart">"Humidity: sensor deactivated"</string>
@@ -188,7 +189,7 @@
 
 
     <string name="txt_calibrate_information">Please calibrate your blukii before using this profile.You can do this in the Service Profile.</string>
-    <string name="txt_calibration_onoff">Please leave the togglebutton active, so the directometer works better</string>
+    <string name="txt_calibration_onoff">Please leave the togglebutton active.</string>
 
 
     <!--BLUKII STATUS-->

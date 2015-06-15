@@ -2,3 +2,4 @@
 .idea/
 app/app.iml
 build/
+build/intermediates/dex-cache/cache.xml

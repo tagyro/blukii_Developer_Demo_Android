@@ -13,7 +13,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.blukii.android.blukiilibrary.Blukii;
 import com.blukii.android.blukiilibrary.EnablerStatus;
@@ -22,6 +25,8 @@ import com.blukii.android.blukiilibrary.DirectometerPositionMonitoring;
 import com.blukii.android.blukiilibrary.DirectometerPositionMonitoringStatus;
 import com.blukii.android.blukiilibrary.DirectometerProfile;
 import com.blukii.android.blukiilibrary.Profile;
+import com.blukii.android.blukiilibrary.ServiceMagnetometerCalibration;
+import com.blukii.android.blukiilibrary.ServiceProfile;
 
 
 public class DirectometerFragment extends Fragment implements View.OnClickListener {
@@ -84,12 +89,20 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
                     EnablerStatus enablerStatus = (EnablerStatus) intent.getSerializableExtra(Profile.EXTRA_ENABLER_STATUS);
                     if (enablerStatus == EnablerStatus.Activated) {
                         enableAll(true);
+
+                        ((ImageButton) getView().findViewById(R.id.btn_service_read_magnetometer_calibration)).setEnabled(false);
+                        ((Button) getView().findViewById(R.id.btn_service_notify_magnetometer_calibration)).setEnabled(false);
+
                         ((Button) getView().findViewById(R.id.btn_dir_enabler)).setTag("deactivate");
                         ((Button) getView().findViewById(R.id.btn_dir_enabler)).setText(getText(R.string.btn_deactivateProfile).toString());
                         updateStatus(getText(R.string.profile_active).toString());
 
                     } else if (enablerStatus == EnablerStatus.Deactivated || enablerStatus == null) {
                         enableAll(false);
+
+                        ((ImageButton) getView().findViewById(R.id.btn_service_read_magnetometer_calibration)).setEnabled(true);
+                        ((Button) getView().findViewById(R.id.btn_service_notify_magnetometer_calibration)).setEnabled(true);
+
                         ((Button) getView().findViewById(R.id.btn_dir_enabler)).setTag("activate");
                         ((Button) getView().findViewById(R.id.btn_dir_enabler)).setText(getText(R.string.btn_activateProfile).toString());
                         ((Button) getView().findViewById(R.id.btn_dir_enabler)).setEnabled(true);
@@ -299,6 +312,17 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
                     }
                     break;
 
+                // MAGNETOMETER CALIBRATION
+                case ServiceProfile.ACTION_SET_NOTIFY_SERVICE_MAGNETOMETER_CALIBRATION:
+                    String toast = "service magnetometer calibration set";
+                    if (status != BlukiiConstants.BLUKII_DEVICE_STATUS_OK) {
+                        toast = String.format("%s: %s (%d)", toast, "FAILED", status);
+                    }
+                    Toast.makeText(getActivity(), toast, Toast.LENGTH_SHORT).show();
+                case ServiceProfile.ACTION_READ_SERVICE_MAGNETOMETER_CALIBRATION:
+                    ServiceMagnetometerCalibration smc = (ServiceMagnetometerCalibration) intent.getSerializableExtra(ServiceProfile.EXTRA_SERVICE_MAGNETOMETER_CALIBRATION);
+                    ((TextView) getView().findViewById(R.id.tv_service_magnetometer_calibration)).setText(String.valueOf(smc));
+                    break;
                 default:
                     break;
             }
@@ -328,6 +352,10 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        // calibration
+        getView().findViewById(R.id.btn_service_read_magnetometer_calibration).setOnClickListener(this);
+        getView().findViewById(R.id.btn_service_notify_magnetometer_calibration).setOnClickListener(this);
 
         // enabler
         getView().findViewById(R.id.btn_dir_enabler).setOnClickListener(this);
@@ -379,6 +407,7 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
         super.onStart();
         IntentFilter intentFilter = new IntentFilter();
         DirectometerProfile.addActions(intentFilter);
+        ServiceProfile.addActions(intentFilter);
         LocalBroadcastManager.getInstance(this.getActivity()).registerReceiver(mGattUpdateReceiver, intentFilter);
     }
 
@@ -391,11 +420,20 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
     @Override
     public void onClick(View v) {
         DirectometerProfile directometerProfile = (DirectometerProfile) MainActivity.getProfileById(getActivity(), DirectometerProfile.ID);
-        if (directometerProfile == null) {
-            return;
-        }
+        ServiceProfile serviceProfile = getServiceProfile();
+        if (serviceProfile == null) return;
+        if (directometerProfile == null) return;
 
         switch (v.getId()) {
+            // MAGNETOMETER CALIBRATION
+            case R.id.btn_service_read_magnetometer_calibration:
+                serviceProfile.readMagnetometerCalibration();
+                break;
+
+            case R.id.btn_service_notify_magnetometer_calibration:
+                serviceProfile.notifyMagnetometerCalibration(((ToggleButton) v).isChecked());
+                break;
+
             // ENABLER
             case R.id.btn_dir_enabler:
                 if (v.getTag().equals("activate")) {
@@ -636,5 +674,9 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
 
     private void updateHeading(String newStatus) {
         ((TextView) getView().findViewById(R.id.tv_dir_heading)).setText("Heading: " + newStatus);
+    }
+
+    private ServiceProfile getServiceProfile() {
+        return (ServiceProfile) MainActivity.getProfileById(getActivity(), ServiceProfile.ID);
     }
 }
