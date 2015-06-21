@@ -11,7 +11,7 @@
         android:id="@+id/company_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/logo_schneider"
+        android:background="@drawable/blukii_smartsen"
         android:scaleType="fitXY"
         android:adjustViewBounds="true"
         android:layout_centerInParent="true"/>

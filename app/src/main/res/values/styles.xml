@@ -21,7 +21,7 @@
         <item name="android:paddingEnd">16dp</item>
         <item name="android:paddingBottom">8dp</item>
         <item name="android:background">@color/blukii_blue</item>
-        <item name="android:src">@drawable/blukii_rectangle_horizontal_wbst_white_orange</item>
+        <item name="android:src">@drawable/blukii_smartsen</item>
         <item name="android:scaleType">fitStart</item>
         <item name="android:adjustViewBounds">true</item>
         <item name="android:layout_width">fill_parent</item>
