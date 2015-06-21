@@ -43,6 +43,7 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
     private MagnetometerRange magnetometerRange = null;
     private MagnetometerMode magnetometerMode = null;
     private AltimeterMode altimeterMode = null;
+    private int numberOfEventSensors = 0;
 
     private final BroadcastReceiver mGattUpdateReceiver = new BroadcastReceiver() {
         @Override
@@ -65,6 +66,7 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
 
                     // Exceptions
                     btnEnabled.setEnabled(false);
+                    getCheckBox(R.id.cb_recording_mode_event).setEnabled(false);
 
                     break;
                 case Blukii.ACTION_ERROR_LOADING_SERVICES:
@@ -150,16 +152,70 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
                                 case Interval:
                                     interval.setChecked(true);
                                     event.setChecked(false);
+                                    getView().findViewById(R.id.rec_config_elem_interval).setVisibility(View.VISIBLE);
+
+                                    if (getCheckBox(R.id.cb_recording_sensor_accelerometer).isChecked()) {
+                                        getView().findViewById(R.id.rec_config_elem_accelRange).setVisibility(View.VISIBLE);
+                                        getView().findViewById(R.id.rec_config_elem_accelEventConfig).setVisibility(View.GONE);
+                                        getView().findViewById(R.id.rec_config_elem_accelEventMode).setVisibility(View.GONE);
+                                    }
+                                    if (getCheckBox(R.id.cb_recording_sensor_altimeter).isChecked()) {
+                                        getView().findViewById(R.id.rec_config_elem_altMode).setVisibility(View.VISIBLE);
+                                        getView().findViewById(R.id.rec_config_elem_altEventConfig).setVisibility(View.GONE);
+                                    }
+                                    if (getCheckBox(R.id.cb_recording_sensor_light).isChecked()) {
+                                        getView().findViewById(R.id.rec_config_elem_lightEventConfig).setVisibility(View.GONE);
+                                        getView().findViewById(R.id.rec_config_elem_lightMode).setVisibility(View.VISIBLE);
+                                    }
+                                    if (getCheckBox(R.id.cb_recording_sensor_magnetometer).isChecked()) {
+                                        getView().findViewById(R.id.rec_config_elem_magRange).setVisibility(View.VISIBLE);
+                                        getView().findViewById(R.id.rec_config_elem_magMode).setVisibility(View.VISIBLE);
+                                        getView().findViewById(R.id.rec_config_elem_magEventConfig).setVisibility(View.GONE);
+                                    }
+                                    if (getCheckBox(R.id.cb_recording_sensor_step_counter).isChecked()) {
+                                        getView().findViewById(R.id.rec_config_elem_step).setVisibility(View.VISIBLE);
+                                    }
+                                    if (getCheckBox(R.id.cb_recording_sensor_temperature).isChecked()) {
+                                        getView().findViewById(R.id.rec_config_elem_tempEventConfig).setVisibility(View.GONE);
+                                    }
                                     break;
                                 case Event:
                                     interval.setChecked(false);
                                     event.setChecked(true);
+                                    getView().findViewById(R.id.rec_config_elem_interval).setVisibility(View.GONE);
+
+                                    if (getCheckBox(R.id.cb_recording_sensor_accelerometer).isChecked()) {
+                                        getView().findViewById(R.id.rec_config_elem_accelRange).setVisibility(View.VISIBLE);
+                                        getView().findViewById(R.id.rec_config_elem_accelEventConfig).setVisibility(View.VISIBLE);
+                                        getView().findViewById(R.id.rec_config_elem_accelEventMode).setVisibility(View.VISIBLE);
+                                    }
+                                    if (getCheckBox(R.id.cb_recording_sensor_altimeter).isChecked()) {
+                                        getView().findViewById(R.id.rec_config_elem_altMode).setVisibility(View.VISIBLE);
+                                        getView().findViewById(R.id.rec_config_elem_altEventConfig).setVisibility(View.VISIBLE);
+                                    }
+                                    if (getCheckBox(R.id.cb_recording_sensor_light).isChecked()) {
+                                        getView().findViewById(R.id.rec_config_elem_lightEventConfig).setVisibility(View.VISIBLE);
+                                        getView().findViewById(R.id.rec_config_elem_lightMode).setVisibility(View.VISIBLE);
+                                    }
+                                    if (getCheckBox(R.id.cb_recording_sensor_magnetometer).isChecked()) {
+                                        getView().findViewById(R.id.rec_config_elem_magRange).setVisibility(View.VISIBLE);
+                                        getView().findViewById(R.id.rec_config_elem_magMode).setVisibility(View.VISIBLE);
+                                        getView().findViewById(R.id.rec_config_elem_magEventConfig).setVisibility(View.VISIBLE);
+                                    }
+                                    if (getCheckBox(R.id.cb_recording_sensor_step_counter).isChecked()) {
+                                        getView().findViewById(R.id.rec_config_elem_step).setVisibility(View.VISIBLE);
+                                    }
+                                    if (getCheckBox(R.id.cb_recording_sensor_temperature).isChecked()) {
+                                        getView().findViewById(R.id.rec_config_elem_tempEventConfig).setVisibility(View.VISIBLE);
+                                    }
                                     break;
                                 case IntervalAndEvent:
                                     interval.setChecked(true);
                                     event.setChecked(true);
+                                    getView().findViewById(R.id.rec_config_elem_interval).setVisibility(View.VISIBLE);
                                     break;
                             }
+                            getView().findViewById(R.id.rec_config_elem_dataLimit).setVisibility(View.VISIBLE);
                         } else {
                             interval.setChecked(false);
                             event.setChecked(false);
@@ -407,6 +463,11 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
         initSpinner(R.id.spin_altimeter_mode, R.array.altimeter_modes, this);
 
         ViewHelper.setEnabledOfAllControls(false, getView());
+        //Hide unnecessary Elements
+        setElementsGone();
+
+        getView().findViewById(R.id.step_detection_value_view).setVisibility(View.INVISIBLE);
+
     }
 
 
@@ -430,10 +491,18 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
         LocalBroadcastManager.getInstance(this.getActivity()).unregisterReceiver(mGattUpdateReceiver);
     }
 
+
+    public void onCheck(View v) {
+
+    }
+
+
     @Override
     public void onClick(View v) {
 
         RecordingProfile recProfile = (RecordingProfile) MainActivity.getProfileById(getActivity(), RecordingProfile.ID);
+
+
         if (recProfile == null) return;
 
         switch (v.getId()) {
@@ -463,11 +532,71 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
                 setEnabledOfPasswordButtons(false);
                 recProfile.resetPassword();
                 break;
+
+
             // SENSORS
             case R.id.btn_recording_sensors_read:
                 setEnabledOfSensors(false);
                 recProfile.readSensors();
                 break;
+
+            //Checkboxes
+            case R.id.cb_recording_sensor_accelerometer:
+                if (getCheckBox(R.id.cb_recording_sensor_accelerometer).isChecked()) {
+                    getCheckBox(R.id.cb_recording_sensor_step_counter).setEnabled(false);
+                    numberOfEventSensors++;
+                } else {
+                    getCheckBox(R.id.cb_recording_sensor_step_counter).setEnabled(true);
+                    numberOfEventSensors--;
+                }
+                break;
+
+            case R.id.cb_recording_sensor_altimeter:
+                if (getCheckBox(R.id.cb_recording_sensor_altimeter).isChecked()) {
+                    numberOfEventSensors++;
+                } else {
+                    getCheckBox(R.id.cb_recording_sensor_altimeter).setEnabled(true);
+                    numberOfEventSensors--;
+                }
+                break;
+
+            case R.id.cb_recording_sensor_light:
+                if (getCheckBox(R.id.cb_recording_sensor_light).isChecked()) {
+                    numberOfEventSensors++;
+                } else {
+                    getCheckBox(R.id.cb_recording_sensor_light).setEnabled(true);
+                    numberOfEventSensors--;
+                }
+                break;
+
+            case R.id.cb_recording_sensor_magnetometer:
+                if (getCheckBox(R.id.cb_recording_sensor_magnetometer).isChecked()) {
+                    numberOfEventSensors++;
+                } else {
+                    getCheckBox(R.id.cb_recording_sensor_magnetometer).setEnabled(true);
+                    numberOfEventSensors--;
+                }
+                break;
+
+            case R.id.cb_recording_sensor_step_counter:
+                if (getCheckBox(R.id.cb_recording_sensor_step_counter).isChecked()) {
+                    getCheckBox(R.id.cb_recording_sensor_accelerometer).setEnabled(false);
+                } else {
+                    getCheckBox(R.id.cb_recording_sensor_accelerometer).setEnabled(true);
+                }
+                break;
+
+            case R.id.cb_recording_sensor_temperature:
+                if (getCheckBox(R.id.cb_recording_sensor_temperature).isChecked()) {
+                    numberOfEventSensors++;
+                } else {
+                    getCheckBox(R.id.cb_recording_sensor_temperature).setEnabled(true);
+                    numberOfEventSensors--;
+                }
+                break;
+
+
+
             case R.id.btn_recording_sensors_set:
                 setEnabledOfSensors(false);
                 ArrayList<RecordingSensor> sensors = new ArrayList<>();
@@ -724,11 +853,6 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
                 } else {
                     toast(getText(R.string.error_enterNumber).toString());
                 }
-
-
-
-
-
                 break;
             // MAGNETOMETER MODE
             case R.id.btn_magnetometer_mode_read:
@@ -903,6 +1027,20 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
                     toast(getText(R.string.error_enterNumber).toString());
                 }
                 break;
+
+            case R.id.btn_recording_resetConfig:
+                setElementsGone();
+                setCheckedOfSensors(false);
+                getCheckBox(R.id.cb_recording_mode_interval).setChecked(false);
+                getCheckBox(R.id.cb_recording_mode_event).setChecked(false);
+                break;
+        }
+
+
+        if (numberOfEventSensors > 0) {
+            getCheckBox(R.id.cb_recording_mode_event).setEnabled(true);
+        } else {
+            getCheckBox(R.id.cb_recording_mode_event).setEnabled(false);
         }
     }
 
@@ -985,6 +1123,24 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
         // do nothing
+    }
+
+    private void setElementsGone() {
+        getView().findViewById(R.id.rec_config_elem_dataLimit).setVisibility(View.GONE);
+        getView().findViewById(R.id.rec_config_elem_interval).setVisibility(View.GONE);
+        getView().findViewById(R.id.rec_config_elem_dataLimit).setVisibility(View.GONE);
+        getView().findViewById(R.id.rec_config_elem_accelRange).setVisibility(View.GONE);
+        getView().findViewById(R.id.rec_config_elem_accelEventConfig).setVisibility(View.GONE);
+        getView().findViewById(R.id.rec_config_elem_accelEventMode).setVisibility(View.GONE);
+        getView().findViewById(R.id.rec_config_elem_magRange).setVisibility(View.GONE);
+        getView().findViewById(R.id.rec_config_elem_magEventConfig).setVisibility(View.GONE);
+        getView().findViewById(R.id.rec_config_elem_magMode).setVisibility(View.GONE);
+        getView().findViewById(R.id.rec_config_elem_lightMode).setVisibility(View.GONE);
+        getView().findViewById(R.id.rec_config_elem_lightEventConfig).setVisibility(View.GONE);
+        getView().findViewById(R.id.rec_config_elem_tempEventConfig).setVisibility(View.GONE);
+        getView().findViewById(R.id.rec_config_elem_altMode).setVisibility(View.GONE);
+        getView().findViewById(R.id.rec_config_elem_altEventConfig).setVisibility(View.GONE);
+        getView().findViewById(R.id.rec_config_elem_step).setVisibility(View.GONE);
     }
 }
 

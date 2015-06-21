@@ -83,14 +83,6 @@
             <include layout="@layout/thinline" />
 
             <Button
-                android:id="@+id/btn_gotoServiceProfile"
-                android:text="@string/btn_gotoServiceProfile"
-                android:onClick="selectServicePage"
-                style="@style/BlukiiMenuButton"/>
-
-            <include layout="@layout/thinline" />
-
-            <Button
                 android:id="@+id/btn_gotoRecordingConfig"
                 android:text="@string/btn_gotoRecordingConfig"
                 android:onClick="selectRecordingPage"

@@ -35,7 +35,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
     private static final String TAG = MainActivity.class.getSimpleName();
 
     private static final int REQUEST_ENABLE_BT = 1;
-    private static final int PAGES_COUNT = 14;
+    private static final int PAGES_COUNT = 13;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -233,24 +233,20 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
         mViewPager.setCurrentItem(8);
     }
 
-    public void selectServicePage(View v) {
+    public void selectRecordingPage(View v) {
         mViewPager.setCurrentItem(9);
     }
 
-    public void selectRecordingPage(View v) {
+    public void selectRecordingPageParams(View v) {
         mViewPager.setCurrentItem(10);
     }
 
-    public void selectRecordingPageParams(View v) {
+    public void selectRecordingPageValues(View v) {
         mViewPager.setCurrentItem(11);
     }
 
-    public void selectRecordingPageValues(View v) {
-        mViewPager.setCurrentItem(12);
-    }
-
     public void selectInfoPage(View v) {
-        mViewPager.setCurrentItem(13);
+        mViewPager.setCurrentItem(12);
     }
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
@@ -284,14 +280,12 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
                 case 8:
                     return TemperatureFragment.newInstance();
                 case 9:
-                    return ServiceFragment.newInstance();
-                case 10:
                     return RecordingConfigFragment.newInstance();
-                case 11:
+                case 10:
                     return RecordingDataParamsFragment.newInstance();
-                case 12:
+                case 11:
                     return RecordingDataValuesFragment.newInstance();
-                case 13:
+                case 12:
                     return InformationFragment.newInstance();
             }
             return null;

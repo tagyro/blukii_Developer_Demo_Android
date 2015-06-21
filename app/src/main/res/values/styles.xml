@@ -122,6 +122,23 @@
 
     <!--
     -
+    - TextView Description
+    -
+    -->
+    <style name="BlukiiDescription" parent="android:Widget.DeviceDefault.Light.TextView">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">left</item>
+        <item name="android:layout_marginStart">@dimen/blukii_margin_lr</item>
+        <item name="android:layout_marginEnd">@dimen/blukii_margin_lr</item>
+        <item name="android:layout_marginTop">@dimen/blukii_margin_tb</item>
+        <item name="android:layout_marginBottom">@dimen/blukii_margin_tb</item>
+        <item name="android:textColor">@color/blukii_darkgrey</item>
+        <item name="android:textSize">@dimen/blukii_text_small</item>
+    </style>
+
+    <!--
+    -
     - Button Bigs
     -
     -->

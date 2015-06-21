@@ -72,6 +72,8 @@
     <string name="hl_dataState">Data State</string>
     <string name="hl_params">Params</string>
     <string name="hl_values">Values</string>
+
+    <string name="hl_description">Description</string>
     <!--END HEADLINES-->
 
     <!--LABELS-->
@@ -193,7 +195,7 @@
 
 
     <!--BLUKII STATUS-->
-    <string name="blukii_status">blukii status</string>
+    <string name="blukii_status">blukii connection status</string>
     <string name="blukii_connected">connected</string>
     <string name="blukii_disconnected">disconnected</string>
     <string name="blukii_connecting">connect &#8230;</string>
@@ -326,6 +328,22 @@
     <string name="lbl_status_readError">Reading error</string>
 
     <!--END STATUS LABELS-->
+
+
+    <!-- DESCRIPTIONS -->
+
+    <string name="descr_rec_config">"1. Set password\n2. Configure your recording\n3. Activate the recording profile\n4. If blukii was disconnected set password again\n5. Read values"</string>
+    <string name="desct_rec_mode">"Mode event can only be used on following sensors: Accelerometer, Magnetic Field, Temperature, Light and Altimeter</string>
+
+    <!-- END DESCRIPTIONS -->
+
+    <!-- RANGES -->
+
+    <string name="range_rec_interval">Interval between 100 and 3 600 000 [ms]</string>
+    <string name="range_rec_datasetLimit">Dataset Limit between 0 and 32767</string>
+    <string name="range_rec_accelEventConfig">"High Time value between 0.0 and 10.08\nLow Time value between 0.0 and 10.08\nRange 2g: High/Low value between 0.1 and 65.534\nRange 4g: High/Low value between 0.1 and 131.068\nRange 8g: High/Low value between 0.1 and 262.136"</string>
+
+    <!-- END RANGES -->
 
 
     <!--CREDENTIALS-->

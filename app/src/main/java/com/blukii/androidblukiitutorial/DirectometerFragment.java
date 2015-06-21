@@ -82,6 +82,11 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
                     ((Button) getView().findViewById(R.id.btn_dir_enabler)).setTag("activate");
                     ((Button) getView().findViewById(R.id.btn_dir_enabler)).setText(getText(R.string.btn_activateProfile).toString());
 
+
+                    //calibration
+                    getView().findViewById(R.id.btn_service_read_magnetometer_calibration).setEnabled(true);
+                    getView().findViewById(R.id.btn_service_notify_magnetometer_calibration).setEnabled(true);
+
                     break;
 
                 // ENABLER
@@ -553,6 +558,15 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
                 directometerProfile.setPositionMonitoring(DirectometerPositionMonitoringStatus.DISABLED);
                 getView().findViewById(R.id.btn_dir_pos_mon_pos1).setEnabled(false);
                 getView().findViewById(R.id.btn_dir_pos_mon_pos2).setEnabled(false);
+
+                /*
+                    Notify disablen?
+
+                directometerProfile.notifyPositionMonitoring(false);
+                v.setEnabled(false);
+                updatePositionMonitoring("deactivating...");
+
+                */
                 break;
 
             case R.id.btn_dir_pos_mon_pos1:
@@ -564,14 +578,17 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
                 break;
 
             case R.id.btn_dir_pos_mon_notify:
+
                 if (v.getTag().equals("activate")) {
                     directometerProfile.notifyPositionMonitoring(true);
                     v.setEnabled(false);
                     updatePositionMonitoring("activating...");
+                    //getView().findViewById(R.id.btn_dir_pos_mon_disable).setEnabled(false);
                 } else {
                     directometerProfile.notifyPositionMonitoring(false);
                     v.setEnabled(false);
                     updatePositionMonitoring("deactivating...");
+                    //getView().findViewById(R.id.btn_dir_pos_mon_disable).setEnabled(true);
                 }
                 break;
 
@@ -598,6 +615,11 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
     }
 
     private void enableAll(boolean enable) {
+
+        //calibration
+        getView().findViewById(R.id.btn_service_read_magnetometer_calibration).setEnabled(enable);
+        getView().findViewById(R.id.btn_service_notify_magnetometer_calibration).setEnabled(enable);
+
         getView().findViewById(R.id.btn_dir_enabler).setEnabled(enable);
 
         // x
