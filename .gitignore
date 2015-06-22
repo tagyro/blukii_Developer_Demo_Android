@@ -27,3 +27,13 @@ v# Built application files
 
  # Log Files
  *.log
+
+
+*.properties
+*.bin
+*.lock
+
+
+
+build/intermediates/model_data.bin
+

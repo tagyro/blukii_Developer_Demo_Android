@@ -193,6 +193,7 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
                                         getView().findViewById(R.id.rec_config_elem_altMode).setVisibility(View.VISIBLE);
                                         getView().findViewById(R.id.rec_config_elem_altEventConfig).setVisibility(View.VISIBLE);
                                     }
+
                                     if (getCheckBox(R.id.cb_recording_sensor_light).isChecked()) {
                                         getView().findViewById(R.id.rec_config_elem_lightEventConfig).setVisibility(View.VISIBLE);
                                         getView().findViewById(R.id.rec_config_elem_lightMode).setVisibility(View.VISIBLE);
@@ -213,6 +214,32 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
                                     interval.setChecked(true);
                                     event.setChecked(true);
                                     getView().findViewById(R.id.rec_config_elem_interval).setVisibility(View.VISIBLE);
+
+                                    if (getCheckBox(R.id.cb_recording_sensor_accelerometer).isChecked()) {
+                                        getView().findViewById(R.id.rec_config_elem_accelRange).setVisibility(View.VISIBLE);
+                                        getView().findViewById(R.id.rec_config_elem_accelEventConfig).setVisibility(View.VISIBLE);
+                                        getView().findViewById(R.id.rec_config_elem_accelEventMode).setVisibility(View.VISIBLE);
+                                    }
+                                    if (getCheckBox(R.id.cb_recording_sensor_altimeter).isChecked()) {
+                                        getView().findViewById(R.id.rec_config_elem_altMode).setVisibility(View.VISIBLE);
+                                        getView().findViewById(R.id.rec_config_elem_altEventConfig).setVisibility(View.VISIBLE);
+                                    }
+                                    if (getCheckBox(R.id.cb_recording_sensor_light).isChecked()) {
+                                        getView().findViewById(R.id.rec_config_elem_lightEventConfig).setVisibility(View.VISIBLE);
+                                        getView().findViewById(R.id.rec_config_elem_lightMode).setVisibility(View.VISIBLE);
+                                    }
+                                    if (getCheckBox(R.id.cb_recording_sensor_magnetometer).isChecked()) {
+                                        getView().findViewById(R.id.rec_config_elem_magRange).setVisibility(View.VISIBLE);
+                                        getView().findViewById(R.id.rec_config_elem_magMode).setVisibility(View.VISIBLE);
+                                        getView().findViewById(R.id.rec_config_elem_magEventConfig).setVisibility(View.VISIBLE);
+                                    }
+                                    if (getCheckBox(R.id.cb_recording_sensor_step_counter).isChecked()) {
+                                        getView().findViewById(R.id.rec_config_elem_step).setVisibility(View.VISIBLE);
+                                    }
+                                    if (getCheckBox(R.id.cb_recording_sensor_temperature).isChecked()) {
+                                        getView().findViewById(R.id.rec_config_elem_tempEventConfig).setVisibility(View.VISIBLE);
+                                    }
+
                                     break;
                             }
                             getView().findViewById(R.id.rec_config_elem_dataLimit).setVisibility(View.VISIBLE);

@@ -38,7 +38,9 @@
             <Button
                 android:id="@+id/btn_recording_resetConfig"
                 android:text="Reset Config View"
-                style="@style/BlukiiButtonBig"/>
+                style="@style/BlukiiButtonBig"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="0dp"/>
 
             <include layout="@layout/separator" />
 
