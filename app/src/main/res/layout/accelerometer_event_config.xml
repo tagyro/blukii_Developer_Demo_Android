@@ -4,6 +4,10 @@
     android:orientation="vertical"
     android:layout_height="match_parent">
 
+    <TextView
+        android:text="@string/range_rec_accelEventConfig"
+        style="@style/BlukiiDescription"/>
+
     <TableLayout
         android:layout_width="match_parent"
         android:paddingLeft="16dp"

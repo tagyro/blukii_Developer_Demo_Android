@@ -4,6 +4,10 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+    <TextView
+        android:text="@string/desct_accel_event_mode"
+        style="@style/BlukiiDescription"/>
+
     <TableLayout
         android:layout_width="wrap_content"
         android:layout_gravity="center"

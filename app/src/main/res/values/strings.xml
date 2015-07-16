@@ -332,8 +332,9 @@
 
     <!-- DESCRIPTIONS -->
 
-    <string name="descr_rec_config">"1. Set password\n2. Configure your recording\n3. Activate the recording profile\n4. If blukii was disconnected set password again\n5. Read values"</string>
+    <string name="descr_rec_config">"1. Set password\n2. Configure your recording\n3. Activate the recording profile\n4. If blukii was disconnected set password again\n5. Read params\n6. Read values"</string>
     <string name="desct_rec_mode">"Mode event can only be used on following sensors: Accelerometer, Magnetic Field, Temperature, Light and Altimeter</string>
+    <string name="desct_accel_event_mode">"Referenced Mode: [ON] static acceleration of gravity is not included\nReferenced Mode: [OFF] static acceleration of gravity is included (min 1g)\nLow Event: monitor low events\nHigh Event: monitor high events"</string>
 
     <!-- END DESCRIPTIONS -->
 
@@ -343,6 +344,11 @@
     <string name="range_rec_datasetLimit">Dataset Limit between 0 and 32767</string>
     <string name="range_rec_accelEventConfig">"High Time value between 0.0 and 10.08\nLow Time value between 0.0 and 10.08\nRange 2g: High/Low value between 0.1 and 65.534\nRange 4g: High/Low value between 0.1 and 131.068\nRange 8g: High/Low value between 0.1 and 262.136"</string>
 
+    <string name="range_accel_switch_sense">@string/error_switchSense</string>
+    <string name="range_accel_filter">Range 2g: Filter between 0 and 65\nRange 4g: Filter between 0 and 131\nRange 8g: Filter between 0 and 262</string>
+    <string name="range_alti_threshold">Mode Altitude: Threshold between -32768 and 32767\nMode Barometer: Threshold between 2 and 131070</string>
+    <string name="range_light_event_config">Mode ALS/Ir 1000 lux: High/Low between 1 and 999\nMode ALS/Ir 4000 lux: High/Low between 1 and 3999\nMode ALS/Ir 16000 lux: High/Low between 1 and 15999\nMode ALS/Ir 64000 lux: High/Low between 1 and 63999</string>
+    <string name="range_temp_event_config">@string/error_tempRange</string>
     <!-- END RANGES -->
 
 
