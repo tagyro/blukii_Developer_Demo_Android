@@ -136,6 +136,15 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
                         }
                     }
                     setEnabledOfSensors(true);
+
+                    //Accelerometer and StepCounter couldn't be used at the same time
+                    if (getCheckBox(R.id.cb_recording_sensor_accelerometer).isChecked()) {
+                        getCheckBox(R.id.cb_recording_sensor_step_counter).setEnabled(false);
+                    }
+                    if (getCheckBox(R.id.cb_recording_sensor_step_counter).isChecked()) {
+                        getCheckBox(R.id.cb_recording_sensor_accelerometer).setEnabled(false);
+                    }
+
                     break;
                 // MODE
                 case RecordingProfile.ACTION_SET_RECORDING_MODE:
@@ -519,11 +528,6 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
     }
 
 
-    public void onCheck(View v) {
-
-    }
-
-
     @Override
     public void onClick(View v) {
 
@@ -559,7 +563,6 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
                 setEnabledOfPasswordButtons(false);
                 recProfile.resetPassword();
                 break;
-
 
             // SENSORS
             case R.id.btn_recording_sensors_read:
@@ -622,8 +625,6 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
                 }
                 break;
 
-
-
             case R.id.btn_recording_sensors_set:
                 setEnabledOfSensors(false);
                 ArrayList<RecordingSensor> sensors = new ArrayList<>();
@@ -659,8 +660,6 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
                     toast(getText(R.string.error_recSensorConfig).toString());
                     setEnabledOfSensors(true);
                 }
-
-
                 break;
             // MODE
             case R.id.btn_recording_mode_read:
@@ -1057,12 +1056,17 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
 
             case R.id.btn_recording_resetConfig:
                 setElementsGone();
+
                 setCheckedOfSensors(false);
+                setEnabledOfSensors(true);
+
                 getCheckBox(R.id.cb_recording_mode_interval).setChecked(false);
                 getCheckBox(R.id.cb_recording_mode_event).setChecked(false);
+                getCheckBox(R.id.cb_recording_mode_event).setEnabled(false);
+
+                numberOfEventSensors = 0;
                 break;
         }
-
 
         if (numberOfEventSensors > 0) {
             getCheckBox(R.id.cb_recording_mode_event).setEnabled(true);
