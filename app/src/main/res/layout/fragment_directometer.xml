@@ -398,14 +398,14 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content">
 
-                    <Button
+                    <!--<Button
                         android:id="@+id/btn_dir_pos_mon_disable"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:enabled="false"
-                        android:text="Disable" />
+                        android:text="Disable" />-->
 
                     <Button
                         android:id="@+id/btn_dir_pos_mon_pos1"

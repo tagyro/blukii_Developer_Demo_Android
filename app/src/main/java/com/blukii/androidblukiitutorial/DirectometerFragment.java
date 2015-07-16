@@ -390,7 +390,7 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
         getView().findViewById(R.id.btn_dir_z_raw_value_notify).setOnClickListener(this);
 
         // position monitoring
-        getView().findViewById(R.id.btn_dir_pos_mon_disable).setOnClickListener(this);
+        //getView().findViewById(R.id.btn_dir_pos_mon_disable).setOnClickListener(this);
         getView().findViewById(R.id.btn_dir_pos_mon_pos1).setOnClickListener(this);
         getView().findViewById(R.id.btn_dir_pos_mon_pos2).setOnClickListener(this);
         getView().findViewById(R.id.btn_dir_pos_mon_notify).setOnClickListener(this);
@@ -554,20 +554,11 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
                 break;
 
             // POSITION MONITORING
-            case R.id.btn_dir_pos_mon_disable:
+            /*case R.id.btn_dir_pos_mon_disable:
                 directometerProfile.setPositionMonitoring(DirectometerPositionMonitoringStatus.DISABLED);
                 getView().findViewById(R.id.btn_dir_pos_mon_pos1).setEnabled(false);
                 getView().findViewById(R.id.btn_dir_pos_mon_pos2).setEnabled(false);
-
-                /*
-                    Notify disablen?
-
-                directometerProfile.notifyPositionMonitoring(false);
-                v.setEnabled(false);
-                updatePositionMonitoring("deactivating...");
-
-                */
-                break;
+                break;*/
 
             case R.id.btn_dir_pos_mon_pos1:
                 directometerProfile.setPositionMonitoring(DirectometerPositionMonitoringStatus.POSITION_1);
@@ -588,6 +579,7 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
                     directometerProfile.notifyPositionMonitoring(false);
                     v.setEnabled(false);
                     updatePositionMonitoring("deactivating...");
+                    directometerProfile.setPositionMonitoring(DirectometerPositionMonitoringStatus.DISABLED);
                     //getView().findViewById(R.id.btn_dir_pos_mon_disable).setEnabled(true);
                 }
                 break;
@@ -647,7 +639,7 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
         getView().findViewById(R.id.btn_dir_z_raw_value_notify).setEnabled(enable);
 
         // position monitoring
-        getView().findViewById(R.id.btn_dir_pos_mon_disable).setEnabled(enable);
+        //getView().findViewById(R.id.btn_dir_pos_mon_disable).setEnabled(enable);
         getView().findViewById(R.id.btn_dir_pos_mon_pos1).setEnabled(enable);
         getView().findViewById(R.id.btn_dir_pos_mon_pos2).setEnabled(enable);
         getView().findViewById(R.id.btn_dir_pos_mon_notify).setEnabled(enable);
