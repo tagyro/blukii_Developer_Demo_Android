@@ -292,6 +292,7 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
                         ((Button) getView().findViewById(R.id.btn_dir_pos_mon_pos2)).setEnabled(true);
                         posCount = 0;
                         updatePositionMonitoring("notify deactivated");
+                        directometerProfile.setPositionMonitoring(DirectometerPositionMonitoringStatus.DISABLED);
                     }
                     break;
 
@@ -579,7 +580,7 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
                     directometerProfile.notifyPositionMonitoring(false);
                     v.setEnabled(false);
                     updatePositionMonitoring("deactivating...");
-                    directometerProfile.setPositionMonitoring(DirectometerPositionMonitoringStatus.DISABLED);
+
                     //getView().findViewById(R.id.btn_dir_pos_mon_disable).setEnabled(true);
                 }
                 break;
