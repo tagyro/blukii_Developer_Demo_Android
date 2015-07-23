@@ -142,6 +142,7 @@
     <string name="btn_gotoInformation">@string/hl_Information</string>
 
     <string name="btn_startDiscover">start discover</string>
+    <string name="btn_restartDiscover">restart discover</string>
     <string name="btn_stopDiscover">stop discover</string>
     <string name="btn_connect">connect</string>
     <string name="btn_disconnect">disconnect</string>

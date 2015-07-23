@@ -25,6 +25,7 @@ import com.blukii.android.blukiilibrary.Profile;
 
 import java.util.ArrayList;
 
+
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
  * Use the {@link SelectBlukiiFragment#newInstance} factory method to
@@ -34,6 +35,7 @@ public class SelectBlukiiFragment extends ListFragment implements View.OnClickLi
 
     public static final String PREF_SELECTED_BLUKII = "pref_key_selectedBlukii";
     private final static String TAG = SelectBlukiiFragment.class.getSimpleName();
+    CountDownTimer countdown;
 
     /**
      * A broadcast receiver to receive updates on blukiis
@@ -179,25 +181,10 @@ public class SelectBlukiiFragment extends ListFragment implements View.OnClickLi
         IntentFilter intentFilter = new IntentFilter();
         Profile.addDefaultActions(intentFilter);
         LocalBroadcastManager.getInstance(this.getActivity()).registerReceiver(mGattUpdateReceiver, intentFilter);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        // wenn das Fragment gestoppt wird, dann wollen wir auch nicht mehr auf Broadcasts reagieren, also wird der UpdateReceiver unregistriert
-        LocalBroadcastManager.getInstance(this.getActivity()).unregisterReceiver(mGattUpdateReceiver);
-    }
-
-    @Override
-    public void onClick(View v) {
-
-        mService = ((MainActivity) getActivity()).getBlukiiManagerService();
 
         //Nach 10 sec ist die Suche beendet
-        CountDownTimer countdown = new CountDownTimer(10000, 750) {
-
+        countdown = new CountDownTimer(10000, 750) {
             int flag = 0;
-
             public void onTick(long millisUntilFinished) {
                 switch(flag) {
                     case 0:
@@ -223,10 +210,26 @@ public class SelectBlukiiFragment extends ListFragment implements View.OnClickLi
                 updateConnectionStatus(getText(R.string.blukii_discoveryStopped).toString());
                 //buttons anpassen
                 Button b = ((Button) getView().findViewById(R.id.btn_blukii_discover));
-                b.setText(R.string.btn_startDiscover);
+                b.setText(R.string.btn_restartDiscover);
                 b.setTag("start");
             }
         };
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        // wenn das Fragment gestoppt wird, dann wollen wir auch nicht mehr auf Broadcasts reagieren, also wird der UpdateReceiver unregistriert
+        LocalBroadcastManager.getInstance(this.getActivity()).unregisterReceiver(mGattUpdateReceiver);
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        mService = ((MainActivity) getActivity()).getBlukiiManagerService();
+
+
 
         // reagiere auf Button-Clicks
         switch (v.getId()) {
@@ -277,6 +280,7 @@ public class SelectBlukiiFragment extends ListFragment implements View.OnClickLi
                 // Der Button hat zwei Funktionen, Starten und Stoppen der Discovery,
                 // über den Tag kann ausgelesen werden, welche Funktion vorher aktiv war
                 if (v.getTag().equals("start")) {
+                    countdown.start();
                     // alle früheren Einträge entfernen
                     adapter.clear();
                     // die Änderungen dem Adapter mitteilen
@@ -287,15 +291,13 @@ public class SelectBlukiiFragment extends ListFragment implements View.OnClickLi
                     ((Button) v).setText(R.string.btn_stopDiscover);
                     v.setTag("stop");
                     updateConnectionStatus(getText(R.string.blukii_discover).toString());
-                    countdown.start();
-
                 } else {
                     // Discovery stoppen
+                    countdown.cancel();
                     mService.stopDiscovery();
                     ((Button) v).setText(R.string.btn_startDiscover);
                     v.setTag("start");
                     updateConnectionStatus(getText(R.string.blukii_discoveryStopped).toString());
-                    countdown.cancel();
                 }
                 break;
         }
