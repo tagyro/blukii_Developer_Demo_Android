@@ -37,3 +37,4 @@ v# Built application files
 
 build/intermediates/model_data.bin
 
+build/intermediates/dex-cache/cache.xml

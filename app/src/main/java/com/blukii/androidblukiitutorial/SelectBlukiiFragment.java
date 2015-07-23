@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
@@ -192,6 +193,41 @@ public class SelectBlukiiFragment extends ListFragment implements View.OnClickLi
 
         mService = ((MainActivity) getActivity()).getBlukiiManagerService();
 
+        //Nach 10 sec ist die Suche beendet
+        CountDownTimer countdown = new CountDownTimer(10000, 750) {
+
+            int flag = 0;
+
+            public void onTick(long millisUntilFinished) {
+                switch(flag) {
+                    case 0:
+                        updateConnectionStatus(getText(R.string.blukii_discover).toString());
+                        flag++;
+                        break;
+                    case 1:
+                        updateConnectionStatus(getText(R.string.blukii_discover).toString() + getText(R.string.blukii_discover_1).toString());
+                        flag++;
+                        break;
+                    case 2:
+                        updateConnectionStatus(getText(R.string.blukii_discover).toString() + getText(R.string.blukii_discover_2).toString());
+                        flag++;
+                        break;
+                    case 3:
+                        updateConnectionStatus(getText(R.string.blukii_discover).toString() + getText(R.string.blukii_discover_3).toString());
+                        flag = 0;
+                        break;
+                }
+            }
+
+            public void onFinish() {
+                updateConnectionStatus(getText(R.string.blukii_discoveryStopped).toString());
+                //buttons anpassen
+                Button b = ((Button) getView().findViewById(R.id.btn_blukii_discover));
+                b.setText(R.string.btn_startDiscover);
+                b.setTag("start");
+            }
+        };
+
         // reagiere auf Button-Clicks
         switch (v.getId()) {
 
@@ -199,6 +235,8 @@ public class SelectBlukiiFragment extends ListFragment implements View.OnClickLi
             case R.id.btn_blukii_connect:
                 // Discovery stoppen
                 mService.stopDiscovery();
+                countdown.cancel();
+
                 Button b = ((Button) getView().findViewById(R.id.btn_blukii_discover));
                 b.setText(R.string.btn_startDiscover);
                 b.setTag("start");
@@ -215,7 +253,6 @@ public class SelectBlukiiFragment extends ListFragment implements View.OnClickLi
                     // zu Blukii verbinden
                     Blukii blukii = mService.getBlukiiByAddress(selectedDevice);
                     blukii.connect();
-                    //updateStatus("Verbinden...");
                     updateConnectionStatus(getText(R.string.blukii_connecting).toString());
                 }
 
@@ -250,12 +287,15 @@ public class SelectBlukiiFragment extends ListFragment implements View.OnClickLi
                     ((Button) v).setText(R.string.btn_stopDiscover);
                     v.setTag("stop");
                     updateConnectionStatus(getText(R.string.blukii_discover).toString());
+                    countdown.start();
+
                 } else {
                     // Discovery stoppen
                     mService.stopDiscovery();
                     ((Button) v).setText(R.string.btn_startDiscover);
                     v.setTag("start");
                     updateConnectionStatus(getText(R.string.blukii_discoveryStopped).toString());
+                    countdown.cancel();
                 }
                 break;
         }

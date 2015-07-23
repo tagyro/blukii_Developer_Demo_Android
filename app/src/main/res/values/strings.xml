@@ -200,7 +200,10 @@
     <string name="blukii_disconnected">disconnected</string>
     <string name="blukii_connecting">connect &#8230;</string>
     <string name="blukii_disconnecting">disconnect &#8230;</string>
-    <string name="blukii_discover">discover &#8230;</string>
+    <string name="blukii_discover">"discover "</string>
+    <string name="blukii_discover_1">"."</string>
+    <string name="blukii_discover_2">".."</string>
+    <string name="blukii_discover_3">"..."</string>
     <string name="blukii_discoveryStopped">discovery stopped</string>
     <!--END BLUKII STATUS-->
 
