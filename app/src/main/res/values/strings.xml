@@ -305,7 +305,7 @@
     <string name="error_recSensorConfig">Please select one sensor at least</string>
     <string name="error_recMode">Please select one mode at least</string>
     <string name="error_recInterval">Interval between 100 and 3 600 000</string>
-    <string name="error_recDatasetLimit">Dataset Limit between 0 and 32767</string>
+    <string name="error_recDatasetLimit">"Dataset Limit between 0 and 32767"</string>
 
     <string name="error_magRange">Please select a magnetometer range</string>
     <string name="error_magMode">Please select a magnetometer mode</string>
@@ -345,7 +345,7 @@
     <!-- RANGES -->
 
     <string name="range_rec_interval">Interval between 100 and 3 600 000 [ms]</string>
-    <string name="range_rec_datasetLimit">Dataset Limit between 0 and 32767</string>
+    <string name="range_rec_datasetLimit">"Dataset Limit between 0 and "</string>
     <string name="range_rec_accelEventConfig">"High Time value between 0.0 and 10.08\nLow Time value between 0.0 and 10.08\nRange 2g: High/Low value between 0.1 and 65.534\nRange 4g: High/Low value between 0.1 and 131.068\nRange 8g: High/Low value between 0.1 and 262.136"</string>
 
     <string name="range_accel_switch_sense">@string/error_switchSense</string>

@@ -357,6 +357,7 @@
                     android:textSize="15sp" />
 
                 <TextView
+                    android:id="@+id/description_datasetLimit"
                     android:text="@string/range_rec_datasetLimit"
                     style="@style/BlukiiDescription"/>
 

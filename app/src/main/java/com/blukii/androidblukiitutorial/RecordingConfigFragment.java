@@ -44,6 +44,17 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
     private MagnetometerMode magnetometerMode = null;
     private AltimeterMode altimeterMode = null;
     private int numberOfEventSensors = 0;
+    private int selectedSensorsBits = 0;
+
+    //Code Length of Sensors
+    private int CL_ACCELEROMETER = 24;
+    private int CL_STEPCOUNTER = 32;
+    private int CL_MAGNETICFIELD = 48;
+    private int CL_TEMPERATURE = 16;
+    private int CL_LIGHT = 16;
+    private int CL_HUMIDITY = 8;
+    private int CL_BATTERY = 8;
+    private int CL_ALTIMETER = 32;
 
     private final BroadcastReceiver mGattUpdateReceiver = new BroadcastReceiver() {
         @Override
@@ -103,33 +114,42 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
                 case RecordingProfile.ACTION_READ_RECORDING_SENSORS:
                     if (status == BlukiiConstants.BLUKII_DEVICE_STATUS_OK) {
                         setCheckedOfSensors(false);
+                        selectedSensorsBits = 0;
                         RecordingSensor[] sensors = (RecordingSensor[]) intent.getSerializableExtra(RecordingProfile.EXTRA_RECORDING_VALUE);
                         if (sensors != null) {
                             for (RecordingSensor s : sensors) {
                                 switch (s) {
                                     case Accelerometer:
                                         getCheckBox(R.id.cb_recording_sensor_accelerometer).setChecked(true);
+                                        selectedSensorsBits += CL_ACCELEROMETER;
                                         break;
                                     case Altimeter:
                                         getCheckBox(R.id.cb_recording_sensor_altimeter).setChecked(true);
+                                        selectedSensorsBits += CL_ALTIMETER;
                                         break;
                                     case Battery:
                                         getCheckBox(R.id.cb_recording_sensor_battery).setChecked(true);
+                                        selectedSensorsBits += CL_BATTERY;
                                         break;
                                     case Humidity:
                                         getCheckBox(R.id.cb_recording_sensor_humidity).setChecked(true);
+                                        selectedSensorsBits += CL_HUMIDITY;
                                         break;
                                     case Light:
                                         getCheckBox(R.id.cb_recording_sensor_light).setChecked(true);
+                                        selectedSensorsBits += CL_LIGHT;
                                         break;
                                     case Magneticfield:
                                         getCheckBox(R.id.cb_recording_sensor_magnetometer).setChecked(true);
+                                        selectedSensorsBits += CL_MAGNETICFIELD;
                                         break;
                                     case StepCounter:
                                         getCheckBox(R.id.cb_recording_sensor_step_counter).setChecked(true);
+                                        selectedSensorsBits += CL_STEPCOUNTER;
                                         break;
                                     case Temperature:
                                         getCheckBox(R.id.cb_recording_sensor_temperature).setChecked(true);
+                                        selectedSensorsBits += CL_TEMPERATURE;
                                         break;
                                 }
                             }
@@ -187,6 +207,7 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
                                     if (getCheckBox(R.id.cb_recording_sensor_temperature).isChecked()) {
                                         getView().findViewById(R.id.rec_config_elem_tempEventConfig).setVisibility(View.GONE);
                                     }
+                                    getView().findViewById(R.id.rec_config_elem_dataLimit).setVisibility(View.VISIBLE);
                                     break;
                                 case Event:
                                     interval.setChecked(false);
@@ -248,10 +269,9 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
                                     if (getCheckBox(R.id.cb_recording_sensor_temperature).isChecked()) {
                                         getView().findViewById(R.id.rec_config_elem_tempEventConfig).setVisibility(View.VISIBLE);
                                     }
-
+                                    getView().findViewById(R.id.rec_config_elem_dataLimit).setVisibility(View.VISIBLE);
                                     break;
                             }
-                            getView().findViewById(R.id.rec_config_elem_dataLimit).setVisibility(View.VISIBLE);
                         } else {
                             interval.setChecked(false);
                             event.setChecked(false);
@@ -503,7 +523,7 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
         setElementsGone();
 
         getView().findViewById(R.id.step_detection_value_view).setVisibility(View.INVISIBLE);
-
+        setNewDatasetLimit();
     }
 
 
@@ -526,7 +546,6 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
         super.onStop();
         LocalBroadcastManager.getInstance(this.getActivity()).unregisterReceiver(mGattUpdateReceiver);
     }
-
 
     @Override
     public void onClick(View v) {
@@ -575,54 +594,92 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
                 if (getCheckBox(R.id.cb_recording_sensor_accelerometer).isChecked()) {
                     getCheckBox(R.id.cb_recording_sensor_step_counter).setEnabled(false);
                     numberOfEventSensors++;
+                    selectedSensorsBits += CL_ACCELEROMETER;
                 } else {
                     getCheckBox(R.id.cb_recording_sensor_step_counter).setEnabled(true);
                     numberOfEventSensors--;
+                    selectedSensorsBits -= CL_ACCELEROMETER;
                 }
+                setNewDatasetLimit();
                 break;
 
             case R.id.cb_recording_sensor_altimeter:
                 if (getCheckBox(R.id.cb_recording_sensor_altimeter).isChecked()) {
                     numberOfEventSensors++;
+                    selectedSensorsBits += CL_ALTIMETER;
                 } else {
                     getCheckBox(R.id.cb_recording_sensor_altimeter).setEnabled(true);
                     numberOfEventSensors--;
+                    selectedSensorsBits -= CL_ALTIMETER;
                 }
+                setNewDatasetLimit();
+                break;
+
+            case R.id.cb_recording_sensor_battery:
+                if (getCheckBox(R.id.cb_recording_sensor_battery).isChecked()) {
+                    selectedSensorsBits += CL_BATTERY;
+                } else {
+                    getCheckBox(R.id.cb_recording_sensor_battery).setEnabled(true);
+                    selectedSensorsBits -= CL_BATTERY;
+                }
+                setNewDatasetLimit();
+                break;
+
+            case R.id.cb_recording_sensor_humidity:
+                if (getCheckBox(R.id.cb_recording_sensor_humidity).isChecked()) {
+                    selectedSensorsBits += CL_HUMIDITY;
+                } else {
+                    getCheckBox(R.id.cb_recording_sensor_humidity).setEnabled(true);
+                    selectedSensorsBits -= CL_HUMIDITY;
+                }
+                setNewDatasetLimit();
                 break;
 
             case R.id.cb_recording_sensor_light:
                 if (getCheckBox(R.id.cb_recording_sensor_light).isChecked()) {
                     numberOfEventSensors++;
+                    selectedSensorsBits += CL_LIGHT;
                 } else {
                     getCheckBox(R.id.cb_recording_sensor_light).setEnabled(true);
                     numberOfEventSensors--;
+                    selectedSensorsBits -= CL_LIGHT;
                 }
+                setNewDatasetLimit();
                 break;
 
             case R.id.cb_recording_sensor_magnetometer:
                 if (getCheckBox(R.id.cb_recording_sensor_magnetometer).isChecked()) {
                     numberOfEventSensors++;
+                    selectedSensorsBits += CL_MAGNETICFIELD;
                 } else {
                     getCheckBox(R.id.cb_recording_sensor_magnetometer).setEnabled(true);
                     numberOfEventSensors--;
+                    selectedSensorsBits -= CL_MAGNETICFIELD;
                 }
+                setNewDatasetLimit();
                 break;
 
             case R.id.cb_recording_sensor_step_counter:
                 if (getCheckBox(R.id.cb_recording_sensor_step_counter).isChecked()) {
                     getCheckBox(R.id.cb_recording_sensor_accelerometer).setEnabled(false);
+                    selectedSensorsBits += CL_STEPCOUNTER;
                 } else {
                     getCheckBox(R.id.cb_recording_sensor_accelerometer).setEnabled(true);
+                    selectedSensorsBits -= CL_STEPCOUNTER;
                 }
+                setNewDatasetLimit();
                 break;
 
             case R.id.cb_recording_sensor_temperature:
                 if (getCheckBox(R.id.cb_recording_sensor_temperature).isChecked()) {
                     numberOfEventSensors++;
+                    selectedSensorsBits += CL_TEMPERATURE;
                 } else {
                     getCheckBox(R.id.cb_recording_sensor_temperature).setEnabled(true);
                     numberOfEventSensors--;
+                    selectedSensorsBits -= CL_TEMPERATURE;
                 }
+                setNewDatasetLimit();
                 break;
 
             case R.id.btn_recording_sensors_set:
@@ -1033,9 +1090,8 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
                 } else {
                     toast(getText(R.string.error_altiModeNotSet).toString());
                 }
-
-
                 break;
+
             // STEP DETECTION
             case R.id.btn_step_detection_read:
                 recProfile.readStepDetection();
@@ -1073,10 +1129,43 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
         } else {
             getCheckBox(R.id.cb_recording_mode_event).setEnabled(false);
         }
+
     }
 
 
+    private void setNewDatasetLimit() {
 
+        if (selectedSensorsBits != 0) {
+            int bitAsbyte = (int) (selectedSensorsBits / 8);
+            int newByte = 0;
+
+            switch (bitAsbyte % 4) {
+                case 0:
+                    if (bitAsbyte == 0) {
+                        newByte = bitAsbyte + 4;
+                    } else {
+                        newByte = bitAsbyte;
+                    }
+                    break;
+                case 1:
+                    newByte = bitAsbyte + 3;
+                    break;
+                case 2:
+                    newByte = bitAsbyte + 2;
+                    break;
+                case 3:
+                    newByte = bitAsbyte + 1;
+                    break;
+            }
+
+            int bit = newByte * 8;
+            int limit = (int) (32768 * 8) / bit;
+
+            ((TextView) getView().findViewById(R.id.description_datasetLimit)).setText(getText(R.string.range_rec_datasetLimit).toString() + limit);
+        } else {
+            ((TextView) getView().findViewById(R.id.description_datasetLimit)).setText(getText(R.string.range_rec_datasetLimit).toString() + 8192);
+        }
+    }
 
     private void setEnabledOfPasswordButtons(boolean enabled) {
         getView().findViewById(R.id.btn_recording_password).setEnabled(enabled);
