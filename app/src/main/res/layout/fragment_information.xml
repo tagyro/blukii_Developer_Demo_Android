@@ -45,8 +45,15 @@
             style="@style/BlukiiTextView"/>
 
         <TextView
-            android:id="@+id/lbl_author"
+            android:id="@+id/lbl_build"
             android:layout_below="@id/lbl_version"
+            android:text="@string/lbl_build"
+            android:gravity="center"
+            style="@style/BlukiiTextView"/>
+
+        <TextView
+            android:id="@+id/lbl_author"
+            android:layout_below="@id/lbl_build"
             android:text="@string/lbl_author"
             android:gravity="center"
             style="@style/BlukiiTextView"/>

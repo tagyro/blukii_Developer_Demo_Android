@@ -20,6 +20,8 @@ import com.blukii.android.blukiilibrary.BlukiiConstants;
 import com.blukii.android.blukiilibrary.DeviceInfoProfile;
 import com.blukii.android.blukiilibrary.Profile;
 
+import java.util.Date;
+
 public class InformationFragment extends Fragment {
 
     private final static String TAG = InformationFragment.class.getSimpleName();
@@ -164,10 +166,24 @@ public class InformationFragment extends Fragment {
 
     private void updateVersion() {
         //get version from gradle
-        String versionName = BuildConfig.VERSION_NAME;
+        String version = BuildConfig.VERSION_NAME;
+        //get versionCode from gradle
+        int buildVersion = BuildConfig.VERSION_CODE;
+
+        String versionName = version.split("-")[0];
+        String versionBuild = version.split("-")[1];
+
+
         //get label text
-        String lbl = getText(R.string.lbl_version).toString();
+        String lblVersion = getText(R.string.lbl_version).toString();
+        //get label text
+        String lblCode = getText(R.string.lbl_build).toString();
+
+
         //write both in credentials
-        ((TextView) getView().findViewById(R.id.lbl_version)).setText(lbl + versionName);
+        ((TextView) getView().findViewById(R.id.lbl_version)).setText(lblVersion + versionName);
+
+        //write both in credentials
+        ((TextView) getView().findViewById(R.id.lbl_build)).setText(lblCode + versionBuild);
     }
 }

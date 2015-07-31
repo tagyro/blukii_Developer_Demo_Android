@@ -359,6 +359,7 @@
     <!--CREDENTIALS-->
 
     <string name="lbl_version">"Version: "</string>
+    <string name="lbl_build">"Build: "</string>
     <string name="lbl_author">Author: Severin Fleig</string>
     <string name="lbl_design">Developed and designed in Black Forest</string>
     <string name="lbl_copyright">copyright © 2015 blukii. All rights reserved.</string>
