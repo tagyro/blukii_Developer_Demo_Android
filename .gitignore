@@ -38,3 +38,6 @@ v# Built application files
 build/intermediates/model_data.bin
 
 build/intermediates/dex-cache/cache.xml
+local.properties
+blukii_Developer_Demo_Android.iml
+*.iml
