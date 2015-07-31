@@ -92,7 +92,30 @@ public class InformationFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         updateVersion();
+        final TextView tv_build = (TextView) getView().findViewById(R.id.lbl_build);
+
+        tv_build.setVisibility(View.GONE);
+
+        //show build on click
+        getView().findViewById(R.id.lbl_version).setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                switch (v.getId()) {
+                    case R.id.lbl_version:
+                        if (tv_build.getVisibility() == View.GONE) {
+                            tv_build.setVisibility(View.VISIBLE);
+                        } else {
+                            tv_build.setVisibility(View.GONE);
+                        }
+                        break;
+                }
+                return true;
+            }
+        });
+
+
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
