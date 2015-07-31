@@ -57,6 +57,10 @@ public class BasicSensorsFragment extends Fragment implements View.OnClickListen
                 btnHumidity.setEnabled(true);
                 btnHumidity.setTag("activate");
                 btnHumidity.setText(R.string.btn_activateProfile);
+
+                if (humidityProfile != null) {
+                    humidityProfile.readEnabled();
+                }
             }
             // es gab einen Fehler beim Laden der Services
             else if (Blukii.ACTION_ERROR_LOADING_SERVICES.equals(action)) {
