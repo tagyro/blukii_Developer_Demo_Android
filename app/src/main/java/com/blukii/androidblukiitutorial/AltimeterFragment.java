@@ -38,7 +38,25 @@ public class AltimeterFragment extends AbstractFragment implements View.OnClickL
             AltimeterProfile altimeterProfile = (AltimeterProfile) MainActivity.getProfileById(getActivity(), AltimeterProfile.ID);
 
             final String action = intent.getAction();
-            int status = intent.getIntExtra(BlukiiConstants.EXTRA_STATUS, -1);
+            int status = intent.getIntExtra(BlukiiConstants.EXTRA_STATUS, 0);
+
+
+            // Check status
+            if (status != BlukiiConstants.BLUKII_DEVICE_STATUS_OK) {
+                Log.d(TAG, "onReceive(). Status is not ok, action=" + action);
+                return;
+            }
+
+            // Check profile
+            if (altimeterProfile == null) {
+                Log.d(TAG, "onReceive(). AccelerometerProfile is NULL");
+                updateBlukiiStatus(R.string.profile_inactive);
+                //enableAllAccelerometer(false);
+                return;
+            }
+
+
+
 
             switch (action) {
                 case Blukii.ACTION_DID_DISCONNECT_DEVICE:
@@ -61,6 +79,7 @@ public class AltimeterFragment extends AbstractFragment implements View.OnClickL
                 case AltimeterProfile.ACTION_SET_ALTIMETER_ENABLED:
                     if (status == BlukiiConstants.BLUKII_DEVICE_STATUS_OK) {
                         EnablerStatus enablerStatus = (EnablerStatus) intent.getSerializableExtra(Profile.EXTRA_ENABLER_STATUS);
+                        MainActivity.handleEnablerStatus(getActivity(), enablerStatus, "Altimeter");
                         if (enablerStatus == EnablerStatus.Activated) {
                             Button btn = (Button) getView().findViewById(R.id.btn_altimeter_activate);
                             btn.setTag("deactivate");

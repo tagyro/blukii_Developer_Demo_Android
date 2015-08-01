@@ -32,7 +32,7 @@ import java.util.ArrayList;
 public class MenuFragment extends AbstractFragment implements View.OnClickListener {
 
     public static final String PREF_SELECTED_BLUKII = "pref_key_selectedBlukii";
-    private final static String TAG = SelectBlukiiFragment.class.getSimpleName();
+    public final static String TAG = SelectBlukiiFragment.class.getSimpleName();
 
 
     private ListViewBlukiiAdapter adapter;

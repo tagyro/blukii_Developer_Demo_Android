@@ -46,9 +46,25 @@ public class AccelerometerFragment extends AbstractFragment implements View.OnCl
             AccelerometerProfile profile = getAccelerometerProfile();
 
             final String action = intent.getAction();
-            int status = intent.getIntExtra(BlukiiConstants.EXTRA_STATUS, -1);
+            int status = intent.getIntExtra(BlukiiConstants.EXTRA_STATUS, 0);
 
-            // die Verbindung zum Blukii wurde getrennt
+
+
+            // Check status
+            if (status != BlukiiConstants.BLUKII_DEVICE_STATUS_OK) {
+                Log.d(TAG, "onReceive(). Status is not ok, action=" + action);
+                return;
+            }
+
+            // Check profile
+            if (profile == null) {
+                Log.d(TAG, "onReceive(). AccelerometerProfile is NULL");
+                updateStatus(getText(R.string.profile_inactive).toString());
+                enableAllAccelerometer(false);
+                return;
+            }
+
+
             switch (action) {
 
                 case Blukii.ACTION_DID_DISCONNECT_DEVICE:
@@ -62,12 +78,10 @@ public class AccelerometerFragment extends AbstractFragment implements View.OnCl
                     b.setTag("activate");
                     b.setText(R.string.btn_activateProfile);
 
-                    ViewHelper.setEnabledOfAllControls(true, getView());
-
                     // update values
-                    if (profile != null) {
-                        profile.readEnabled();
-                    }
+                    //if (profile != null) {
+                    //    profile.readEnabled();
+                   // }
 
                     break;
                 case Blukii.ACTION_ERROR_LOADING_SERVICES:
@@ -79,6 +93,7 @@ public class AccelerometerFragment extends AbstractFragment implements View.OnCl
                 case AccelerometerProfile.ACTION_SET_ACCELEROMETER_ENABLED:
                     if (status == BlukiiConstants.BLUKII_DEVICE_STATUS_OK) {
                         EnablerStatus enablerStatus = (EnablerStatus) intent.getSerializableExtra(Profile.EXTRA_ENABLER_STATUS);
+                        MainActivity.handleEnablerStatus(getActivity(), enablerStatus, "Accelerometer");
                         if (enablerStatus == EnablerStatus.Activated) {
                             Log.d(TAG, "Accelerometer enabled");
                             Button btn = (Button) getView().findViewById(R.id.btn_accelerometer_activate);
@@ -96,7 +111,7 @@ public class AccelerometerFragment extends AbstractFragment implements View.OnCl
                             updateStatus(getText(R.string.profile_inactive).toString());
 
                             if (enablerStatus == null) {
-                                Log.e(TAG, String.format("Altimeter enabling error. enablerStatus=NULL"));
+                                Log.e(TAG, String.format("Accelerometer enabling error. enablerStatus=NULL"));
                             }
                         }
                     }
@@ -274,6 +289,7 @@ public class AccelerometerFragment extends AbstractFragment implements View.OnCl
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
+        enableAllAccelerometer(false);
     }
 
     @Override
@@ -558,5 +574,103 @@ public class AccelerometerFragment extends AbstractFragment implements View.OnCl
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
         // do nothing
+    }
+
+    private void enableAllAccelerometer(boolean enable) {
+        //Spinner
+        getView().findViewById(R.id.spin_accelerometer_range).setEnabled(enable);
+        getView().findViewById(R.id.btn_accelerometer_range_set).setEnabled(enable);
+        getView().findViewById(R.id.btn_accelerometer_range_read).setEnabled(enable);
+
+        //Button Read Raw Value
+        getView().findViewById(R.id.btn_acc_read_raw_x).setEnabled(enable);
+        getView().findViewById(R.id.btn_acc_read_raw_y).setEnabled(enable);
+        getView().findViewById(R.id.btn_acc_read_raw_z).setEnabled(enable);
+
+        //Button Notify Raw Value
+        getView().findViewById(R.id.btn_acc_notify_raw_x).setEnabled(enable);
+        getView().findViewById(R.id.btn_acc_notify_raw_y).setEnabled(enable);
+        getView().findViewById(R.id.btn_acc_notify_raw_z).setEnabled(enable);
+
+        //Filter
+        getView().findViewById(R.id.et_accelerometer_filter).setEnabled(enable);
+
+        getView().findViewById(R.id.btn_accelerometer_read_filter).setEnabled(enable);
+        getView().findViewById(R.id.btn_accelerometer_set_filter).setEnabled(enable);
+
+        //EventConfig
+        getView().findViewById(R.id.et_accelerometer_eventcfg_high).setEnabled(enable);
+        getView().findViewById(R.id.et_accelerometer_eventcfg_low).setEnabled(enable);
+        getView().findViewById(R.id.et_accelerometer_eventcfg_low_time).setEnabled(enable);
+        getView().findViewById(R.id.et_accelerometer_eventcfg_high_time).setEnabled(enable);
+
+        getView().findViewById(R.id.btn_accelerometer_eventcfg_read).setEnabled(enable);
+        getView().findViewById(R.id.btn_accelerometer_eventcfg_set).setEnabled(enable);
+
+        //Event Mode
+        getView().findViewById(R.id.btn_accelerometer_event_mode_ref).setEnabled(enable);
+        getView().findViewById(R.id.btn_accelerometer_event_mode_low).setEnabled(enable);
+        getView().findViewById(R.id.btn_accelerometer_event_mode_high).setEnabled(enable);
+
+        getView().findViewById(R.id.btn_accelerometer_event_mode_read).setEnabled(enable);
+        getView().findViewById(R.id.btn_accelerometer_event_mode_set).setEnabled(enable);
+
+        //Event State
+        getView().findViewById(R.id.btn_acc_read_event_state).setEnabled(enable);
+        getView().findViewById(R.id.btn_acc_notify_event_state).setEnabled(enable);
+
+        //Switch Sense
+        getView().findViewById(R.id.et_accelerometer_switch_sense).setEnabled(enable);
+
+        getView().findViewById(R.id.btn_accelerometer_read_switch_sense).setEnabled(enable);
+        getView().findViewById(R.id.btn_accelerometer_set_switch_sense).setEnabled(enable);
+
+        //Switch
+        getView().findViewById(R.id.btn_acc_read_switch).setEnabled(enable);
+        getView().findViewById(R.id.btn_acc_notify_switch).setEnabled(enable);
+
+    }
+
+
+    public void disableProfile() {
+
+        AccelerometerProfile ap = getAccelerometerProfile();
+        if (ap != null) {
+
+            //clear controls
+            //((Spinner) getView().findViewById(R.id.spin_accelerometer_range)).setSelection(0);
+            //((EditText) getView().findViewById(R.id.et_accelerometer_filter)).setText("");
+            //((EditText) getView().findViewById(R.id.et_accelerometer_eventcfg_high)).setText("");
+            //((EditText) getView().findViewById(R.id.et_accelerometer_eventcfg_high_time)).setText("");
+            //((EditText) getView().findViewById(R.id.et_accelerometer_eventcfg_low)).setText("");
+            //((EditText) getView().findViewById(R.id.et_accelerometer_eventcfg_low_time)).setText("");
+            //((EditText) getView().findViewById(R.id.et_accelerometer_switch_sense)).setText("");
+
+
+            //clear textviews
+            //((TextView) getView().findViewById(R.id.tv_acc_event_state)).setText("");
+            //((TextView) getView().findViewById(R.id.tv_acc_raw_x)).setText("");
+            //((TextView) getView().findViewById(R.id.tv_acc_raw_y)).setText("");
+            //((TextView) getView().findViewById(R.id.tv_acc_raw_z)).setText("");
+            //((TextView) getView().findViewById(R.id.tv_acc_switch)).setText("");
+
+
+
+            //disable notifications
+            //ap.notifyRawX(false);
+            //ap.notifyRawY(false);
+            //ap.notifyRawZ(false);
+            //ap.notifySwitch(false);
+            //ap.notifyEventState(false);
+
+            //clear controls
+            ViewHelper.clearAllControls(false, getView());
+
+            //disable profile
+            ap.setEnabled(false);
+
+            //enable profile activate button
+            getView().findViewById(R.id.btn_accelerometer_activate).setEnabled(true);
+        }
     }
 }

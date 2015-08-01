@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
@@ -29,13 +30,32 @@ import android.widget.Toast;
 
 import com.blukii.android.blukiilibrary.Blukii;
 import com.blukii.android.blukiilibrary.BlukiiManagerService;
+import com.blukii.android.blukiilibrary.EnablerStatus;
 import com.blukii.android.blukiilibrary.Profile;
+import com.blukii.android.blukiilibrary.TemperatureProfile;
 
-public class MainActivity extends Activity implements ActionBar.TabListener {
+public class MainActivity extends Activity {
     private static final String TAG = MainActivity.class.getSimpleName();
 
     private static final int REQUEST_ENABLE_BT = 1;
     private static final int PAGES_COUNT = 13;
+    private int lastSelectedPage = -99;
+
+    //Variables for Fragments
+    MenuFragment menuFragment;
+    AccelerometerFragment accelerometerFragment;
+    AltimeterFragment altimeterFragment;
+    BasicSensorsFragment basicSensorsFragment;
+    DeviceInfoFragment deviceInfoFragment;
+    DirectometerFragment directometerFragment;
+    InformationFragment informationFragment;
+    LightFragment lightFragment;
+    RecordingConfigFragment recordingConfigFragment;
+    RecordingDataParamsFragment recordingDataParamsFragment;
+    RecordingDataValuesFragment recordingDataValuesFragment;
+    SelectBlukiiFragment selectBlukiiFragment;
+    TemperatureFragment temperatureFragment;
+
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -112,6 +132,73 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.setOffscreenPageLimit(PAGES_COUNT);
 
+
+
+        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+
+                if ( lastSelectedPage >= 0 ) {
+                    switch (lastSelectedPage) {
+                        case 0:
+                            //Menu
+                            break;
+                        case 1:
+                            //select blukii
+                            break;
+                        case 2:
+                            //directometer
+                            break;
+                        case 3:
+                            //basic sensors
+                            break;
+                        case 4:
+                            //accelerometer
+                            //if (accelerometerFragment != null) {
+                            //    accelerometerFragment.disableProfile();
+                            //}
+                            break;
+                        case 5:
+                            //altimeter
+                            break;
+                        case 6:
+                            //light
+                            break;
+                        case 7:
+                            //device info
+                            break;
+                        case 8:
+                            //temperature
+                            break;
+                        case 9:
+                            //recording config
+                            break;
+                        case 10:
+                            //recording data params
+                            break;
+                        case 11:
+                            //recording data values
+                            break;
+                        case 12:
+                            //information
+                            break;
+                    }
+                }
+
+                Log.d("debug", ""+lastSelectedPage);
+
+                lastSelectedPage = position;
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {}
+
+            @Override
+            public void onPageScrolled(int position, float arg1, int arg2) {}
+        });
+
+
         // Initializes a Bluetooth adapter.  For API level 18 and above, valueOf a reference to
         // BluetoothAdapter through BluetoothManager.
         final BluetoothManager bluetoothManager =
@@ -178,21 +265,6 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-        // When the given tab is selected, switch to the corresponding page in
-        // the ViewPager.
-        mViewPager.setCurrentItem(tab.getPosition());
-    }
-
-    @Override
-    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-    }
-
-    @Override
-    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-    }
-
     public BlukiiManagerService getBlukiiManagerService() {
         return mService;
     }
@@ -248,6 +320,72 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
     public void selectInfoPage(View v) {
         mViewPager.setCurrentItem(12);
     }
+
+    //handler for all enabler stati
+    public static void handleEnablerStatus(Context context, EnablerStatus status, String profile) {
+        switch (status) {
+                case Deactivated:
+                    MainActivity.toast(context, profile + ": " + context.getText(R.string.enablerStatus_deactivated).toString());
+                    break;
+                case Activated:
+                    MainActivity.toast(context,  profile + ": " + context.getText(R.string.enablerStatus_activated).toString());
+                    break;
+                case CommunicationErrorAccelerometer:
+                    MainActivity.toast(context, profile + ": " + context.getText(R.string.enablerStatus_CommunicationErrorAccelerometer).toString());
+                    break;
+                case CommunicationErrorAirpressureSensor:
+                    MainActivity.toast(context, profile + ": " + context.getText(R.string.enablerStatus_CommunicationErrorAirpressureSensor).toString());
+                    break;
+                case CommunicationErrorHumiditySensor:
+                    MainActivity.toast(context, profile + ": " + context.getText(R.string.enablerStatus_CommunicationErrorHumiditySensor).toString());
+                    break;
+                case CommunicationErrorLightsensor:
+                    MainActivity.toast(context, profile + ": " + context.getText(R.string.enablerStatus_CommunicationErrorLightsensor).toString());
+                    break;
+                case CommunicationErrorMagneticfieldSensor:
+                    MainActivity.toast(context, profile + ": " + context.getText(R.string.enablerStatus_CommunicationErrorMagneticField).toString());
+                    break;
+                case CommunicationErrorTemperatureSensor:
+                    MainActivity.toast(context, profile + ": " + context.getText(R.string.enablerStatus_CommunicationErrorTemperatureSensor).toString());
+                    break;
+                case ProfileAlreadyFree:
+                    MainActivity.toast(context, profile + ": " + context.getText(R.string.enablerStatus_ProfileAlreadyFree).toString());
+                    break;
+                case BlockedByProfileRecording:
+                    MainActivity.toast(context, profile + ": " + context.getText(R.string.enablerStatus_BlockedByProfileRecording).toString());
+                    break;
+                case BlockedByProfileAccelerometer:
+                    MainActivity.toast(context, profile + ": " + context.getText(R.string.enablerStatus_BlockedByProfileAccelerometer).toString());
+                    break;
+                case BlockedByProfileTemperature:
+                    MainActivity.toast(context, profile + ": " + context.getText(R.string.enablerStatus_BlockedByProfileTemperature).toString());
+                    break;
+                case BlockedByProfileDirectometer:
+                    MainActivity.toast(context, profile + ": " + context.getText(R.string.enablerStatus_BlockedByProfileDirectometer).toString());
+                    break;
+                case BlockedByProfileHumidity:
+                    MainActivity.toast(context, profile + ": " + context.getText(R.string.enablerStatus_BlockedByProfileHumidity).toString());
+                    break;
+                case BlockedByProfileLight:
+                    MainActivity.toast(context, profile + ": " + context.getText(R.string.enablerStatus_BlockedByProfileLight).toString());
+                    break;
+                case MagneticFieldSensorNeedsCalibration:
+                    MainActivity.toast(context, profile + ": " + context.getText(R.string.enablerStatus_MagnetiFieldSensorNeedsCalibration).toString());
+                    break;
+                case EnablerGeneralError:
+                    MainActivity.toast(context, profile + ": " + context.getText(R.string.enablerStatus_GeneralError).toString());
+                    break;
+            default:
+                //MainActivity.toast(context, "EnablerStatus: " + status);
+                break;
+        }
+    }
+
+    private static void toast(Context context, String toast) {
+        Log.d(TAG, toast);
+        Toast.makeText( context, toast, Toast.LENGTH_LONG ).show();
+    }
+
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
@@ -262,31 +400,44 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return MenuFragment.newInstance();
+                    menuFragment = MenuFragment.newInstance();
+                    return menuFragment;
                 case 1:
-                    return SelectBlukiiFragment.newInstance();
+                    selectBlukiiFragment = SelectBlukiiFragment.newInstance();
+                    return selectBlukiiFragment;
                 case 2:
-                    return DirectometerFragment.newInstance();
+                    directometerFragment = DirectometerFragment.newInstance();
+                    return directometerFragment;
                 case 3:
-                    return BasicSensorsFragment.newInstance();
+                    basicSensorsFragment = BasicSensorsFragment.newInstance();
+                    return basicSensorsFragment;
                 case 4:
-                    return AccelerometerFragment.newInstance();
+                    accelerometerFragment = AccelerometerFragment.newInstance();
+                    return accelerometerFragment;
                 case 5:
-                    return AltimeterFragment.newInstance();
+                    altimeterFragment = AltimeterFragment.newInstance();
+                    return altimeterFragment;
                 case 6:
-                    return LightFragment.newInstance();
+                    lightFragment = LightFragment.newInstance();
+                    return lightFragment;
                 case 7:
-                    return DeviceInfoFragment.newInstance();
+                    deviceInfoFragment = DeviceInfoFragment.newInstance();
+                    return deviceInfoFragment;
                 case 8:
-                    return TemperatureFragment.newInstance();
+                    temperatureFragment = TemperatureFragment.newInstance();
+                    return temperatureFragment;
                 case 9:
-                    return RecordingConfigFragment.newInstance();
+                    recordingConfigFragment = RecordingConfigFragment.newInstance();
+                    return recordingConfigFragment;
                 case 10:
-                    return RecordingDataParamsFragment.newInstance();
+                    recordingDataParamsFragment = RecordingDataParamsFragment.newInstance();
+                    return recordingDataParamsFragment;
                 case 11:
-                    return RecordingDataValuesFragment.newInstance();
+                    recordingDataValuesFragment = RecordingDataValuesFragment.newInstance();
+                    return recordingDataValuesFragment;
                 case 12:
-                    return InformationFragment.newInstance();
+                    informationFragment = InformationFragment.newInstance();
+                    return informationFragment.newInstance();
             }
             return null;
         }

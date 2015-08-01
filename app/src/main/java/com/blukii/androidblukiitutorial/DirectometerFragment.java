@@ -92,6 +92,7 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
                 // ENABLER
                 case DirectometerProfile.ACTION_ENABLED_DIRECTOMETER_PROFILE:
                     EnablerStatus enablerStatus = (EnablerStatus) intent.getSerializableExtra(Profile.EXTRA_ENABLER_STATUS);
+                    MainActivity.handleEnablerStatus(getActivity(), enablerStatus, "Directometer");
                     if (enablerStatus == EnablerStatus.Activated) {
                         enableAll(true);
 

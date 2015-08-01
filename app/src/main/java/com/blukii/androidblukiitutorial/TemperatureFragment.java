@@ -71,6 +71,7 @@ public class TemperatureFragment extends AbstractFragment implements View.OnClic
                 // TEMPERATURE ENABLER
                 case TemperatureProfile.ACTION_ENABLED_TEMPERATURE_PROFILE:
                     EnablerStatus enablerStatus = (EnablerStatus) intent.getSerializableExtra(Profile.EXTRA_ENABLER_STATUS);
+                    MainActivity.handleEnablerStatus(getActivity(), enablerStatus, "Temperature");
                     if (enablerStatus == EnablerStatus.Activated) {
                         enableAll(true);
                         ((Button) getView().findViewById(R.id.btn_temp_enabler)).setTag("deactivate");

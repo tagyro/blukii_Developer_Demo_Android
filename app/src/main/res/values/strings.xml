@@ -318,6 +318,7 @@
     <string name="error_enterNumber">Please enter a number</string>
 
     <string name="error_stepDetThreshold">Threshold between 1 and 49</string>
+
     <!--END ERRORS-->
 
 
@@ -332,6 +333,28 @@
     <string name="lbl_status_readError">Reading error</string>
 
     <!--END STATUS LABELS-->
+
+    <!--ENABLER STATUS-->
+
+    <string name="enablerStatus_deactivated">"Profile successfully deactivated"</string>
+    <string name="enablerStatus_activated">"Profile successfully activated"</string>
+    <string name="enablerStatus_CommunicationErrorAccelerometer">"Communication Error whith the accelerometer sensor"</string>
+    <string name="enablerStatus_CommunicationErrorMagneticField">"Communication Error whith the magnetic field"</string>
+    <string name="enablerStatus_CommunicationErrorLightsensor">"Communication Error whith the light sensor"</string>
+    <string name="enablerStatus_CommunicationErrorHumiditySensor">"Communication Error whith the humidity sensor"</string>
+    <string name="enablerStatus_CommunicationErrorTemperatureSensor">"Communication Error whith the temperature sensor"</string>
+    <string name="enablerStatus_CommunicationErrorAirpressureSensor">"Communication Error whith the airpressure sensor"</string>
+    <string name="enablerStatus_ProfileAlreadyFree">"Profile is already freed"</string>
+    <string name="enablerStatus_BlockedByProfileRecording">"Profile couldn\'t be activated because some sensor is already used by the recording profile"</string>
+    <string name="enablerStatus_BlockedByProfileAccelerometer">"Profile couldn\'t be activated because some sensor is already used by the accelerometer profile"</string>
+    <string name="enablerStatus_BlockedByProfileTemperature">"Profile couldn\'t be activated because some sensor is already used by the temperature profile"</string>
+    <string name="enablerStatus_BlockedByProfileDirectometer">"Profile couldn\'t be activated because some sensor is already used by the directometer profile"</string>
+    <string name="enablerStatus_BlockedByProfileHumidity">"Profile couldn\'t be activated because some sensor is already used by the humidity profile"</string>
+    <string name="enablerStatus_BlockedByProfileLight">"Profile couldn\'t be activated because some sensor is already used by the light profile"</string>
+    <string name="enablerStatus_MagnetiFieldSensorNeedsCalibration">"The magnetic field sensor needs calibration"</string>
+    <string name="enablerStatus_GeneralError">"General enabler error"</string>
+
+    <!--END ENABLER STATUS-->
 
 
     <!-- DESCRIPTIONS -->

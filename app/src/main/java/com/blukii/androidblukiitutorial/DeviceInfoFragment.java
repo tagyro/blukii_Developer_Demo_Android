@@ -32,7 +32,7 @@ public class DeviceInfoFragment extends Fragment implements View.OnClickListener
             DeviceInfoProfile profile = (DeviceInfoProfile) MainActivity.getProfileById(getActivity(), DeviceInfoProfile.ID);
 
             final String action = intent.getAction();
-            int status = intent.getIntExtra(BlukiiConstants.EXTRA_STATUS, -1);
+            int status = intent.getIntExtra(BlukiiConstants.EXTRA_STATUS, 0);
 
             switch (action) {
                 case Blukii.ACTION_DID_DISCONNECT_DEVICE:

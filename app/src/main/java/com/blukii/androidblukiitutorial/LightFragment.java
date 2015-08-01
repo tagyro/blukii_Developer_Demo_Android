@@ -80,6 +80,7 @@ public class LightFragment extends AbstractFragment implements View.OnClickListe
                 case LightProfile.ACTION_READ_LIGHT_ENABLED:
                 case LightProfile.ACTION_SET_LIGHT_ENABLED:
                     EnablerStatus enablerStatus = (EnablerStatus) intent.getSerializableExtra(Profile.EXTRA_ENABLER_STATUS);
+                    MainActivity.handleEnablerStatus(getActivity(), enablerStatus, "Light");
                     if (enablerStatus == EnablerStatus.Activated) {
                         enableAll(true);
                         ((Button) getView().findViewById(R.id.btn_light_enabler)).setTag("deactivate");

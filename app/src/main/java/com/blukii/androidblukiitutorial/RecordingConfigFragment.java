@@ -90,6 +90,7 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
                 case RecordingProfile.ACTION_READ_RECORDING_ENABLED:
                     if (status == BlukiiConstants.BLUKII_DEVICE_STATUS_OK) {
                         enablerStatus = (EnablerStatus) intent.getSerializableExtra(Profile.EXTRA_ENABLER_STATUS);
+                        MainActivity.handleEnablerStatus(getActivity(), enablerStatus, "Recording");
                         btnEnabled.setEnabled(true);
                         switch (enablerStatus) {
                             case Activated:

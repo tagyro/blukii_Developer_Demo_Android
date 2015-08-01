@@ -35,112 +35,113 @@ public class BasicSensorsFragment extends Fragment implements View.OnClickListen
             BatteryProfile batteryProfile = (BatteryProfile) MainActivity.getProfileById(getActivity(), BatteryProfile.ID);
             HumidityProfile humidityProfile = (HumidityProfile) MainActivity.getProfileById(getActivity(), HumidityProfile.ID);
 
-            if (Blukii.ACTION_DID_DISCONNECT_DEVICE.equals(action)) {
-                // Benutzer informieren
-                //updateBlukiiStatus("Getrennt");
-                updateConnectionStatus(getText(R.string.blukii_disconnected).toString());
-
-                getView().findViewById(R.id.btn_battery_read).setEnabled(false);
-                getView().findViewById(R.id.btn_humidity_activate).setEnabled(false);
-                getView().findViewById(R.id.btn_humidity_update).setEnabled(false);
-
+            // Check status
+            if (status != BlukiiConstants.BLUKII_DEVICE_STATUS_OK) {
+                Log.d(TAG, "onReceive(). Status is not ok, action=" + action);
+                return;
             }
-            // Blukii ist bereit, also es wurde eine Verbindung hergestellt und die Services wurden geladen
-            else if (Blukii.ACTION_BLUKII_DEVICE_IS_READY.equals(action)) {
-                // Benutzer informieren
-                //updateBlukiiStatus("Verbunden");
-                updateConnectionStatus(getText(R.string.blukii_connected).toString());
 
-                getView().findViewById(R.id.btn_battery_read).setEnabled(true);
-
-                Button btnHumidity = (Button) getView().findViewById(R.id.btn_humidity_activate);
-                btnHumidity.setEnabled(true);
-                btnHumidity.setTag("activate");
-                btnHumidity.setText(R.string.btn_activateProfile);
-
-                if (humidityProfile != null) {
-                    humidityProfile.readEnabled();
-                }
+            // Check profile
+            if (humidityProfile == null) {
+                Log.d(TAG, "onReceive(). HumidityProfile is NULL");
+                updateHumidityProfileStatus(getText(R.string.profile_inactive).toString());
+                enableAllHumidity(false);
+                return;
             }
-            // es gab einen Fehler beim Laden der Services
-            else if (Blukii.ACTION_ERROR_LOADING_SERVICES.equals(action)) {
-                // Benutzer informieren
-                //updateBlukiiStatus("Getrennt");
-                updateConnectionStatus(getText(R.string.blukii_disconnected).toString());
-                getView().findViewById(R.id.btn_battery_read).setEnabled(false);
-                getView().findViewById(R.id.btn_humidity_activate).setEnabled(false);
-                getView().findViewById(R.id.btn_humidity_update).setEnabled(false);
 
-            }
-            /* **************
-            * Battery
-            * **************/
-            else if (BatteryProfile.ACTION_READ_BATTERY_LEVEL.equals(action)) {
-                Log.d(TAG, "onReceive() intent=" + action);
-                if (status == BlukiiConstants.BLUKII_DEVICE_STATUS_OK) {
-                    int level = intent.getIntExtra(BatteryProfile.EXTRA_BATTERY_VALUE, 0);
-                    updateBatteryStatus(level + "%");
-                    getView().findViewById(R.id.btn_battery_read).setEnabled(true);
-                } else {
-                    //updateBatteryStatus("Lesefehler");
-                    updateConnectionStatus(getText(R.string.lbl_status_readError).toString());
-                    getView().findViewById(R.id.btn_battery_read).setEnabled(true);
-                }
+            if (batteryProfile == null) {
+                Log.d(TAG, "onReceive(). BatteryProfile is NULL");
+                updateBatteryStatus(getText(R.string.profile_inactive).toString());
+                enableAllBattery(false);
+                return;
             }
 
 
-            /* **************
-             * Humidity
-             * **************/
-            else if (HumidityProfile.ACTION_SET_HUMIDITY_ENABLED.equals(action) || HumidityProfile.ACTION_READ_HUMIDITY_ENABLED.equals(action)) {
-                if (status == BlukiiConstants.BLUKII_DEVICE_STATUS_OK) {
-                    EnablerStatus enablerStatus = (EnablerStatus) intent.getSerializableExtra(Profile.EXTRA_ENABLER_STATUS);
+            switch (action) {
+                case Blukii.ACTION_DID_DISCONNECT_DEVICE:
 
-                    if (enablerStatus == EnablerStatus.Activated) {
-                        Log.d(TAG, "Humidity profile enabled");
-                        Button b = (Button) getView().findViewById(R.id.btn_humidity_activate);
-                        b.setText(getText(R.string.btn_deactivateProfile).toString());
-                        b.setTag("deactivate");
-                        b.setEnabled(true);
-                        getView().findViewById(R.id.btn_humidity_update).setEnabled(true);
-                        updateHumidityProfileStatus(getText(R.string.lbl_humiditySensorActivated).toString());
-                    } else if (enablerStatus == EnablerStatus.Deactivated) {
-                        Log.d(TAG, "Humidity profile disabled");
-                        Button b = (Button) getView().findViewById(R.id.btn_humidity_activate);
-                        b.setTag("activate");
-                        b.setText(getText(R.string.btn_activateProfile).toString());
-                        b.setEnabled(true);
-                        getView().findViewById(R.id.btn_humidity_update).setEnabled(false);
-                        updateHumidityProfileStatus(getText(R.string.lbl_humiditySensorDeactivated).toString());
+                    updateConnectionStatus(getText(R.string.blukii_disconnected).toString());
+                    enableAllHumidity(false);
+                    enableAllBattery(false);
+                    break;
+
+                case Blukii.ACTION_ERROR_LOADING_SERVICES:
+
+                    updateConnectionStatus(getText(R.string.blukii_disconnected).toString());
+                    enableAllHumidity(false);
+                    enableAllBattery(false);
+                    break;
+
+                case Blukii.ACTION_BLUKII_DEVICE_IS_READY:
+                    //updateStatus("Verbunden");
+                    updateConnectionStatus(getText(R.string.blukii_connected).toString());
+
+                    enableAllBattery(true);
+                    enableAllHumidity(true);
+
+                    ((Button) getView().findViewById(R.id.btn_humidity_update)).setEnabled(false);
+                    ((Button) getView().findViewById(R.id.btn_humidity_activate)).setTag("activate");
+                    ((Button) getView().findViewById(R.id.btn_humidity_activate)).setText(R.string.btn_activateProfile);
+
+                    //if (humidityProfile != null) {
+                    //    humidityProfile.readEnabled();
+                    //}
+
+                    break;
+                /* **************
+                * Battery
+                * **************/
+                case BatteryProfile.ACTION_READ_BATTERY_LEVEL:
+                    Log.d(TAG, "onReceive() intent=" + action);
+
+                    if (status == BlukiiConstants.BLUKII_DEVICE_STATUS_OK) {
+                        int level = intent.getIntExtra(BatteryProfile.EXTRA_BATTERY_VALUE, 0);
+                        updateBatteryStatus(level + "%");
+                        getView().findViewById(R.id.btn_battery_read).setEnabled(true);
                     } else {
-                        Log.e(TAG, String.format("Humidity profile enabling error. enablerStatus=%s", String.valueOf(enablerStatus)));
-                        Button b = (Button) getView().findViewById(R.id.btn_humidity_activate);
-                        b.setEnabled(true);
-                        b.setText(getText(R.string.btn_activateProfile).toString());
-                        b.setTag("activate");
-                        getView().findViewById(R.id.btn_humidity_update).setEnabled(false);
-                        updateHumidityProfileStatus(getText(R.string.lbl_error_activateProfile).toString());
+                        updateConnectionStatus(getText(R.string.lbl_status_readError).toString());
+                        getView().findViewById(R.id.btn_battery_read).setEnabled(true);
                     }
-                }
 
-                // es gab einen Fehler beim Aktivieren der Feuchtigkeit
-                else {
-                    Log.e(TAG, "Humidity profile enabling failed");
-                    Button b = (Button) getView().findViewById(R.id.btn_humidity_activate);
-                    b.setEnabled(true);
-                    b.setText(getText(R.string.btn_activateProfile).toString());
-                    b.setTag("activate");
-                    getView().findViewById(R.id.btn_humidity_update).setEnabled(false);
-                    updateHumidityProfileStatus(getText(R.string.lbl_error_activateProfile).toString());
-                }
-            } else if (HumidityProfile.ACTION_READ_HUMIDITY_VALUE.equals(action)) {
-                Log.d(TAG, "ACTION_READ_HUMIDITY_VALUE, status=" + status);
-                if (status == BlukiiConstants.BLUKII_DEVICE_STATUS_OK) {
-                    int value = intent.getIntExtra(HumidityProfile.EXTRA_HUMIDITY_VALUE, 0);
-                    updateHumidityProfileStatus(String.valueOf(value) + "%");
-                } else {
-                    updateHumidityProfileStatus(getText(R.string.lbl_status_readError).toString());
-                }
+                    break;
+                /* **************
+                * Humidity
+                * **************/
+                case HumidityProfile.ACTION_SET_HUMIDITY_ENABLED:
+                case HumidityProfile.ACTION_READ_HUMIDITY_ENABLED:
+                    if (status == BlukiiConstants.BLUKII_DEVICE_STATUS_OK) {
+                        EnablerStatus enablerStatus = (EnablerStatus) intent.getSerializableExtra(Profile.EXTRA_ENABLER_STATUS);
+                        MainActivity.handleEnablerStatus(getActivity(), enablerStatus, "Humidity");
+                        if (enablerStatus == EnablerStatus.Activated) {
+                            Log.d(TAG, "Humidity profile enabled");
+                            ((Button) getView().findViewById(R.id.btn_humidity_activate)).setText(getText(R.string.btn_deactivateProfile).toString());
+                            ((Button) getView().findViewById(R.id.btn_humidity_activate)).setTag("deactivate");
+                            enableAllHumidity(true);
+                            updateHumidityProfileStatus(getText(R.string.lbl_humiditySensorActivated).toString());
+                        } else if (enablerStatus == EnablerStatus.Deactivated) {
+                            Log.d(TAG, "Humidity profile disabled");
+                            //Button activate profile
+                            ((Button) getView().findViewById(R.id.btn_humidity_activate)).setText(getText(R.string.btn_activateProfile).toString());
+                            ((Button) getView().findViewById(R.id.btn_humidity_activate)).setTag("activate");
+                            ((Button) getView().findViewById(R.id.btn_humidity_activate)).setEnabled(true);
+
+                            //Button update Value
+                            getView().findViewById(R.id.btn_humidity_update).setEnabled(false);
+
+                            updateHumidityProfileStatus(getText(R.string.lbl_humiditySensorDeactivated).toString());
+                        }
+                    }
+                    break;
+                case HumidityProfile.ACTION_READ_HUMIDITY_VALUE:
+                    Log.d(TAG, "ACTION_READ_HUMIDITY_VALUE, status=" + status);
+                    if (status == BlukiiConstants.BLUKII_DEVICE_STATUS_OK) {
+                        int value = intent.getIntExtra(HumidityProfile.EXTRA_HUMIDITY_VALUE, 0);
+                        updateHumidityProfileStatus(String.valueOf(value) + "%");
+                    } else {
+                        updateHumidityProfileStatus(getText(R.string.lbl_status_readError).toString());
+                    }
+                    break;
+
             }
         }
     };
@@ -253,4 +254,21 @@ public class BasicSensorsFragment extends Fragment implements View.OnClickListen
     private void updateHumidityProfileStatus(String newStatus) {
         ((TextView) getView().findViewById(R.id.tv_humidity_status)).setText(getText(R.string.lbl_humiditySensor).toString() + newStatus);
     }
+
+    private void enableAllHumidity(boolean enable) {
+        getView().findViewById(R.id.btn_humidity_activate).setEnabled(enable);
+        getView().findViewById(R.id.btn_humidity_update).setEnabled(enable);
+    }
+
+    private void enableAllBattery(boolean enable) {
+        getView().findViewById(R.id.btn_battery_read).setEnabled(enable);
+    }
+
+    /*
+    public void disableHumidity() {
+
+        HumidityProfile humidityProfile = (HumidityProfile) MainActivity.getProfileById(getActivity(), HumidityProfile.ID);
+        humidityProfile.setEnabled(false);
+
+    }*/
 }

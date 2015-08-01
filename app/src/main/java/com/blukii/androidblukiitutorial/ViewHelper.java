@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 public class ViewHelper {
 
@@ -30,6 +31,23 @@ public class ViewHelper {
             v.setEnabled(enable);
         }
     }
+
+    public static void clearAllControls(boolean enable, View v) {
+        setEnabledOfAllControls(false, v);
+        if (v instanceof ViewGroup) {
+            ViewGroup vg = (ViewGroup) v;
+            for ( int i = 0; i < vg.getChildCount(); i++) {
+                clearAllControls(enable, vg.getChildAt(i));
+            }
+        } else if (v instanceof EditText) {
+            ((EditText) v).setText("");
+        } else if (v instanceof ToggleButton) {
+            ((ToggleButton) v).setChecked(enable);
+        } else if (v instanceof Spinner) {
+            ((Spinner) v).setSelection(0);
+        }
+    }
+
 
     public static void registerListener(View.OnClickListener l, View v) {
         if (v instanceof ViewGroup) {
