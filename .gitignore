@@ -43,3 +43,7 @@ blukii_Developer_Demo_Android.iml
 *.iml
 build/intermediates/model_data.bin
 build/intermediates/dex-cache/cache.xml
+build/intermediates/dex-cache/cache.xml
+local.properties
+blukii_Developer_Demo_Android.iml
+app/app.iml

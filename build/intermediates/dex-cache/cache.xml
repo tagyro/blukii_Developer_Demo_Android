@@ -2,53 +2,53 @@
 <items version="2" >
 
     <item
-        jar="C:\Program Files (x86)\Android\android-sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.0\support-annotations-21.0.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="1a578b9607b36266c63d43a4fa0ab5664dbe911e">
-        <dex dex="C:\Users\BlukiiDev\Documents\GitHub\blukii_android_demo\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.0-9528452d0a4563476596d64e06f21a3014c413f7.jar" />
-    </item>
-    <item
-        jar="C:\Users\BlukiiDev\Documents\GitHub\blukii_android_demo\app\build\intermediates\exploded-aar\blukiilibrary-release\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="1e1da707ec98d6dace0caf09096465bad5811425">
-        <dex dex="C:\Users\BlukiiDev\Documents\GitHub\blukii_android_demo\app\build\intermediates\pre-dexed\debug\classes-1f4f47aeee2360ffea4da7de1b31fb5f87523bc8.jar" />
-    </item>
-    <item
-        jar="C:\Users\BlukiiDev\Documents\GitHub\blukii_android_demo\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="686344a780033e4ba22b926cd225f8d4941247e6">
-        <dex dex="C:\Users\BlukiiDev\Documents\GitHub\blukii_android_demo\app\build\intermediates\pre-dexed\debug\classes-25735bf34950d08659af86ecca656cb15d61861b.jar" />
-    </item>
-    <item
-        jar="C:\Users\BlukiiDev\Documents\GitHub\blukii_android_demo\app\libs\blukiilibrary-release.aar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="db8f1d7812d216a8095c8081aa6b2886eb203b68">
-        <dex dex="C:\Users\BlukiiDev\Documents\GitHub\blukii_android_demo\app\build\intermediates\pre-dexed\debug\blukiilibrary-release-7e70f6a22c6b427fa9931165b7a4d059920f66b5.jar" />
-    </item>
-    <item
-        jar="C:\Users\BlukiiDev\Documents\GitHub\blukii_android_demo\app\build\intermediates\exploded-aar\com.android.support\support-v13\21.0.0\libs\internal_impl-21.0.0.jar"
+        jar="C:\Users\Roland\Documents\GitHub\blukii_Developer_Demo_Android\app\build\intermediates\exploded-aar\com.android.support\support-v13\21.0.0\libs\internal_impl-21.0.0.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="5a8e01742aee890c56fe638ea7c921b91a3fdc62">
-        <dex dex="C:\Users\BlukiiDev\Documents\GitHub\blukii_android_demo\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.0-f98eb6e6020c29237b7d747cff5e7fa124f0662d.jar" />
+        <dex dex="C:\Users\Roland\Documents\GitHub\blukii_Developer_Demo_Android\app\build\intermediates\pre-dexed\release\internal_impl-21.0.0-1fb063567ab3a9732bc4351eee6a5fceec2318c6.jar" />
     </item>
     <item
-        jar="C:\Users\BlukiiDev\Documents\GitHub\blukii_android_demo\app\build\intermediates\exploded-aar\com.android.support\support-v13\21.0.0\classes.jar"
+        jar="C:\Users\Roland\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.0\support-annotations-21.0.0.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="0c0c19759e5868604a3b4c2c0074ee9404d73c76">
-        <dex dex="C:\Users\BlukiiDev\Documents\GitHub\blukii_android_demo\app\build\intermediates\pre-dexed\debug\classes-5f99f4e600afb28c75b24655abe8263e5d80c9f2.jar" />
+        sha1="1a578b9607b36266c63d43a4fa0ab5664dbe911e">
+        <dex dex="C:\Users\Roland\Documents\GitHub\blukii_Developer_Demo_Android\app\build\intermediates\pre-dexed\release\support-annotations-21.0.0-59ed6e1da5f686a5949443ba88841f438452d11f.jar" />
     </item>
     <item
-        jar="C:\Users\BlukiiDev\Documents\GitHub\blukii_android_demo\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\libs\internal_impl-21.0.0.jar"
+        jar="C:\Users\Roland\Documents\GitHub\blukii_Developer_Demo_Android\app\libs\blukiilibrary-release.aar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="db8f1d7812d216a8095c8081aa6b2886eb203b68">
+        <dex dex="C:\Users\Roland\Documents\GitHub\blukii_Developer_Demo_Android\app\build\intermediates\pre-dexed\release\blukiilibrary-release-ce3e06e2c68b364578c19936c5ce84a8bc286701.jar" />
+    </item>
+    <item
+        jar="C:\Users\Roland\Documents\GitHub\blukii_Developer_Demo_Android\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="686344a780033e4ba22b926cd225f8d4941247e6">
+        <dex dex="C:\Users\Roland\Documents\GitHub\blukii_Developer_Demo_Android\app\build\intermediates\pre-dexed\release\classes-215eb1fce2924c761cf87001528a349558b0c9d2.jar" />
+    </item>
+    <item
+        jar="C:\Users\Roland\Documents\GitHub\blukii_Developer_Demo_Android\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\libs\internal_impl-21.0.0.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="1609e6d42d0480b0f4188e2c29f75388fa12a8f0">
-        <dex dex="C:\Users\BlukiiDev\Documents\GitHub\blukii_android_demo\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.0-82461badd2f72741b0e12e00e3638e5be8f410a8.jar" />
+        <dex dex="C:\Users\Roland\Documents\GitHub\blukii_Developer_Demo_Android\app\build\intermediates\pre-dexed\release\internal_impl-21.0.0-a67fdf591376e122e8f62f1c512d5d81249362dd.jar" />
+    </item>
+    <item
+        jar="C:\Users\Roland\Documents\GitHub\blukii_Developer_Demo_Android\app\build\intermediates\exploded-aar\blukiilibrary-release\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1e1da707ec98d6dace0caf09096465bad5811425">
+        <dex dex="C:\Users\Roland\Documents\GitHub\blukii_Developer_Demo_Android\app\build\intermediates\pre-dexed\release\classes-20975e0f1c7dcc7d0ceff02cf99b15e26acd2c92.jar" />
+    </item>
+    <item
+        jar="C:\Users\Roland\Documents\GitHub\blukii_Developer_Demo_Android\app\build\intermediates\exploded-aar\com.android.support\support-v13\21.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0c0c19759e5868604a3b4c2c0074ee9404d73c76">
+        <dex dex="C:\Users\Roland\Documents\GitHub\blukii_Developer_Demo_Android\app\build\intermediates\pre-dexed\release\classes-e245585215ffdd71a4903f6643ea38981747b4ba.jar" />
     </item>
 
 </items>
