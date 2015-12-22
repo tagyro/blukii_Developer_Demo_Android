@@ -84,8 +84,8 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
 
 
                     //calibration
-                    getView().findViewById(R.id.btn_service_read_magnetometer_calibration).setEnabled(true);
-                    getView().findViewById(R.id.btn_service_notify_magnetometer_calibration).setEnabled(true);
+                   /* getView().findViewById(R.id.btn_service_read_magnetometer_calibration).setEnabled(true);
+                    getView().findViewById(R.id.btn_service_notify_magnetometer_calibration).setEnabled(true);*/
 
                     break;
 
@@ -96,8 +96,8 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
                     if (enablerStatus == EnablerStatus.Activated) {
                         enableAll(true);
 
-                        ((ImageButton) getView().findViewById(R.id.btn_service_read_magnetometer_calibration)).setEnabled(false);
-                        ((Button) getView().findViewById(R.id.btn_service_notify_magnetometer_calibration)).setEnabled(false);
+                        /*((ImageButton) getView().findViewById(R.id.btn_service_read_magnetometer_calibration)).setEnabled(false);
+                        ((Button) getView().findViewById(R.id.btn_service_notify_magnetometer_calibration)).setEnabled(false);*/
 
                         ((Button) getView().findViewById(R.id.btn_dir_enabler)).setTag("deactivate");
                         ((Button) getView().findViewById(R.id.btn_dir_enabler)).setText(getText(R.string.btn_deactivateProfile).toString());
@@ -106,8 +106,8 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
                     } else if (enablerStatus == EnablerStatus.Deactivated || enablerStatus == null) {
                         enableAll(false);
 
-                        ((ImageButton) getView().findViewById(R.id.btn_service_read_magnetometer_calibration)).setEnabled(true);
-                        ((Button) getView().findViewById(R.id.btn_service_notify_magnetometer_calibration)).setEnabled(true);
+                       /* ((ImageButton) getView().findViewById(R.id.btn_service_read_magnetometer_calibration)).setEnabled(true);
+                        ((Button) getView().findViewById(R.id.btn_service_notify_magnetometer_calibration)).setEnabled(true);*/
 
                         ((Button) getView().findViewById(R.id.btn_dir_enabler)).setTag("activate");
                         ((Button) getView().findViewById(R.id.btn_dir_enabler)).setText(getText(R.string.btn_activateProfile).toString());
@@ -117,7 +117,7 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
                     break;
 
                 // X VALUE
-                case DirectometerProfile.ACTION_READ_DIRECTOMETER_X_VALUE:
+               /* case DirectometerProfile.ACTION_READ_DIRECTOMETER_X_VALUE:
                     double x = intent.getDoubleExtra(DirectometerProfile.EXTRA_DIRECTOMETER_DATA_MF_VALUE, -1.0);
                     updateX("" + x);
                     break;
@@ -180,7 +180,7 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
                         ((Button) getView().findViewById(R.id.btn_dir_z_value_read)).setEnabled(true);
                         updateZ("notify deactivated");
                     }
-                    break;
+                    break;*/
 
                 // X RAW VALUE
                 case DirectometerProfile.ACTION_READ_DIRECTOMETER_X_RAW_VALUE:
@@ -303,7 +303,7 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
                     updateHeading("" + heading + " °");
                     break;
 
-                case DirectometerProfile.ACTION_SET_NOTIFY_DIRECTOMETER_HEADING:
+               /* case DirectometerProfile.ACTION_SET_NOTIFY_DIRECTOMETER_HEADING:
                     if (intent.getBooleanExtra(Profile.EXTRA_NOTIFICATIONS_ENABLED, false)) {
                         ((Button) getView().findViewById(R.id.btn_dir_heading_notify)).setTag("deactivate");
                         ((Button) getView().findViewById(R.id.btn_dir_heading_notify)).setText("Disable Notify");
@@ -317,7 +317,7 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
                         ((Button) getView().findViewById(R.id.btn_dir_heading_read)).setEnabled(true);
                         updateHeading("notify deactivated");
                     }
-                    break;
+                    break;*/
 
                 // MAGNETOMETER CALIBRATION
                 case ServiceProfile.ACTION_SET_NOTIFY_SERVICE_MAGNETOMETER_CALIBRATION:
@@ -360,24 +360,24 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        // calibration
-        getView().findViewById(R.id.btn_service_read_magnetometer_calibration).setOnClickListener(this);
-        getView().findViewById(R.id.btn_service_notify_magnetometer_calibration).setOnClickListener(this);
+        //// calibration
+        //getView().findViewById(R.id.btn_service_read_magnetometer_calibration).setOnClickListener(this);
+        //getView().findViewById(R.id.btn_service_notify_magnetometer_calibration).setOnClickListener(this);
 
         // enabler
         getView().findViewById(R.id.btn_dir_enabler).setOnClickListener(this);
 
-        // x
-        getView().findViewById(R.id.btn_dir_x_value_read).setOnClickListener(this);
-        getView().findViewById(R.id.btn_dir_x_value_notify).setOnClickListener(this);
-
-        // y
-        getView().findViewById(R.id.btn_dir_y_value_read).setOnClickListener(this);
-        getView().findViewById(R.id.btn_dir_y_value_notify).setOnClickListener(this);
-
-        // z
-        getView().findViewById(R.id.btn_dir_z_value_read).setOnClickListener(this);
-        getView().findViewById(R.id.btn_dir_z_value_notify).setOnClickListener(this);
+//        // x
+//        getView().findViewById(R.id.btn_dir_x_value_read).setOnClickListener(this);
+//        getView().findViewById(R.id.btn_dir_x_value_notify).setOnClickListener(this);
+//
+//        // y
+//        getView().findViewById(R.id.btn_dir_y_value_read).setOnClickListener(this);
+//        getView().findViewById(R.id.btn_dir_y_value_notify).setOnClickListener(this);
+//
+//        // z
+//        getView().findViewById(R.id.btn_dir_z_value_read).setOnClickListener(this);
+//        getView().findViewById(R.id.btn_dir_z_value_notify).setOnClickListener(this);
 
         // x raw
         getView().findViewById(R.id.btn_dir_x_raw_value_read).setOnClickListener(this);
@@ -397,9 +397,9 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
         getView().findViewById(R.id.btn_dir_pos_mon_pos2).setOnClickListener(this);
         getView().findViewById(R.id.btn_dir_pos_mon_notify).setOnClickListener(this);
 
-        // heading
-        getView().findViewById(R.id.btn_dir_heading_read).setOnClickListener(this);
-        getView().findViewById(R.id.btn_dir_heading_notify).setOnClickListener(this);
+//        // heading
+//        getView().findViewById(R.id.btn_dir_heading_read).setOnClickListener(this);
+//        getView().findViewById(R.id.btn_dir_heading_notify).setOnClickListener(this);
     }
 
     @Override
@@ -427,19 +427,23 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
     @Override
     public void onClick(View v) {
         DirectometerProfile directometerProfile = (DirectometerProfile) MainActivity.getProfileById(getActivity(), DirectometerProfile.ID);
-        ServiceProfile serviceProfile = getServiceProfile();
-        if (serviceProfile == null) return;
         if (directometerProfile == null) return;
 
+        /*ServiceProfile serviceProfile = getServiceProfile();
+        if (serviceProfile == null) return;*/
+
+
+
+
         switch (v.getId()) {
-            // MAGNETOMETER CALIBRATION
+           /* // MAGNETOMETER CALIBRATION
             case R.id.btn_service_read_magnetometer_calibration:
                 serviceProfile.readMagnetometerCalibration();
                 break;
 
             case R.id.btn_service_notify_magnetometer_calibration:
                 serviceProfile.notifyMagnetometerCalibration(((ToggleButton) v).isChecked());
-                break;
+                break;*/
 
             // ENABLER
             case R.id.btn_dir_enabler:
@@ -455,7 +459,7 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
                 break;
 
             // X
-            case R.id.btn_dir_x_value_read:
+           /* case R.id.btn_dir_x_value_read:
                 directometerProfile.readXValue();
                 break;
             case R.id.btn_dir_x_value_notify:
@@ -468,10 +472,10 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
                     v.setEnabled(false);
                     updateX("deactivating...");
                 }
-                break;
+                break;*/
 
             // Y
-            case R.id.btn_dir_y_value_read:
+           /* case R.id.btn_dir_y_value_read:
                 directometerProfile.readYValue();
                 break;
 
@@ -485,10 +489,10 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
                     v.setEnabled(false);
                     updateY("deactivating...");
                 }
-                break;
+                break;*/
 
             // Z
-            case R.id.btn_dir_z_value_read:
+           /* case R.id.btn_dir_z_value_read:
                 directometerProfile.readZValue();
                 break;
 
@@ -502,7 +506,7 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
                     v.setEnabled(false);
                     updateZ("deactivating...");
                 }
-                break;
+                break;*/
 
             // X raw
             case R.id.btn_dir_x_raw_value_read:
@@ -587,7 +591,7 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
                 break;
 
             // HEADING
-            case R.id.btn_dir_heading_read:
+           /* case R.id.btn_dir_heading_read:
                 directometerProfile.readHeading();
                 break;
 
@@ -601,7 +605,7 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
                     v.setEnabled(false);
                     updateHeading("deactivating...");
                 }
-                break;
+                break;*/
 
             default:
                 break;
@@ -611,22 +615,22 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
     private void enableAll(boolean enable) {
 
         //calibration
-        getView().findViewById(R.id.btn_service_read_magnetometer_calibration).setEnabled(enable);
-        getView().findViewById(R.id.btn_service_notify_magnetometer_calibration).setEnabled(enable);
+       /* getView().findViewById(R.id.btn_service_read_magnetometer_calibration).setEnabled(enable);
+        getView().findViewById(R.id.btn_service_notify_magnetometer_calibration).setEnabled(enable);*/
 
         getView().findViewById(R.id.btn_dir_enabler).setEnabled(enable);
 
         // x
-        getView().findViewById(R.id.btn_dir_x_value_read).setEnabled(enable);
+      /*  getView().findViewById(R.id.btn_dir_x_value_read).setEnabled(enable);
         getView().findViewById(R.id.btn_dir_x_value_notify).setEnabled(enable);
-
+*/
         // y
-        getView().findViewById(R.id.btn_dir_y_value_read).setEnabled(enable);
-        getView().findViewById(R.id.btn_dir_y_value_notify).setEnabled(enable);
+        /*getView().findViewById(R.id.btn_dir_y_value_read).setEnabled(enable);
+        getView().findViewById(R.id.btn_dir_y_value_notify).setEnabled(enable);*/
 
         // z
-        getView().findViewById(R.id.btn_dir_z_value_read).setEnabled(enable);
-        getView().findViewById(R.id.btn_dir_z_value_notify).setEnabled(enable);
+        /*getView().findViewById(R.id.btn_dir_z_value_read).setEnabled(enable);
+        getView().findViewById(R.id.btn_dir_z_value_notify).setEnabled(enable);*/
 
         // x raw
         getView().findViewById(R.id.btn_dir_x_raw_value_read).setEnabled(enable);
@@ -647,8 +651,8 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
         getView().findViewById(R.id.btn_dir_pos_mon_notify).setEnabled(enable);
 
         // heading
-        getView().findViewById(R.id.btn_dir_heading_read).setEnabled(enable);
-        getView().findViewById(R.id.btn_dir_heading_notify).setEnabled(enable);
+        /*getView().findViewById(R.id.btn_dir_heading_read).setEnabled(enable);
+        getView().findViewById(R.id.btn_dir_heading_notify).setEnabled(enable);*/
     }
 
     private void updateStatus(String newStatus) {
@@ -661,15 +665,15 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
     }
 
     private void updateX(String newStatus) {
-        ((TextView) getView().findViewById(R.id.tv_dir_x)).setText("X: " + newStatus);
+       /* ((TextView) getView().findViewById(R.id.tv_dir_x)).setText("X: " + newStatus);*/
     }
 
     private void updateY(String newStatus) {
-        ((TextView) getView().findViewById(R.id.tv_dir_y)).setText("Y: " + newStatus);
+        /*((TextView) getView().findViewById(R.id.tv_dir_y)).setText("Y: " + newStatus);*/
     }
 
     private void updateZ(String newStatus) {
-        ((TextView) getView().findViewById(R.id.tv_dir_z)).setText("Z: " + newStatus);
+       /* ((TextView) getView().findViewById(R.id.tv_dir_z)).setText("Z: " + newStatus);*/
     }
 
     private void updateXRaw(String newStatus) {
@@ -689,7 +693,7 @@ public class DirectometerFragment extends Fragment implements View.OnClickListen
     }
 
     private void updateHeading(String newStatus) {
-        ((TextView) getView().findViewById(R.id.tv_dir_heading)).setText("Heading: " + newStatus);
+        /*((TextView) getView().findViewById(R.id.tv_dir_heading)).setText("Heading: " + newStatus);*/
     }
 
     private ServiceProfile getServiceProfile() {

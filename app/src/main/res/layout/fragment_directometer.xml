@@ -18,7 +18,7 @@
 
             <include layout="@layout/separator" />
 
-            <!--Magnetometer Calibration-->
+         <!--   &lt;!&ndash;Magnetometer Calibration&ndash;&gt;
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -73,9 +73,9 @@
                 android:textColor="@color/blukii_orange"
                 android:singleLine="false"
                 android:elegantTextHeight="false"
-                android:gravity="center" />
+                android:gravity="center" />-->
 
-            <include layout="@layout/separator" />
+            <!--<include layout="@layout/separator" />-->
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -122,7 +122,7 @@
 
             <include layout="@layout/separator" />
 
-            <!--MF values-->
+          <!--  &lt;!&ndash;MF values&ndash;&gt;
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -136,7 +136,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <!--X value-->
+                &lt;!&ndash;X value&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -172,7 +172,7 @@
                         android:text="Enable Notify" />
                 </LinearLayout>
 
-                <!--Y raw value-->
+                &lt;!&ndash;Y value&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -208,7 +208,7 @@
                         android:text="Enable Notify" />
                 </LinearLayout>
 
-                <!--Z value-->
+                &lt;!&ndash;Z value&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -245,9 +245,9 @@
                 </LinearLayout>
 
             </LinearLayout>
-            <!--End MF value-->
+            &lt;!&ndash;End MF value&ndash;&gt;
 
-            <include layout="@layout/separator" />
+            <include layout="@layout/separator" />-->
 
             <!--MF raw values-->
             <TextView
@@ -439,9 +439,9 @@
             </LinearLayout>
             <!--End Position Monitoring-->
 
-            <include layout="@layout/separator" />
+        <!--    <include layout="@layout/separator" />
 
-            <!--Heading-->
+            &lt;!&ndash;Heading&ndash;&gt;
             <TextView
                 android:id="@+id/tv_dir_heading"
                 android:layout_width="match_parent"
@@ -475,7 +475,7 @@
                     android:enabled="false"
                     android:tag="activate"
                     android:text="Enable Notify" />
-            </LinearLayout>
+            </LinearLayout>-->
             <!--End Heading-->
 
         </LinearLayout>

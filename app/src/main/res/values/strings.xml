@@ -2,9 +2,9 @@
 <resources>
 
     <!--GENERALS-->
-    <string name="app_name">Smart Sensor Demo</string>
+    <string name="app_name">Sensor Demo</string>
 
-    <string name="description_header">"blukii - Wearables, Beacons, Sensors and Tags"</string>
+    <string name="description_header">"blukii - Wearables, Beacons, Sensors, Keys and Tags"</string>
     <!--END GENERALS-->
 
     <string name="btn_settings">Settings</string>
@@ -385,7 +385,7 @@
     <string name="lbl_build">"Build: "</string>
     <string name="lbl_author">Author: Severin Fleig</string>
     <string name="lbl_design">Developed and designed in Black Forest</string>
-    <string name="lbl_copyright">copyright © 2015 blukii. All rights reserved.</string>
+    <string name="lbl_copyright">copyright © 2016 blukii. All rights reserved.</string>
 
     <!--END CREDENTIALS-->
 </resources>
