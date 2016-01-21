@@ -193,8 +193,11 @@ public class InformationFragment extends Fragment {
         //get versionCode from gradle
         int buildVersion = BuildConfig.VERSION_CODE;
 
-        String versionName = version.split("-")[0];
-        String versionBuild = version.split("-")[1];
+        /*String versionName = version.split("-")[0];
+        String versionBuild = version.split("-")[1];*/
+
+        String versionName = version;
+        String versionBuild = "";
 
 
         //get label text

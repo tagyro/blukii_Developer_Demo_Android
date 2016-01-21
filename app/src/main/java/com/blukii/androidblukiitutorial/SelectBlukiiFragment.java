@@ -247,18 +247,6 @@ public class SelectBlukiiFragment extends ListFragment implements View.OnClickLi
 
             // Benutzer hat den Verbinden-Button gedrückt
             case R.id.btn_blukii_connect:
-                // Discovery stoppen
-                mService.stopDiscovery();
-                countdown.cancel();
-
-                Button b = ((Button) getView().findViewById(R.id.btn_blukii_discover));
-                b.setText(R.string.btn_startDiscover);
-                b.setTag("start");
-
-                getView().findViewById(R.id.btn_blukii_disconnect).setEnabled(true);
-                getView().findViewById(R.id.btn_blukii_connect).setEnabled(false);
-                getView().findViewById(R.id.btn_blukii_discover).setEnabled(false);
-
                 SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
                 String selectedDevice = sp.getString(SelectBlukiiFragment.PREF_SELECTED_BLUKII, "");
 
@@ -266,8 +254,30 @@ public class SelectBlukiiFragment extends ListFragment implements View.OnClickLi
                 if (selectedDevice != null) {
                     // zu Blukii verbinden
                     Blukii blukii = mService.getBlukiiByAddress(selectedDevice);
-                    blukii.connect();
-                    updateConnectionStatus(getText(R.string.blukii_connecting).toString());
+
+                    if (blukii!= null) {
+
+                        // Discovery stoppen
+                        mService.stopDiscovery();
+                        countdown.cancel();
+
+                        Button b = ((Button) getView().findViewById(R.id.btn_blukii_discover));
+                        b.setText(R.string.btn_startDiscover);
+                        b.setTag("start");
+
+                        getView().findViewById(R.id.btn_blukii_disconnect).setEnabled(true);
+                        getView().findViewById(R.id.btn_blukii_connect).setEnabled(false);
+                        getView().findViewById(R.id.btn_blukii_discover).setEnabled(false);
+
+
+
+
+
+
+
+                        blukii.connect();
+                        updateConnectionStatus(getText(R.string.blukii_connecting).toString());
+                    }
                 }
 
                 break;
