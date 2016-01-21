@@ -54,11 +54,22 @@ public class SelectBlukiiFragment extends ListFragment implements View.OnClickLi
                 Log.d(TAG, "received device discovered: " + device.getAddress());
 
                 // device dem Adapter hinzufügen
+                String name = device.getName();
+
+                if (name!= null)
+                {
+                    if (!name.contains("blukii S"))
+                        return;
+                }
+                else
+                    return;;
+
+
                 adapter.addBlukii(device.getAddress());
                 // adpater mitteilen, dass es eine Änderung gab
                 adapter.notifyDataSetChanged();
 
-                // wurde die App früher schon mal verwendet uns es damals wurde ein device gewählt?
+                // wurde die App früher schon mal verwendet uns damals wurde ein device gewählt?
                 SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
                 String previousDevice = sp.getString(SelectBlukiiFragment.PREF_SELECTED_BLUKII, "");
 

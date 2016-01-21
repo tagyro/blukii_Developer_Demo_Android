@@ -9,8 +9,9 @@ android {
         applicationId "com.blukii.smartsensordemo"
         minSdkVersion 21
         targetSdkVersion 21
-        versionCode 2
-        versionName "1.0-" + getDate()
+        versionCode 3
+        versionName "1.0.3"
+        //versionName "1.0-" + getDate()
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7

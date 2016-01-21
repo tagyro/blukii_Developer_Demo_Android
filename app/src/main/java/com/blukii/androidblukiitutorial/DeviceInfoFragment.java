@@ -209,6 +209,11 @@ public class DeviceInfoFragment extends Fragment implements View.OnClickListener
         int n;
 
         String[] parts = hardware.split("-");
+
+        if (parts.length < 3)
+            return "";
+
+
         sensorsHex = parts[2];
         byteArray = hexStringToByteArray(sensorsHex);
         n = byteArray[0];
