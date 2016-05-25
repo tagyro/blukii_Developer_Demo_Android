@@ -4,8 +4,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +34,7 @@ import com.blukii.android.blukiilibrary.RecordingProfile;
 import com.blukii.android.blukiilibrary.RecordingSensor;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class RecordingConfigFragment extends AbstractFragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
@@ -55,6 +59,8 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
     private int CL_HUMIDITY = 1;
     private int CL_BATTERY = 1;
     private int CL_ALTIMETER = 4;
+
+    public static final String PREF_BLUKII_PARAMS_DEVICE_STARTTIME = "pref_key_blukii_params_device_starttime";
 
     private final BroadcastReceiver mGattUpdateReceiver = new BroadcastReceiver() {
         @Override
@@ -94,7 +100,11 @@ public class RecordingConfigFragment extends AbstractFragment implements View.On
                         btnEnabled.setEnabled(true);
                         switch (enablerStatus) {
                             case Activated:
+                                long starttime = new Date().getTime();
                                 btnEnabled.setChecked(true);
+                                SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
+                                sp.edit().putLong(PREF_BLUKII_PARAMS_DEVICE_STARTTIME, starttime).commit();
+                                Log.d(TAG, "Device recording starttime:" + starttime);
                                 break;
                             case Deactivated:
                                 btnEnabled.setChecked(false);

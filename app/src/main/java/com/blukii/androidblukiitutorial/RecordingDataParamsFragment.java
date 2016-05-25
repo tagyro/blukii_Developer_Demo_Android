@@ -4,7 +4,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,6 +27,9 @@ import com.blukii.android.blukiilibrary.RecordingReadAction;
 public class RecordingDataParamsFragment extends AbstractFragment implements View.OnClickListener {
 
     private final static String TAG = "REC";
+
+    public static final String PREF_BLUKII_PARAMS_RECORDED_VALUES  = "pref_key_params_recorded_values";
+    public static final String PREF_BLUKII_PARAMS_INTERVAL         = "pref_key_params_interval";
 
     private final BroadcastReceiver mGattUpdateReceiver = new BroadcastReceiver() {
         @Override
@@ -53,20 +58,30 @@ public class RecordingDataParamsFragment extends AbstractFragment implements Vie
                     if (status == BlukiiConstants.BLUKII_DEVICE_STATUS_OK) {
                         int rec = intent.getIntExtra(RecordingProfile.EXTRA_RECORDING_VALUE, 0);
                         int max = intent.getIntExtra(RecordingProfile.EXTRA_RECORDING_MAX, 0);
+
+                        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
+                        sp.edit().putInt(PREF_BLUKII_PARAMS_RECORDED_VALUES, rec).commit();
+
                         getTextView(R.id.tv_recording_data_state_recorded).setText(String.valueOf(rec));
                         getTextView(R.id.tv_recording_data_state_maximum).setText(String.valueOf(max));
                     }
                     break;
                 case RecordingProfile.ACTION_READ_RECORDING_DATA:
-                    RecordingParams params = (RecordingParams) intent.getSerializableExtra(RecordingProfile.EXTRA_RECORDING_PARAMS);
-                    ListView listView = (ListView)getView().findViewById(android.R.id.list);
-                    ArrayAdapter<String> adapter = (ArrayAdapter<String>)((HeaderViewListAdapter)listView.getAdapter()).getWrappedAdapter();
-                    adapter.clear();
-                    if (params != null) {
-                        Log.d(TAG, params.toString());
-                        adapter.addAll(params.toStringArray());
+                    if (status == BlukiiConstants.BLUKII_DEVICE_STATUS_OK) {
+                        RecordingParams params = (RecordingParams) intent.getSerializableExtra(RecordingProfile.EXTRA_RECORDING_PARAMS);
+                        ListView listView = (ListView) getView().findViewById(android.R.id.list);
+                        ArrayAdapter<String> adapter = (ArrayAdapter<String>) ((HeaderViewListAdapter) listView.getAdapter()).getWrappedAdapter();
+                        adapter.clear();
+                        if (params != null) {
+                            Log.d(TAG, params.toString());
+                            adapter.addAll(params.toStringArray());
+
+                            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
+                            sp.edit().putInt(PREF_BLUKII_PARAMS_INTERVAL, params.recordingInterval).commit();
+
+                        }
+                        adapter.notifyDataSetChanged();
                     }
-                    adapter.notifyDataSetChanged();
                     break;
             }
 

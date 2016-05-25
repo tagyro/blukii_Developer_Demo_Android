@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:id="@+id/list_header"
@@ -88,4 +89,90 @@
         android:text="Values"
         android:textSize="15sp" />
 
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:id="@+id/progressBar"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="0"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0/0"
+        android:textSize="12sp"
+        android:id="@+id/progressTextView"/>
+
+    <com.blukii.blukiichartlibrary.BlukiiLineChart
+        android:id="@+id/chartAccelerometer"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp" />
+
+    <com.blukii.blukiichartlibrary.BlukiiLineChart
+        android:id="@+id/chartAltimeter"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp" />
+
+    <com.blukii.blukiichartlibrary.BlukiiLineChart
+        android:id="@+id/chartBattery"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp" />
+
+    <com.blukii.blukiichartlibrary.BlukiiLineChart
+        android:id="@+id/chartHumidity"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp" />
+
+    <com.blukii.blukiichartlibrary.BlukiiLineChart
+        android:id="@+id/chartLight"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp" />
+
+    <com.blukii.blukiichartlibrary.BlukiiLineChart
+        android:id="@+id/chartMagnetometer"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp" />
+
+    <com.blukii.blukiichartlibrary.BlukiiLineChart
+        android:id="@+id/chartStepDetection"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp" />
+
+    <com.blukii.blukiichartlibrary.BlukiiLineChart
+        android:id="@+id/chartTemperature"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp" />
 </LinearLayout>

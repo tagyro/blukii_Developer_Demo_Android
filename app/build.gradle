@@ -29,15 +29,25 @@ android {
     }
 }
 
+repositories{
+    flatDir{
+        dirs 'libs'
+    }
+    maven { url "https://jitpack.io" }
+}
+
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.aar'])
+   // compile fileTree(dir: 'libs', include: ['*.aar'])
 
     // Comment when using jar files
     //compile project(':blukiilibrary')
 
+
     // Uncomment when using jar files
     compile 'com.android.support:support-v13:21.0.0'
     compile(name: 'blukiilibrary-release', ext: 'aar')
+    compile 'com.github.PhilJay:MPAndroidChart:v2.2.4'
+    compile(name: 'blukiichartlibrary-debug-0.0.13', ext: 'aar')
 }
 
 def getDate() {
