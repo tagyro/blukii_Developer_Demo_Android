@@ -1,5 +1,6 @@
 package com.blukii.androidblukiitutorial;
 
+import android.app.Activity;
 import android.app.ListFragment;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
@@ -197,32 +198,38 @@ public class SelectBlukiiFragment extends ListFragment implements View.OnClickLi
         countdown = new CountDownTimer(10000, 750) {
             int flag = 0;
             public void onTick(long millisUntilFinished) {
-                switch(flag) {
-                    case 0:
-                        updateConnectionStatus(getText(R.string.blukii_discover).toString());
-                        flag++;
-                        break;
-                    case 1:
-                        updateConnectionStatus(getText(R.string.blukii_discover).toString() + getText(R.string.blukii_discover_1).toString());
-                        flag++;
-                        break;
-                    case 2:
-                        updateConnectionStatus(getText(R.string.blukii_discover).toString() + getText(R.string.blukii_discover_2).toString());
-                        flag++;
-                        break;
-                    case 3:
-                        updateConnectionStatus(getText(R.string.blukii_discover).toString() + getText(R.string.blukii_discover_3).toString());
-                        flag = 0;
-                        break;
+                // only if fragment is attached to activity
+                if ( isAdded() ) {
+                    switch (flag) {
+                        case 0:
+                            updateConnectionStatus(getText(R.string.blukii_discover).toString());
+                            flag++;
+                            break;
+                        case 1:
+                            updateConnectionStatus(getText(R.string.blukii_discover).toString() + getText(R.string.blukii_discover_1).toString());
+                            flag++;
+                            break;
+                        case 2:
+                            updateConnectionStatus(getText(R.string.blukii_discover).toString() + getText(R.string.blukii_discover_2).toString());
+                            flag++;
+                            break;
+                        case 3:
+                            updateConnectionStatus(getText(R.string.blukii_discover).toString() + getText(R.string.blukii_discover_3).toString());
+                            flag = 0;
+                            break;
+                    }
                 }
             }
 
             public void onFinish() {
-                updateConnectionStatus(getText(R.string.blukii_discoveryStopped).toString());
-                //buttons anpassen
-                Button b = ((Button) getView().findViewById(R.id.btn_blukii_discover));
-                b.setText(R.string.btn_restartDiscover);
-                b.setTag("start");
+                // only if fragment is attached to activity
+                if ( isAdded() ) {
+                    updateConnectionStatus(getText(R.string.blukii_discoveryStopped).toString());
+                    //buttons anpassen
+                    Button b = ((Button) getView().findViewById(R.id.btn_blukii_discover));
+                    b.setText(R.string.btn_restartDiscover);
+                    b.setTag("start");
+                }
             }
         };
 
@@ -323,6 +330,7 @@ public class SelectBlukiiFragment extends ListFragment implements View.OnClickLi
                 break;
         }
     }
+
 
     /**
      * Aktualisiert das TextView mit dem neuen Status
