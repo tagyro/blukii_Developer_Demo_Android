@@ -47,7 +47,7 @@ dependencies {
     compile 'com.android.support:support-v13:21.0.0'
     compile(name: 'blukiilibrary-release', ext: 'aar')
     compile 'com.github.PhilJay:MPAndroidChart:v2.2.4'
-    compile(name: 'blukiichartlibrary-debug-0.0.13', ext: 'aar')
+    compile 'com.blukii:blukiichartlibrary:0.0.7'
 }
 
 def getDate() {
