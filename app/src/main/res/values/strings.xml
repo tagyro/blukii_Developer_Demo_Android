@@ -170,6 +170,8 @@
 
     <string name="btn_toggleOn">on</string>
     <string name="btn_toggleOff">off</string>
+
+    <string name="btn_clear_chart">clear chart</string>
     <!--END BUTTONS-->
 
 
