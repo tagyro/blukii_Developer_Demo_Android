@@ -30,6 +30,16 @@ import com.blukii.android.blukiilibrary.Blukii;
 import com.blukii.android.blukiilibrary.EnablerStatus;
 import com.blukii.android.blukiilibrary.BlukiiConstants;
 import com.blukii.android.blukiilibrary.Profile;
+import com.blukii.blukiichartlibrary.BlukiiChartEntry;
+import com.blukii.blukiichartlibrary.BlukiiChartEntrySet;
+import com.blukii.blukiichartlibrary.BlukiiLineChart;
+import com.blukii.blukiichartlibrary.BlukiiLineData;
+import com.blukii.blukiichartlibrary.BlukiiLineDataSet;
+import com.github.mikephil.charting.data.Entry;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
 
 
 public class AccelerometerFragment extends AbstractFragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
@@ -37,6 +47,8 @@ public class AccelerometerFragment extends AbstractFragment implements View.OnCl
     private final static String TAG = AccelerometerFragment.class.getSimpleName();
 
     private AccelerometerRange accelerometerRange = null;
+    private BlukiiLineChart mBlukiiLineChart;
+    int entryCount = 0;
     /**
      * A broadcast receiver to receive updates on blukiis
      */
@@ -134,6 +146,7 @@ public class AccelerometerFragment extends AbstractFragment implements View.OnCl
                     if (status == BlukiiConstants.BLUKII_DEVICE_STATUS_OK) {
                         double dx = intent.getDoubleExtra(AccelerometerProfile.EXTRA_ACCELEROMETER_RAW_VALUE, -1);
                         ((TextView) getView().findViewById(R.id.tv_acc_raw_x)).setText(String.format("%.4f", dx));
+                        addEntry(Float.parseFloat(dx+""), 0);
                     }
                     break;
 
@@ -150,6 +163,7 @@ public class AccelerometerFragment extends AbstractFragment implements View.OnCl
                     if (status == BlukiiConstants.BLUKII_DEVICE_STATUS_OK) {
                         double dy = intent.getDoubleExtra(AccelerometerProfile.EXTRA_ACCELEROMETER_RAW_VALUE, -1);
                         ((TextView) getView().findViewById(R.id.tv_acc_raw_y)).setText(String.format("%.4f", dy));
+                        addEntry(Float.parseFloat(dy+""), 1);
                     }
                     break;
 
@@ -166,6 +180,7 @@ public class AccelerometerFragment extends AbstractFragment implements View.OnCl
                     if (status == BlukiiConstants.BLUKII_DEVICE_STATUS_OK) {
                         double dz = intent.getDoubleExtra(AccelerometerProfile.EXTRA_ACCELEROMETER_RAW_VALUE, -1);
                         ((TextView) getView().findViewById(R.id.tv_acc_raw_z)).setText(String.format("%.4f", dz));
+                        addEntry(Float.parseFloat(dz+""), 2);
                     }
                     break;
 
@@ -267,6 +282,7 @@ public class AccelerometerFragment extends AbstractFragment implements View.OnCl
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
     }
 
@@ -298,6 +314,11 @@ public class AccelerometerFragment extends AbstractFragment implements View.OnCl
         IntentFilter intentFilter = new IntentFilter();
         AccelerometerProfile.addActions(intentFilter);
         LocalBroadcastManager.getInstance(this.getActivity()).registerReceiver(mGattUpdateReceiver, intentFilter);
+
+        // Linechart initialized by xml
+        mBlukiiLineChart = (BlukiiLineChart) getView().findViewById(R.id.chartAccelerometerDynamic);
+
+        setupChart();
 
     }
 
@@ -360,6 +381,13 @@ public class AccelerometerFragment extends AbstractFragment implements View.OnCl
                 break;
             case R.id.btn_acc_notify_raw_z:
                 profile.notifyRawZ(((ToggleButton) v).isChecked());
+                break;
+
+            // CLEAR CHART
+            case R.id.btn_clear_chartAccelerometerDynamic:
+                mBlukiiLineChart.clear();
+                entryCount = 0;
+                setupChart();
                 break;
 
             // FILTER
@@ -545,6 +573,30 @@ public class AccelerometerFragment extends AbstractFragment implements View.OnCl
         }
     }
 
+
+
+
+    private void setupChart() {
+        // EntrySets
+        Vector<BlukiiChartEntry> chartEntriesAccelX = new Vector<>();
+        Vector<BlukiiChartEntry> chartEntriesAccelY = new Vector<>();
+        Vector<BlukiiChartEntry> chartEntriesAccelZ = new Vector<>();
+
+        // EntrySetList
+        Vector<BlukiiChartEntrySet> blukiiChartEntrySetList = new Vector<>();
+
+        // Generate EntrySet and add EntrySets to EntrySetList
+        // BlukiiChartEntrySet: chartEntries (Vector), Label (String), Color (int)
+        blukiiChartEntrySetList.add( new BlukiiChartEntrySet(chartEntriesAccelX, "Acceleration X [g]", 0) );
+        blukiiChartEntrySetList.add( new BlukiiChartEntrySet(chartEntriesAccelY, "Acceleration Y [g]", 1) );
+        blukiiChartEntrySetList.add( new BlukiiChartEntrySet(chartEntriesAccelZ, "Acceleration Z [g]", 2) );
+
+        // Set EntrySets to chart and render
+        mBlukiiLineChart.setData(blukiiChartEntrySetList);
+        mBlukiiLineChart.setup();
+    }
+
+
     private AccelerometerProfile getAccelerometerProfile() {
         return (AccelerometerProfile) MainActivity.getProfileById(getActivity(), AccelerometerProfile.ID);
     }
@@ -576,6 +628,26 @@ public class AccelerometerFragment extends AbstractFragment implements View.OnCl
         // do nothing
     }
 
+    private void addEntry(Float value, int datasetIndex) {
+        BlukiiLineData blukiiLineData = (BlukiiLineData) mBlukiiLineChart.getData();
+
+        if ( blukiiLineData != null ) {
+ 
+            BlukiiLineDataSet set = (BlukiiLineDataSet) blukiiLineData.getDataSetByIndex(datasetIndex);
+
+
+            blukiiLineData.addXValue(entryCount + "");
+            blukiiLineData.addEntry(new Entry(value, entryCount), datasetIndex);
+
+            mBlukiiLineChart.notifyDataSetChanged();
+            mBlukiiLineChart.setVisibleXRangeMaximum(120);
+            mBlukiiLineChart.moveViewToX(blukiiLineData.getXValCount() - 121);
+
+            entryCount++;
+        }
+    }
+
+
     private void enableAllAccelerometer(boolean enable) {
         //Spinner
         getView().findViewById(R.id.spin_accelerometer_range).setEnabled(enable);
@@ -591,6 +663,9 @@ public class AccelerometerFragment extends AbstractFragment implements View.OnCl
         getView().findViewById(R.id.btn_acc_notify_raw_x).setEnabled(enable);
         getView().findViewById(R.id.btn_acc_notify_raw_y).setEnabled(enable);
         getView().findViewById(R.id.btn_acc_notify_raw_z).setEnabled(enable);
+
+        //Button clear chart
+        getView().findViewById(R.id.btn_clear_chartAccelerometerDynamic).setEnabled(enable);
 
         //Filter
         getView().findViewById(R.id.et_accelerometer_filter).setEnabled(enable);
